@@ -19,13 +19,13 @@ pub async fn list_users(
     let mut conditions: Vec<String> = Vec::new();
     let mut params: Vec<String> = Vec::new();
 
-    // Search filter (email or full_name)
+    // Search filter (email, full_name, branch, batch)
     if let Some(ref search) = query.search {
         let s = search.trim();
         if !s.is_empty() {
             params.push(format!("%{}%", s.to_lowercase()));
             let idx = params.len();
-            conditions.push(format!("(LOWER(email) LIKE ${} OR LOWER(full_name) LIKE ${})", idx, idx));
+            conditions.push(format!("(LOWER(email) LIKE ${0} OR LOWER(full_name) LIKE ${0} OR LOWER(COALESCE(branch, '')) LIKE ${0} OR CAST(batch AS TEXT) LIKE ${0})", idx));
         }
     }
 
@@ -59,7 +59,7 @@ pub async fn list_users(
 
     // Data
     let data_sql = format!(
-        "SELECT * FROM users {} ORDER BY created_at DESC LIMIT ${} OFFSET ${}",
+        "SELECT * FROM users {} ORDER BY full_name ASC, email ASC LIMIT ${} OFFSET ${}",
         where_clause, params.len() + 1, params.len() + 2
     );
     let users: Vec<User> = {

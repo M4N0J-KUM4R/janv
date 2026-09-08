@@ -75,7 +75,7 @@ export default function SearchStudentPage() {
           alignItems: 'center',
           gap: '12px',
           width: '100%',
-          maxWidth: '420px',
+          maxWidth: '680px',
           height: '48px',
           backgroundColor: '#ffffff',
           border: '1px solid rgb(224, 224, 224)',
@@ -89,7 +89,7 @@ export default function SearchStudentPage() {
         </svg>
         <input
           type="text"
-          placeholder="Search a student by email/phone"
+          placeholder="Search by student name, email, branch (CSE, Biochem, Maths, etc.), or batch (2026, 2027, 2028)"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           style={{
