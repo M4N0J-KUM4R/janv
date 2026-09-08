@@ -11,7 +11,7 @@ export default function AdminLoginPage() {
   const [rememberMe, setRememberMe] = useState(true);
   const [error, setError] = useState('');
   const [submitting, setSubmitting] = useState(false);
-  const { login } = useAuth();
+  const { login, logout } = useAuth();
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -23,7 +23,13 @@ export default function AdminLoginPage() {
     setError('');
     setSubmitting(true);
     try {
-      await login(email, password, rememberMe);
+      const loggedUser = await login(email, password, rememberMe);
+      const role = (loggedUser?.role || '').toLowerCase();
+      if (role === 'student') {
+        logout();
+        setError('Access denied: Student accounts are not permitted on the Institutions Admin portal. Only faculty members can sign in.');
+        return;
+      }
       router.push('/learn/dashboard');
     } catch (err: unknown) {
       setError(err instanceof Error ? err.message : 'Invalid credentials');
