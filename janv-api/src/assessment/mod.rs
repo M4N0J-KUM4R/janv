@@ -74,4 +74,6 @@ pub fn router() -> Router<AppState> {
             post(passcode::set_passcode).delete(passcode::remove_passcode),
         )
         .route("/passcode/verify", post(passcode::verify_passcode))
+        .route("/passcode/current", get(passcode::get_current_passcode))
+        .route("/passcode/regenerate", post(passcode::regenerate_passcode))
 }

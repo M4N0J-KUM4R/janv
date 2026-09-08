@@ -174,9 +174,33 @@ export const assessments = {
     }),
 
   verifyPasscode: (passcode: string) =>
-    request<{ valid: boolean; assessment_id: string }>('/assessments/passcode/verify', {
+    request<{ valid: boolean; assessment_id: string; title?: string; message?: string }>('/assessments/passcode/verify', {
       method: 'POST',
       body: JSON.stringify({ passcode }),
+    }),
+
+  getCurrentPasscode: () =>
+    request<{
+      passcode: string;
+      institution_id: number;
+      institution_name: string;
+      expires_at: string;
+      window_start: string;
+      remaining_seconds: number;
+      interval_hours: number;
+    }>('/assessments/passcode/current'),
+
+  regeneratePasscode: () =>
+    request<{
+      passcode: string;
+      institution_id: number;
+      institution_name: string;
+      expires_at: string;
+      window_start: string;
+      remaining_seconds: number;
+      interval_hours: number;
+    }>('/assessments/passcode/regenerate', {
+      method: 'POST',
     }),
 
   // Proctoring

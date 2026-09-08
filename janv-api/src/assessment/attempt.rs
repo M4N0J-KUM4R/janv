@@ -56,7 +56,7 @@ pub async fn start_attempt(
         "SELECT * FROM attempts WHERE assessment_id = $1 AND student_id = $2 AND status = 'in_progress'"
     )
     .bind(id)
-    .bind(user.id)
+    .bind(&user.email)
     .fetch_optional(&state.db)
     .await?;
 
@@ -86,7 +86,7 @@ pub async fn start_attempt(
     )
     .bind(Uuid::new_v4())
     .bind(id)
-    .bind(user.id)
+    .bind(&user.email)
     .bind(assessment.total_marks)
     .fetch_one(&state.db)
     .await?;
@@ -135,7 +135,7 @@ pub async fn submit_attempt(
     let attempt =
         sqlx::query_as::<_, Attempt>("SELECT * FROM attempts WHERE id = $1 AND student_id = $2")
             .bind(id)
-            .bind(user.id)
+            .bind(&user.email)
             .fetch_optional(&state.db)
             .await?
             .ok_or(AppError::NotFound("Attempt not found".to_string()))?;
@@ -247,7 +247,7 @@ pub async fn submit_attempt(
     )
     .bind(Uuid::new_v4())
     .bind(attempt.assessment_id)
-    .bind(user.id)
+    .bind(&user.email)
     .bind(total_score)
     .bind(assessment.total_marks)
     .bind(percentage)
@@ -317,7 +317,7 @@ pub async fn list_my_attempts(
     let attempts = sqlx::query_as::<_, Attempt>(
         "SELECT * FROM attempts WHERE student_id = $1 ORDER BY started_at DESC",
     )
-    .bind(user.id)
+    .bind(&user.email)
     .fetch_all(&state.db)
     .await?;
 
