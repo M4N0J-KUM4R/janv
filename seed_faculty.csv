@@ -1,0 +1,26 @@
+faculty_id,institute_id,institute_name,faculty_name,faculty_email
+IITB-FAC-0001,1,IIT Bombay,Ananya Kulkarni,ananya.kulkarni@iitb.ac.in
+IITB-FAC-0002,1,IIT Bombay,Rohan Iyer,rohan.iyer@iitb.ac.in
+IITB-FAC-0003,1,IIT Bombay,Meera Joshi,meera.joshi@iitb.ac.in
+IITB-FAC-0004,1,IIT Bombay,Vivek Rao,vivek.rao@iitb.ac.in
+IITB-FAC-0005,1,IIT Bombay,Kavya Deshmukh,kavya.deshmukh@iitb.ac.in
+IITD-FAC-0001,2,IIT Delhi,Manish Bedi,manish.bedi@iitd.ac.in
+IITD-FAC-0002,2,IIT Delhi,Neha Bansal,neha.bansal@iitd.ac.in
+IITD-FAC-0003,2,IIT Delhi,Ritesh Kohli,ritesh.kohli@iitd.ac.in
+IITD-FAC-0004,2,IIT Delhi,Shalini Dutta,shalini.dutta@iitd.ac.in
+IITD-FAC-0005,2,IIT Delhi,Akash Tiwari,akash.tiwari@iitd.ac.in
+VIT-FAC-0001,3,Vellore Institute of Technology,Lavanya Krishnan,lavanya.krishnan@vit.ac.in
+VIT-FAC-0002,3,Vellore Institute of Technology,Gautham Nair,gautham.nair@vit.ac.in
+VIT-FAC-0003,3,Vellore Institute of Technology,Shreya Iyer,shreya.iyer@vit.ac.in
+VIT-FAC-0004,3,Vellore Institute of Technology,Rohit Varma,rohit.varma@vit.ac.in
+VIT-FAC-0005,3,Vellore Institute of Technology,Nandita Bose,nandita.bose@vit.ac.in
+CHRIST-FAC-0001,4,CHRIST University,Joseph Mathew,joseph.mathew@christuniversity.in
+CHRIST-FAC-0002,4,CHRIST University,Maria Fernandes,maria.fernandes@christuniversity.in
+CHRIST-FAC-0003,4,CHRIST University,Rahul George,rahul.george@christuniversity.in
+CHRIST-FAC-0004,4,CHRIST University,Shruti Nair,shruti.nair@christuniversity.in
+CHRIST-FAC-0005,4,CHRIST University,Monica Dsouza,monica.dsouza@christuniversity.in
+MAHE-FAC-0001,5,Manipal Academy of Higher Education,Vinay Hegde,vinay.hegde@manipal.edu
+MAHE-FAC-0002,5,Manipal Academy of Higher Education,Asha Pai,asha.pai@manipal.edu
+MAHE-FAC-0003,5,Manipal Academy of Higher Education,Tejas Kulkarni,tejas.kulkarni@manipal.edu
+MAHE-FAC-0004,5,Manipal Academy of Higher Education,Meenal Rao,meenal.rao@manipal.edu
+MAHE-FAC-0005,5,Manipal Academy of Higher Education,Kunal Pai,kunal.pai@manipal.edu

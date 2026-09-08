@@ -1,0 +1,1001 @@
+student_id,institute_id,institute_name,department_id,department_name,batch_year,student_name,student_email
+12026BT-AE001,1,IIT Bombay,IITB-AERO,Aerospace Engineering,2026,Aarav Mehta,aarav-mehta-0001@seed.example
+12026BT-AE002,1,IIT Bombay,IITB-AERO,Aerospace Engineering,2026,Aarav Nair,aarav-nair-0002@seed.example
+12026BT-AE003,1,IIT Bombay,IITB-AERO,Aerospace Engineering,2026,Aarav Shah,aarav-shah-0003@seed.example
+12026BT-AE004,1,IIT Bombay,IITB-AERO,Aerospace Engineering,2026,Aarav Sen,aarav-sen-0004@seed.example
+12026BT-AE005,1,IIT Bombay,IITB-AERO,Aerospace Engineering,2026,Aarav Bhat,aarav-bhat-0005@seed.example
+12026BT-AE006,1,IIT Bombay,IITB-AERO,Aerospace Engineering,2026,Aarav Roy,aarav-roy-0006@seed.example
+12026BT-AE007,1,IIT Bombay,IITB-AERO,Aerospace Engineering,2026,Aarav Thomas,aarav-thomas-0007@seed.example
+12026BT-AE008,1,IIT Bombay,IITB-AERO,Aerospace Engineering,2026,Aarav Kapoor,aarav-kapoor-0008@seed.example
+12026BT-AE009,1,IIT Bombay,IITB-AERO,Aerospace Engineering,2026,Aarav Malhotra,aarav-malhotra-0009@seed.example
+12026BT-AE010,1,IIT Bombay,IITB-AERO,Aerospace Engineering,2026,Aarav Arora,aarav-arora-0010@seed.example
+12026BT-AE011,1,IIT Bombay,IITB-AERO,Aerospace Engineering,2026,Aarav Gupta,aarav-gupta-0011@seed.example
+12026BT-AE012,1,IIT Bombay,IITB-AERO,Aerospace Engineering,2026,Aarav Jain,aarav-jain-0012@seed.example
+12026BT-AE013,1,IIT Bombay,IITB-AERO,Aerospace Engineering,2026,Aarav Rao,aarav-rao-0013@seed.example
+12026BT-AE014,1,IIT Bombay,IITB-AERO,Aerospace Engineering,2026,Aarav Singh,aarav-singh-0014@seed.example
+12026BT-AE015,1,IIT Bombay,IITB-AERO,Aerospace Engineering,2026,Aarav Chawla,aarav-chawla-0015@seed.example
+12026BT-AE016,1,IIT Bombay,IITB-AERO,Aerospace Engineering,2026,Aarav Das,aarav-das-0016@seed.example
+12026BT-AE017,1,IIT Bombay,IITB-AERO,Aerospace Engineering,2026,Aarav Mittal,aarav-mittal-0017@seed.example
+12026BT-AE018,1,IIT Bombay,IITB-AERO,Aerospace Engineering,2026,Aarav Joshi,aarav-joshi-0018@seed.example
+12026BT-AE019,1,IIT Bombay,IITB-AERO,Aerospace Engineering,2026,Aarav Verma,aarav-verma-0019@seed.example
+12026BT-AE020,1,IIT Bombay,IITB-AERO,Aerospace Engineering,2026,Aarav Pillai,aarav-pillai-0020@seed.example
+12027BT-BB001,1,IIT Bombay,IITB-BIO,Biosciences and Bioengineering,2027,Aanya Mehta,aanya-mehta-0021@seed.example
+12027BT-BB002,1,IIT Bombay,IITB-BIO,Biosciences and Bioengineering,2027,Aanya Nair,aanya-nair-0022@seed.example
+12027BT-BB003,1,IIT Bombay,IITB-BIO,Biosciences and Bioengineering,2027,Aanya Shah,aanya-shah-0023@seed.example
+12027BT-BB004,1,IIT Bombay,IITB-BIO,Biosciences and Bioengineering,2027,Aanya Sen,aanya-sen-0024@seed.example
+12027BT-BB005,1,IIT Bombay,IITB-BIO,Biosciences and Bioengineering,2027,Aanya Bhat,aanya-bhat-0025@seed.example
+12027BT-BB006,1,IIT Bombay,IITB-BIO,Biosciences and Bioengineering,2027,Aanya Roy,aanya-roy-0026@seed.example
+12027BT-BB007,1,IIT Bombay,IITB-BIO,Biosciences and Bioengineering,2027,Aanya Thomas,aanya-thomas-0027@seed.example
+12027BT-BB008,1,IIT Bombay,IITB-BIO,Biosciences and Bioengineering,2027,Aanya Kapoor,aanya-kapoor-0028@seed.example
+12027BT-BB009,1,IIT Bombay,IITB-BIO,Biosciences and Bioengineering,2027,Aanya Malhotra,aanya-malhotra-0029@seed.example
+12027BT-BB010,1,IIT Bombay,IITB-BIO,Biosciences and Bioengineering,2027,Aanya Arora,aanya-arora-0030@seed.example
+12027BT-BB011,1,IIT Bombay,IITB-BIO,Biosciences and Bioengineering,2027,Aanya Gupta,aanya-gupta-0031@seed.example
+12027BT-BB012,1,IIT Bombay,IITB-BIO,Biosciences and Bioengineering,2027,Aanya Jain,aanya-jain-0032@seed.example
+12027BT-BB013,1,IIT Bombay,IITB-BIO,Biosciences and Bioengineering,2027,Aanya Rao,aanya-rao-0033@seed.example
+12027BT-BB014,1,IIT Bombay,IITB-BIO,Biosciences and Bioengineering,2027,Aanya Singh,aanya-singh-0034@seed.example
+12027BT-BB015,1,IIT Bombay,IITB-BIO,Biosciences and Bioengineering,2027,Aanya Chawla,aanya-chawla-0035@seed.example
+12027BT-BB016,1,IIT Bombay,IITB-BIO,Biosciences and Bioengineering,2027,Aanya Das,aanya-das-0036@seed.example
+12027BT-BB017,1,IIT Bombay,IITB-BIO,Biosciences and Bioengineering,2027,Aanya Mittal,aanya-mittal-0037@seed.example
+12027BT-BB018,1,IIT Bombay,IITB-BIO,Biosciences and Bioengineering,2027,Aanya Joshi,aanya-joshi-0038@seed.example
+12027BT-BB019,1,IIT Bombay,IITB-BIO,Biosciences and Bioengineering,2027,Aanya Verma,aanya-verma-0039@seed.example
+12027BT-BB020,1,IIT Bombay,IITB-BIO,Biosciences and Bioengineering,2027,Aanya Pillai,aanya-pillai-0040@seed.example
+12026BT-CH001,1,IIT Bombay,IITB-CHE,Chemical Engineering,2026,Advait Mehta,advait-mehta-0041@seed.example
+12026BT-CH002,1,IIT Bombay,IITB-CHE,Chemical Engineering,2026,Advait Nair,advait-nair-0042@seed.example
+12026BT-CH003,1,IIT Bombay,IITB-CHE,Chemical Engineering,2026,Advait Shah,advait-shah-0043@seed.example
+12026BT-CH004,1,IIT Bombay,IITB-CHE,Chemical Engineering,2026,Advait Sen,advait-sen-0044@seed.example
+12026BT-CH005,1,IIT Bombay,IITB-CHE,Chemical Engineering,2026,Advait Bhat,advait-bhat-0045@seed.example
+12026BT-CH006,1,IIT Bombay,IITB-CHE,Chemical Engineering,2026,Advait Roy,advait-roy-0046@seed.example
+12026BT-CH007,1,IIT Bombay,IITB-CHE,Chemical Engineering,2026,Advait Thomas,advait-thomas-0047@seed.example
+12026BT-CH008,1,IIT Bombay,IITB-CHE,Chemical Engineering,2026,Advait Kapoor,advait-kapoor-0048@seed.example
+12026BT-CH009,1,IIT Bombay,IITB-CHE,Chemical Engineering,2026,Advait Malhotra,advait-malhotra-0049@seed.example
+12026BT-CH010,1,IIT Bombay,IITB-CHE,Chemical Engineering,2026,Advait Arora,advait-arora-0050@seed.example
+12026BT-CH011,1,IIT Bombay,IITB-CHE,Chemical Engineering,2026,Advait Gupta,advait-gupta-0051@seed.example
+12026BT-CH012,1,IIT Bombay,IITB-CHE,Chemical Engineering,2026,Advait Jain,advait-jain-0052@seed.example
+12026BT-CH013,1,IIT Bombay,IITB-CHE,Chemical Engineering,2026,Advait Rao,advait-rao-0053@seed.example
+12026BT-CH014,1,IIT Bombay,IITB-CHE,Chemical Engineering,2026,Advait Singh,advait-singh-0054@seed.example
+12026BT-CH015,1,IIT Bombay,IITB-CHE,Chemical Engineering,2026,Advait Chawla,advait-chawla-0055@seed.example
+12026BT-CH016,1,IIT Bombay,IITB-CHE,Chemical Engineering,2026,Advait Das,advait-das-0056@seed.example
+12026BT-CH017,1,IIT Bombay,IITB-CHE,Chemical Engineering,2026,Advait Mittal,advait-mittal-0057@seed.example
+12026BT-CH018,1,IIT Bombay,IITB-CHE,Chemical Engineering,2026,Advait Joshi,advait-joshi-0058@seed.example
+12026BT-CH019,1,IIT Bombay,IITB-CHE,Chemical Engineering,2026,Advait Verma,advait-verma-0059@seed.example
+12026BT-CH020,1,IIT Bombay,IITB-CHE,Chemical Engineering,2026,Advait Pillai,advait-pillai-0060@seed.example
+12027BT-CE001,1,IIT Bombay,IITB-CIV,Civil Engineering,2027,Aditi Mehta,aditi-mehta-0061@seed.example
+12027BT-CE002,1,IIT Bombay,IITB-CIV,Civil Engineering,2027,Aditi Nair,aditi-nair-0062@seed.example
+12027BT-CE003,1,IIT Bombay,IITB-CIV,Civil Engineering,2027,Aditi Shah,aditi-shah-0063@seed.example
+12027BT-CE004,1,IIT Bombay,IITB-CIV,Civil Engineering,2027,Aditi Sen,aditi-sen-0064@seed.example
+12027BT-CE005,1,IIT Bombay,IITB-CIV,Civil Engineering,2027,Aditi Bhat,aditi-bhat-0065@seed.example
+12027BT-CE006,1,IIT Bombay,IITB-CIV,Civil Engineering,2027,Aditi Roy,aditi-roy-0066@seed.example
+12027BT-CE007,1,IIT Bombay,IITB-CIV,Civil Engineering,2027,Aditi Thomas,aditi-thomas-0067@seed.example
+12027BT-CE008,1,IIT Bombay,IITB-CIV,Civil Engineering,2027,Aditi Kapoor,aditi-kapoor-0068@seed.example
+12027BT-CE009,1,IIT Bombay,IITB-CIV,Civil Engineering,2027,Aditi Malhotra,aditi-malhotra-0069@seed.example
+12027BT-CE010,1,IIT Bombay,IITB-CIV,Civil Engineering,2027,Aditi Arora,aditi-arora-0070@seed.example
+12027BT-CE011,1,IIT Bombay,IITB-CIV,Civil Engineering,2027,Aditi Gupta,aditi-gupta-0071@seed.example
+12027BT-CE012,1,IIT Bombay,IITB-CIV,Civil Engineering,2027,Aditi Jain,aditi-jain-0072@seed.example
+12027BT-CE013,1,IIT Bombay,IITB-CIV,Civil Engineering,2027,Aditi Rao,aditi-rao-0073@seed.example
+12027BT-CE014,1,IIT Bombay,IITB-CIV,Civil Engineering,2027,Aditi Singh,aditi-singh-0074@seed.example
+12027BT-CE015,1,IIT Bombay,IITB-CIV,Civil Engineering,2027,Aditi Chawla,aditi-chawla-0075@seed.example
+12027BT-CE016,1,IIT Bombay,IITB-CIV,Civil Engineering,2027,Aditi Das,aditi-das-0076@seed.example
+12027BT-CE017,1,IIT Bombay,IITB-CIV,Civil Engineering,2027,Aditi Mittal,aditi-mittal-0077@seed.example
+12027BT-CE018,1,IIT Bombay,IITB-CIV,Civil Engineering,2027,Aditi Joshi,aditi-joshi-0078@seed.example
+12027BT-CE019,1,IIT Bombay,IITB-CIV,Civil Engineering,2027,Aditi Verma,aditi-verma-0079@seed.example
+12027BT-CE020,1,IIT Bombay,IITB-CIV,Civil Engineering,2027,Aditi Pillai,aditi-pillai-0080@seed.example
+12026BT-CS001,1,IIT Bombay,IITB-CSE,Computer Science and Engineering,2026,Aditya Mehta,aditya-mehta-0081@seed.example
+12026BT-CS002,1,IIT Bombay,IITB-CSE,Computer Science and Engineering,2026,Aditya Nair,aditya-nair-0082@seed.example
+12026BT-CS003,1,IIT Bombay,IITB-CSE,Computer Science and Engineering,2026,Aditya Shah,aditya-shah-0083@seed.example
+12026BT-CS004,1,IIT Bombay,IITB-CSE,Computer Science and Engineering,2026,Aditya Sen,aditya-sen-0084@seed.example
+12026BT-CS005,1,IIT Bombay,IITB-CSE,Computer Science and Engineering,2026,Aditya Bhat,aditya-bhat-0085@seed.example
+12026BT-CS006,1,IIT Bombay,IITB-CSE,Computer Science and Engineering,2026,Aditya Roy,aditya-roy-0086@seed.example
+12026BT-CS007,1,IIT Bombay,IITB-CSE,Computer Science and Engineering,2026,Aditya Thomas,aditya-thomas-0087@seed.example
+12026BT-CS008,1,IIT Bombay,IITB-CSE,Computer Science and Engineering,2026,Aditya Kapoor,aditya-kapoor-0088@seed.example
+12026BT-CS009,1,IIT Bombay,IITB-CSE,Computer Science and Engineering,2026,Aditya Malhotra,aditya-malhotra-0089@seed.example
+12026BT-CS010,1,IIT Bombay,IITB-CSE,Computer Science and Engineering,2026,Aditya Arora,aditya-arora-0090@seed.example
+12026BT-CS011,1,IIT Bombay,IITB-CSE,Computer Science and Engineering,2026,Aditya Gupta,aditya-gupta-0091@seed.example
+12026BT-CS012,1,IIT Bombay,IITB-CSE,Computer Science and Engineering,2026,Aditya Jain,aditya-jain-0092@seed.example
+12026BT-CS013,1,IIT Bombay,IITB-CSE,Computer Science and Engineering,2026,Aditya Rao,aditya-rao-0093@seed.example
+12026BT-CS014,1,IIT Bombay,IITB-CSE,Computer Science and Engineering,2026,Aditya Singh,aditya-singh-0094@seed.example
+12026BT-CS015,1,IIT Bombay,IITB-CSE,Computer Science and Engineering,2026,Aditya Chawla,aditya-chawla-0095@seed.example
+12026BT-CS016,1,IIT Bombay,IITB-CSE,Computer Science and Engineering,2026,Aditya Das,aditya-das-0096@seed.example
+12026BT-CS017,1,IIT Bombay,IITB-CSE,Computer Science and Engineering,2026,Aditya Mittal,aditya-mittal-0097@seed.example
+12026BT-CS018,1,IIT Bombay,IITB-CSE,Computer Science and Engineering,2026,Aditya Joshi,aditya-joshi-0098@seed.example
+12026BT-CS019,1,IIT Bombay,IITB-CSE,Computer Science and Engineering,2026,Aditya Verma,aditya-verma-0099@seed.example
+12026BT-CS020,1,IIT Bombay,IITB-CSE,Computer Science and Engineering,2026,Aditya Pillai,aditya-pillai-0100@seed.example
+12027BT-EE001,1,IIT Bombay,IITB-EE,Electrical Engineering,2027,Ahaan Mehta,ahaan-mehta-0101@seed.example
+12027BT-EE002,1,IIT Bombay,IITB-EE,Electrical Engineering,2027,Ahaan Nair,ahaan-nair-0102@seed.example
+12027BT-EE003,1,IIT Bombay,IITB-EE,Electrical Engineering,2027,Ahaan Shah,ahaan-shah-0103@seed.example
+12027BT-EE004,1,IIT Bombay,IITB-EE,Electrical Engineering,2027,Ahaan Sen,ahaan-sen-0104@seed.example
+12027BT-EE005,1,IIT Bombay,IITB-EE,Electrical Engineering,2027,Ahaan Bhat,ahaan-bhat-0105@seed.example
+12027BT-EE006,1,IIT Bombay,IITB-EE,Electrical Engineering,2027,Ahaan Roy,ahaan-roy-0106@seed.example
+12027BT-EE007,1,IIT Bombay,IITB-EE,Electrical Engineering,2027,Ahaan Thomas,ahaan-thomas-0107@seed.example
+12027BT-EE008,1,IIT Bombay,IITB-EE,Electrical Engineering,2027,Ahaan Kapoor,ahaan-kapoor-0108@seed.example
+12027BT-EE009,1,IIT Bombay,IITB-EE,Electrical Engineering,2027,Ahaan Malhotra,ahaan-malhotra-0109@seed.example
+12027BT-EE010,1,IIT Bombay,IITB-EE,Electrical Engineering,2027,Ahaan Arora,ahaan-arora-0110@seed.example
+12027BT-EE011,1,IIT Bombay,IITB-EE,Electrical Engineering,2027,Ahaan Gupta,ahaan-gupta-0111@seed.example
+12027BT-EE012,1,IIT Bombay,IITB-EE,Electrical Engineering,2027,Ahaan Jain,ahaan-jain-0112@seed.example
+12027BT-EE013,1,IIT Bombay,IITB-EE,Electrical Engineering,2027,Ahaan Rao,ahaan-rao-0113@seed.example
+12027BT-EE014,1,IIT Bombay,IITB-EE,Electrical Engineering,2027,Ahaan Singh,ahaan-singh-0114@seed.example
+12027BT-EE015,1,IIT Bombay,IITB-EE,Electrical Engineering,2027,Ahaan Chawla,ahaan-chawla-0115@seed.example
+12027BT-EE016,1,IIT Bombay,IITB-EE,Electrical Engineering,2027,Ahaan Das,ahaan-das-0116@seed.example
+12027BT-EE017,1,IIT Bombay,IITB-EE,Electrical Engineering,2027,Ahaan Mittal,ahaan-mittal-0117@seed.example
+12027BT-EE018,1,IIT Bombay,IITB-EE,Electrical Engineering,2027,Ahaan Joshi,ahaan-joshi-0118@seed.example
+12027BT-EE019,1,IIT Bombay,IITB-EE,Electrical Engineering,2027,Ahaan Verma,ahaan-verma-0119@seed.example
+12027BT-EE020,1,IIT Bombay,IITB-EE,Electrical Engineering,2027,Ahaan Pillai,ahaan-pillai-0120@seed.example
+12026BT-EN001,1,IIT Bombay,IITB-ES,Energy Science and Engineering,2026,Akash Mehta,akash-mehta-0121@seed.example
+12026BT-EN002,1,IIT Bombay,IITB-ES,Energy Science and Engineering,2026,Akash Nair,akash-nair-0122@seed.example
+12026BT-EN003,1,IIT Bombay,IITB-ES,Energy Science and Engineering,2026,Akash Shah,akash-shah-0123@seed.example
+12026BT-EN004,1,IIT Bombay,IITB-ES,Energy Science and Engineering,2026,Akash Sen,akash-sen-0124@seed.example
+12026BT-EN005,1,IIT Bombay,IITB-ES,Energy Science and Engineering,2026,Akash Bhat,akash-bhat-0125@seed.example
+12026BT-EN006,1,IIT Bombay,IITB-ES,Energy Science and Engineering,2026,Akash Roy,akash-roy-0126@seed.example
+12026BT-EN007,1,IIT Bombay,IITB-ES,Energy Science and Engineering,2026,Akash Thomas,akash-thomas-0127@seed.example
+12026BT-EN008,1,IIT Bombay,IITB-ES,Energy Science and Engineering,2026,Akash Kapoor,akash-kapoor-0128@seed.example
+12026BT-EN009,1,IIT Bombay,IITB-ES,Energy Science and Engineering,2026,Akash Malhotra,akash-malhotra-0129@seed.example
+12026BT-EN010,1,IIT Bombay,IITB-ES,Energy Science and Engineering,2026,Akash Arora,akash-arora-0130@seed.example
+12026BT-EN011,1,IIT Bombay,IITB-ES,Energy Science and Engineering,2026,Akash Gupta,akash-gupta-0131@seed.example
+12026BT-EN012,1,IIT Bombay,IITB-ES,Energy Science and Engineering,2026,Akash Jain,akash-jain-0132@seed.example
+12026BT-EN013,1,IIT Bombay,IITB-ES,Energy Science and Engineering,2026,Akash Rao,akash-rao-0133@seed.example
+12026BT-EN014,1,IIT Bombay,IITB-ES,Energy Science and Engineering,2026,Akash Singh,akash-singh-0134@seed.example
+12026BT-EN015,1,IIT Bombay,IITB-ES,Energy Science and Engineering,2026,Akash Chawla,akash-chawla-0135@seed.example
+12026BT-EN016,1,IIT Bombay,IITB-ES,Energy Science and Engineering,2026,Akash Das,akash-das-0136@seed.example
+12026BT-EN017,1,IIT Bombay,IITB-ES,Energy Science and Engineering,2026,Akash Mittal,akash-mittal-0137@seed.example
+12026BT-EN018,1,IIT Bombay,IITB-ES,Energy Science and Engineering,2026,Akash Joshi,akash-joshi-0138@seed.example
+12026BT-EN019,1,IIT Bombay,IITB-ES,Energy Science and Engineering,2026,Akash Verma,akash-verma-0139@seed.example
+12026BT-EN020,1,IIT Bombay,IITB-ES,Energy Science and Engineering,2026,Akash Pillai,akash-pillai-0140@seed.example
+12027BT-ME001,1,IIT Bombay,IITB-ME,Mechanical Engineering,2027,Akshara Mehta,akshara-mehta-0141@seed.example
+12027BT-ME002,1,IIT Bombay,IITB-ME,Mechanical Engineering,2027,Akshara Nair,akshara-nair-0142@seed.example
+12027BT-ME003,1,IIT Bombay,IITB-ME,Mechanical Engineering,2027,Akshara Shah,akshara-shah-0143@seed.example
+12027BT-ME004,1,IIT Bombay,IITB-ME,Mechanical Engineering,2027,Akshara Sen,akshara-sen-0144@seed.example
+12027BT-ME005,1,IIT Bombay,IITB-ME,Mechanical Engineering,2027,Akshara Bhat,akshara-bhat-0145@seed.example
+12027BT-ME006,1,IIT Bombay,IITB-ME,Mechanical Engineering,2027,Akshara Roy,akshara-roy-0146@seed.example
+12027BT-ME007,1,IIT Bombay,IITB-ME,Mechanical Engineering,2027,Akshara Thomas,akshara-thomas-0147@seed.example
+12027BT-ME008,1,IIT Bombay,IITB-ME,Mechanical Engineering,2027,Akshara Kapoor,akshara-kapoor-0148@seed.example
+12027BT-ME009,1,IIT Bombay,IITB-ME,Mechanical Engineering,2027,Akshara Malhotra,akshara-malhotra-0149@seed.example
+12027BT-ME010,1,IIT Bombay,IITB-ME,Mechanical Engineering,2027,Akshara Arora,akshara-arora-0150@seed.example
+12027BT-ME011,1,IIT Bombay,IITB-ME,Mechanical Engineering,2027,Akshara Gupta,akshara-gupta-0151@seed.example
+12027BT-ME012,1,IIT Bombay,IITB-ME,Mechanical Engineering,2027,Akshara Jain,akshara-jain-0152@seed.example
+12027BT-ME013,1,IIT Bombay,IITB-ME,Mechanical Engineering,2027,Akshara Rao,akshara-rao-0153@seed.example
+12027BT-ME014,1,IIT Bombay,IITB-ME,Mechanical Engineering,2027,Akshara Singh,akshara-singh-0154@seed.example
+12027BT-ME015,1,IIT Bombay,IITB-ME,Mechanical Engineering,2027,Akshara Chawla,akshara-chawla-0155@seed.example
+12027BT-ME016,1,IIT Bombay,IITB-ME,Mechanical Engineering,2027,Akshara Das,akshara-das-0156@seed.example
+12027BT-ME017,1,IIT Bombay,IITB-ME,Mechanical Engineering,2027,Akshara Mittal,akshara-mittal-0157@seed.example
+12027BT-ME018,1,IIT Bombay,IITB-ME,Mechanical Engineering,2027,Akshara Joshi,akshara-joshi-0158@seed.example
+12027BT-ME019,1,IIT Bombay,IITB-ME,Mechanical Engineering,2027,Akshara Verma,akshara-verma-0159@seed.example
+12027BT-ME020,1,IIT Bombay,IITB-ME,Mechanical Engineering,2027,Akshara Pillai,akshara-pillai-0160@seed.example
+12026BT-MM001,1,IIT Bombay,IITB-MSM,Metallurgical Engineering and Materials Science,2026,Ananya Mehta,ananya-mehta-0161@seed.example
+12026BT-MM002,1,IIT Bombay,IITB-MSM,Metallurgical Engineering and Materials Science,2026,Ananya Nair,ananya-nair-0162@seed.example
+12026BT-MM003,1,IIT Bombay,IITB-MSM,Metallurgical Engineering and Materials Science,2026,Ananya Shah,ananya-shah-0163@seed.example
+12026BT-MM004,1,IIT Bombay,IITB-MSM,Metallurgical Engineering and Materials Science,2026,Ananya Sen,ananya-sen-0164@seed.example
+12026BT-MM005,1,IIT Bombay,IITB-MSM,Metallurgical Engineering and Materials Science,2026,Ananya Bhat,ananya-bhat-0165@seed.example
+12026BT-MM006,1,IIT Bombay,IITB-MSM,Metallurgical Engineering and Materials Science,2026,Ananya Roy,ananya-roy-0166@seed.example
+12026BT-MM007,1,IIT Bombay,IITB-MSM,Metallurgical Engineering and Materials Science,2026,Ananya Thomas,ananya-thomas-0167@seed.example
+12026BT-MM008,1,IIT Bombay,IITB-MSM,Metallurgical Engineering and Materials Science,2026,Ananya Kapoor,ananya-kapoor-0168@seed.example
+12026BT-MM009,1,IIT Bombay,IITB-MSM,Metallurgical Engineering and Materials Science,2026,Ananya Malhotra,ananya-malhotra-0169@seed.example
+12026BT-MM010,1,IIT Bombay,IITB-MSM,Metallurgical Engineering and Materials Science,2026,Ananya Arora,ananya-arora-0170@seed.example
+12026BT-MM011,1,IIT Bombay,IITB-MSM,Metallurgical Engineering and Materials Science,2026,Ananya Gupta,ananya-gupta-0171@seed.example
+12026BT-MM012,1,IIT Bombay,IITB-MSM,Metallurgical Engineering and Materials Science,2026,Ananya Jain,ananya-jain-0172@seed.example
+12026BT-MM013,1,IIT Bombay,IITB-MSM,Metallurgical Engineering and Materials Science,2026,Ananya Rao,ananya-rao-0173@seed.example
+12026BT-MM014,1,IIT Bombay,IITB-MSM,Metallurgical Engineering and Materials Science,2026,Ananya Singh,ananya-singh-0174@seed.example
+12026BT-MM015,1,IIT Bombay,IITB-MSM,Metallurgical Engineering and Materials Science,2026,Ananya Chawla,ananya-chawla-0175@seed.example
+12026BT-MM016,1,IIT Bombay,IITB-MSM,Metallurgical Engineering and Materials Science,2026,Ananya Das,ananya-das-0176@seed.example
+12026BT-MM017,1,IIT Bombay,IITB-MSM,Metallurgical Engineering and Materials Science,2026,Ananya Mittal,ananya-mittal-0177@seed.example
+12026BT-MM018,1,IIT Bombay,IITB-MSM,Metallurgical Engineering and Materials Science,2026,Ananya Joshi,ananya-joshi-0178@seed.example
+12026BT-MM019,1,IIT Bombay,IITB-MSM,Metallurgical Engineering and Materials Science,2026,Ananya Verma,ananya-verma-0179@seed.example
+12026BT-MM020,1,IIT Bombay,IITB-MSM,Metallurgical Engineering and Materials Science,2026,Ananya Pillai,ananya-pillai-0180@seed.example
+12027BSC-MA001,1,IIT Bombay,IITB-MATH,Mathematics,2027,Anika Mehta,anika-mehta-0181@seed.example
+12027BSC-MA002,1,IIT Bombay,IITB-MATH,Mathematics,2027,Anika Nair,anika-nair-0182@seed.example
+12027BSC-MA003,1,IIT Bombay,IITB-MATH,Mathematics,2027,Anika Shah,anika-shah-0183@seed.example
+12027BSC-MA004,1,IIT Bombay,IITB-MATH,Mathematics,2027,Anika Sen,anika-sen-0184@seed.example
+12027BSC-MA005,1,IIT Bombay,IITB-MATH,Mathematics,2027,Anika Bhat,anika-bhat-0185@seed.example
+12027BSC-MA006,1,IIT Bombay,IITB-MATH,Mathematics,2027,Anika Roy,anika-roy-0186@seed.example
+12027BSC-MA007,1,IIT Bombay,IITB-MATH,Mathematics,2027,Anika Thomas,anika-thomas-0187@seed.example
+12027BSC-MA008,1,IIT Bombay,IITB-MATH,Mathematics,2027,Anika Kapoor,anika-kapoor-0188@seed.example
+12027BSC-MA009,1,IIT Bombay,IITB-MATH,Mathematics,2027,Anika Malhotra,anika-malhotra-0189@seed.example
+12027BSC-MA010,1,IIT Bombay,IITB-MATH,Mathematics,2027,Anika Arora,anika-arora-0190@seed.example
+12027BSC-MA011,1,IIT Bombay,IITB-MATH,Mathematics,2027,Anika Gupta,anika-gupta-0191@seed.example
+12027BSC-MA012,1,IIT Bombay,IITB-MATH,Mathematics,2027,Anika Jain,anika-jain-0192@seed.example
+12027BSC-MA013,1,IIT Bombay,IITB-MATH,Mathematics,2027,Anika Rao,anika-rao-0193@seed.example
+12027BSC-MA014,1,IIT Bombay,IITB-MATH,Mathematics,2027,Anika Singh,anika-singh-0194@seed.example
+12027BSC-MA015,1,IIT Bombay,IITB-MATH,Mathematics,2027,Anika Chawla,anika-chawla-0195@seed.example
+12027BSC-MA016,1,IIT Bombay,IITB-MATH,Mathematics,2027,Anika Das,anika-das-0196@seed.example
+12027BSC-MA017,1,IIT Bombay,IITB-MATH,Mathematics,2027,Anika Mittal,anika-mittal-0197@seed.example
+12027BSC-MA018,1,IIT Bombay,IITB-MATH,Mathematics,2027,Anika Joshi,anika-joshi-0198@seed.example
+12027BSC-MA019,1,IIT Bombay,IITB-MATH,Mathematics,2027,Anika Verma,anika-verma-0199@seed.example
+12027BSC-MA020,1,IIT Bombay,IITB-MATH,Mathematics,2027,Anika Pillai,anika-pillai-0200@seed.example
+22026BT-ECM001,2,IIT Delhi,IITD-AM,Applied Mechanics,2026,Anirudh Mehta,anirudh-mehta-0201@seed.example
+22026BT-ECM002,2,IIT Delhi,IITD-AM,Applied Mechanics,2026,Anirudh Nair,anirudh-nair-0202@seed.example
+22026BT-ECM003,2,IIT Delhi,IITD-AM,Applied Mechanics,2026,Anirudh Shah,anirudh-shah-0203@seed.example
+22026BT-ECM004,2,IIT Delhi,IITD-AM,Applied Mechanics,2026,Anirudh Sen,anirudh-sen-0204@seed.example
+22026BT-ECM005,2,IIT Delhi,IITD-AM,Applied Mechanics,2026,Anirudh Bhat,anirudh-bhat-0205@seed.example
+22026BT-ECM006,2,IIT Delhi,IITD-AM,Applied Mechanics,2026,Anirudh Roy,anirudh-roy-0206@seed.example
+22026BT-ECM007,2,IIT Delhi,IITD-AM,Applied Mechanics,2026,Anirudh Thomas,anirudh-thomas-0207@seed.example
+22026BT-ECM008,2,IIT Delhi,IITD-AM,Applied Mechanics,2026,Anirudh Kapoor,anirudh-kapoor-0208@seed.example
+22026BT-ECM009,2,IIT Delhi,IITD-AM,Applied Mechanics,2026,Anirudh Malhotra,anirudh-malhotra-0209@seed.example
+22026BT-ECM010,2,IIT Delhi,IITD-AM,Applied Mechanics,2026,Anirudh Arora,anirudh-arora-0210@seed.example
+22026BT-ECM011,2,IIT Delhi,IITD-AM,Applied Mechanics,2026,Anirudh Gupta,anirudh-gupta-0211@seed.example
+22026BT-ECM012,2,IIT Delhi,IITD-AM,Applied Mechanics,2026,Anirudh Jain,anirudh-jain-0212@seed.example
+22026BT-ECM013,2,IIT Delhi,IITD-AM,Applied Mechanics,2026,Anirudh Rao,anirudh-rao-0213@seed.example
+22026BT-ECM014,2,IIT Delhi,IITD-AM,Applied Mechanics,2026,Anirudh Singh,anirudh-singh-0214@seed.example
+22026BT-ECM015,2,IIT Delhi,IITD-AM,Applied Mechanics,2026,Anirudh Chawla,anirudh-chawla-0215@seed.example
+22026BT-ECM016,2,IIT Delhi,IITD-AM,Applied Mechanics,2026,Anirudh Das,anirudh-das-0216@seed.example
+22026BT-ECM017,2,IIT Delhi,IITD-AM,Applied Mechanics,2026,Anirudh Mittal,anirudh-mittal-0217@seed.example
+22026BT-ECM018,2,IIT Delhi,IITD-AM,Applied Mechanics,2026,Anirudh Joshi,anirudh-joshi-0218@seed.example
+22026BT-ECM019,2,IIT Delhi,IITD-AM,Applied Mechanics,2026,Anirudh Verma,anirudh-verma-0219@seed.example
+22026BT-ECM020,2,IIT Delhi,IITD-AM,Applied Mechanics,2026,Anirudh Pillai,anirudh-pillai-0220@seed.example
+22027BT-BB001,2,IIT Delhi,IITD-BB,Biochemical Engineering and Biotechnology,2027,Anushka Mehta,anushka-mehta-0221@seed.example
+22027BT-BB002,2,IIT Delhi,IITD-BB,Biochemical Engineering and Biotechnology,2027,Anushka Nair,anushka-nair-0222@seed.example
+22027BT-BB003,2,IIT Delhi,IITD-BB,Biochemical Engineering and Biotechnology,2027,Anushka Shah,anushka-shah-0223@seed.example
+22027BT-BB004,2,IIT Delhi,IITD-BB,Biochemical Engineering and Biotechnology,2027,Anushka Sen,anushka-sen-0224@seed.example
+22027BT-BB005,2,IIT Delhi,IITD-BB,Biochemical Engineering and Biotechnology,2027,Anushka Bhat,anushka-bhat-0225@seed.example
+22027BT-BB006,2,IIT Delhi,IITD-BB,Biochemical Engineering and Biotechnology,2027,Anushka Roy,anushka-roy-0226@seed.example
+22027BT-BB007,2,IIT Delhi,IITD-BB,Biochemical Engineering and Biotechnology,2027,Anushka Thomas,anushka-thomas-0227@seed.example
+22027BT-BB008,2,IIT Delhi,IITD-BB,Biochemical Engineering and Biotechnology,2027,Anushka Kapoor,anushka-kapoor-0228@seed.example
+22027BT-BB009,2,IIT Delhi,IITD-BB,Biochemical Engineering and Biotechnology,2027,Anushka Malhotra,anushka-malhotra-0229@seed.example
+22027BT-BB010,2,IIT Delhi,IITD-BB,Biochemical Engineering and Biotechnology,2027,Anushka Arora,anushka-arora-0230@seed.example
+22027BT-BB011,2,IIT Delhi,IITD-BB,Biochemical Engineering and Biotechnology,2027,Anushka Gupta,anushka-gupta-0231@seed.example
+22027BT-BB012,2,IIT Delhi,IITD-BB,Biochemical Engineering and Biotechnology,2027,Anushka Jain,anushka-jain-0232@seed.example
+22027BT-BB013,2,IIT Delhi,IITD-BB,Biochemical Engineering and Biotechnology,2027,Anushka Rao,anushka-rao-0233@seed.example
+22027BT-BB014,2,IIT Delhi,IITD-BB,Biochemical Engineering and Biotechnology,2027,Anushka Singh,anushka-singh-0234@seed.example
+22027BT-BB015,2,IIT Delhi,IITD-BB,Biochemical Engineering and Biotechnology,2027,Anushka Chawla,anushka-chawla-0235@seed.example
+22027BT-BB016,2,IIT Delhi,IITD-BB,Biochemical Engineering and Biotechnology,2027,Anushka Das,anushka-das-0236@seed.example
+22027BT-BB017,2,IIT Delhi,IITD-BB,Biochemical Engineering and Biotechnology,2027,Anushka Mittal,anushka-mittal-0237@seed.example
+22027BT-BB018,2,IIT Delhi,IITD-BB,Biochemical Engineering and Biotechnology,2027,Anushka Joshi,anushka-joshi-0238@seed.example
+22027BT-BB019,2,IIT Delhi,IITD-BB,Biochemical Engineering and Biotechnology,2027,Anushka Verma,anushka-verma-0239@seed.example
+22027BT-BB020,2,IIT Delhi,IITD-BB,Biochemical Engineering and Biotechnology,2027,Anushka Pillai,anushka-pillai-0240@seed.example
+22026BT-CH001,2,IIT Delhi,IITD-CH,Chemical Engineering,2026,Arjun Mehta,arjun-mehta-0241@seed.example
+22026BT-CH002,2,IIT Delhi,IITD-CH,Chemical Engineering,2026,Arjun Nair,arjun-nair-0242@seed.example
+22026BT-CH003,2,IIT Delhi,IITD-CH,Chemical Engineering,2026,Arjun Shah,arjun-shah-0243@seed.example
+22026BT-CH004,2,IIT Delhi,IITD-CH,Chemical Engineering,2026,Arjun Sen,arjun-sen-0244@seed.example
+22026BT-CH005,2,IIT Delhi,IITD-CH,Chemical Engineering,2026,Arjun Bhat,arjun-bhat-0245@seed.example
+22026BT-CH006,2,IIT Delhi,IITD-CH,Chemical Engineering,2026,Arjun Roy,arjun-roy-0246@seed.example
+22026BT-CH007,2,IIT Delhi,IITD-CH,Chemical Engineering,2026,Arjun Thomas,arjun-thomas-0247@seed.example
+22026BT-CH008,2,IIT Delhi,IITD-CH,Chemical Engineering,2026,Arjun Kapoor,arjun-kapoor-0248@seed.example
+22026BT-CH009,2,IIT Delhi,IITD-CH,Chemical Engineering,2026,Arjun Malhotra,arjun-malhotra-0249@seed.example
+22026BT-CH010,2,IIT Delhi,IITD-CH,Chemical Engineering,2026,Arjun Arora,arjun-arora-0250@seed.example
+22026BT-CH011,2,IIT Delhi,IITD-CH,Chemical Engineering,2026,Arjun Gupta,arjun-gupta-0251@seed.example
+22026BT-CH012,2,IIT Delhi,IITD-CH,Chemical Engineering,2026,Arjun Jain,arjun-jain-0252@seed.example
+22026BT-CH013,2,IIT Delhi,IITD-CH,Chemical Engineering,2026,Arjun Rao,arjun-rao-0253@seed.example
+22026BT-CH014,2,IIT Delhi,IITD-CH,Chemical Engineering,2026,Arjun Singh,arjun-singh-0254@seed.example
+22026BT-CH015,2,IIT Delhi,IITD-CH,Chemical Engineering,2026,Arjun Chawla,arjun-chawla-0255@seed.example
+22026BT-CH016,2,IIT Delhi,IITD-CH,Chemical Engineering,2026,Arjun Das,arjun-das-0256@seed.example
+22026BT-CH017,2,IIT Delhi,IITD-CH,Chemical Engineering,2026,Arjun Mittal,arjun-mittal-0257@seed.example
+22026BT-CH018,2,IIT Delhi,IITD-CH,Chemical Engineering,2026,Arjun Joshi,arjun-joshi-0258@seed.example
+22026BT-CH019,2,IIT Delhi,IITD-CH,Chemical Engineering,2026,Arjun Verma,arjun-verma-0259@seed.example
+22026BT-CH020,2,IIT Delhi,IITD-CH,Chemical Engineering,2026,Arjun Pillai,arjun-pillai-0260@seed.example
+22027BT-CE001,2,IIT Delhi,IITD-CE,Civil and Environmental Engineering,2027,Arnav Mehta,arnav-mehta-0261@seed.example
+22027BT-CE002,2,IIT Delhi,IITD-CE,Civil and Environmental Engineering,2027,Arnav Nair,arnav-nair-0262@seed.example
+22027BT-CE003,2,IIT Delhi,IITD-CE,Civil and Environmental Engineering,2027,Arnav Shah,arnav-shah-0263@seed.example
+22027BT-CE004,2,IIT Delhi,IITD-CE,Civil and Environmental Engineering,2027,Arnav Sen,arnav-sen-0264@seed.example
+22027BT-CE005,2,IIT Delhi,IITD-CE,Civil and Environmental Engineering,2027,Arnav Bhat,arnav-bhat-0265@seed.example
+22027BT-CE006,2,IIT Delhi,IITD-CE,Civil and Environmental Engineering,2027,Arnav Roy,arnav-roy-0266@seed.example
+22027BT-CE007,2,IIT Delhi,IITD-CE,Civil and Environmental Engineering,2027,Arnav Thomas,arnav-thomas-0267@seed.example
+22027BT-CE008,2,IIT Delhi,IITD-CE,Civil and Environmental Engineering,2027,Arnav Kapoor,arnav-kapoor-0268@seed.example
+22027BT-CE009,2,IIT Delhi,IITD-CE,Civil and Environmental Engineering,2027,Arnav Malhotra,arnav-malhotra-0269@seed.example
+22027BT-CE010,2,IIT Delhi,IITD-CE,Civil and Environmental Engineering,2027,Arnav Arora,arnav-arora-0270@seed.example
+22027BT-CE011,2,IIT Delhi,IITD-CE,Civil and Environmental Engineering,2027,Arnav Gupta,arnav-gupta-0271@seed.example
+22027BT-CE012,2,IIT Delhi,IITD-CE,Civil and Environmental Engineering,2027,Arnav Jain,arnav-jain-0272@seed.example
+22027BT-CE013,2,IIT Delhi,IITD-CE,Civil and Environmental Engineering,2027,Arnav Rao,arnav-rao-0273@seed.example
+22027BT-CE014,2,IIT Delhi,IITD-CE,Civil and Environmental Engineering,2027,Arnav Singh,arnav-singh-0274@seed.example
+22027BT-CE015,2,IIT Delhi,IITD-CE,Civil and Environmental Engineering,2027,Arnav Chawla,arnav-chawla-0275@seed.example
+22027BT-CE016,2,IIT Delhi,IITD-CE,Civil and Environmental Engineering,2027,Arnav Das,arnav-das-0276@seed.example
+22027BT-CE017,2,IIT Delhi,IITD-CE,Civil and Environmental Engineering,2027,Arnav Mittal,arnav-mittal-0277@seed.example
+22027BT-CE018,2,IIT Delhi,IITD-CE,Civil and Environmental Engineering,2027,Arnav Joshi,arnav-joshi-0278@seed.example
+22027BT-CE019,2,IIT Delhi,IITD-CE,Civil and Environmental Engineering,2027,Arnav Verma,arnav-verma-0279@seed.example
+22027BT-CE020,2,IIT Delhi,IITD-CE,Civil and Environmental Engineering,2027,Arnav Pillai,arnav-pillai-0280@seed.example
+22026BT-CS001,2,IIT Delhi,IITD-CS,Computer Science and Engineering,2026,Aryan Mehta,aryan-mehta-0281@seed.example
+22026BT-CS002,2,IIT Delhi,IITD-CS,Computer Science and Engineering,2026,Aryan Nair,aryan-nair-0282@seed.example
+22026BT-CS003,2,IIT Delhi,IITD-CS,Computer Science and Engineering,2026,Aryan Shah,aryan-shah-0283@seed.example
+22026BT-CS004,2,IIT Delhi,IITD-CS,Computer Science and Engineering,2026,Aryan Sen,aryan-sen-0284@seed.example
+22026BT-CS005,2,IIT Delhi,IITD-CS,Computer Science and Engineering,2026,Aryan Bhat,aryan-bhat-0285@seed.example
+22026BT-CS006,2,IIT Delhi,IITD-CS,Computer Science and Engineering,2026,Aryan Roy,aryan-roy-0286@seed.example
+22026BT-CS007,2,IIT Delhi,IITD-CS,Computer Science and Engineering,2026,Aryan Thomas,aryan-thomas-0287@seed.example
+22026BT-CS008,2,IIT Delhi,IITD-CS,Computer Science and Engineering,2026,Aryan Kapoor,aryan-kapoor-0288@seed.example
+22026BT-CS009,2,IIT Delhi,IITD-CS,Computer Science and Engineering,2026,Aryan Malhotra,aryan-malhotra-0289@seed.example
+22026BT-CS010,2,IIT Delhi,IITD-CS,Computer Science and Engineering,2026,Aryan Arora,aryan-arora-0290@seed.example
+22026BT-CS011,2,IIT Delhi,IITD-CS,Computer Science and Engineering,2026,Aryan Gupta,aryan-gupta-0291@seed.example
+22026BT-CS012,2,IIT Delhi,IITD-CS,Computer Science and Engineering,2026,Aryan Jain,aryan-jain-0292@seed.example
+22026BT-CS013,2,IIT Delhi,IITD-CS,Computer Science and Engineering,2026,Aryan Rao,aryan-rao-0293@seed.example
+22026BT-CS014,2,IIT Delhi,IITD-CS,Computer Science and Engineering,2026,Aryan Singh,aryan-singh-0294@seed.example
+22026BT-CS015,2,IIT Delhi,IITD-CS,Computer Science and Engineering,2026,Aryan Chawla,aryan-chawla-0295@seed.example
+22026BT-CS016,2,IIT Delhi,IITD-CS,Computer Science and Engineering,2026,Aryan Das,aryan-das-0296@seed.example
+22026BT-CS017,2,IIT Delhi,IITD-CS,Computer Science and Engineering,2026,Aryan Mittal,aryan-mittal-0297@seed.example
+22026BT-CS018,2,IIT Delhi,IITD-CS,Computer Science and Engineering,2026,Aryan Joshi,aryan-joshi-0298@seed.example
+22026BT-CS019,2,IIT Delhi,IITD-CS,Computer Science and Engineering,2026,Aryan Verma,aryan-verma-0299@seed.example
+22026BT-CS020,2,IIT Delhi,IITD-CS,Computer Science and Engineering,2026,Aryan Pillai,aryan-pillai-0300@seed.example
+22027BT-EE001,2,IIT Delhi,IITD-EE,Electrical Engineering,2027,Avni Mehta,avni-mehta-0301@seed.example
+22027BT-EE002,2,IIT Delhi,IITD-EE,Electrical Engineering,2027,Avni Nair,avni-nair-0302@seed.example
+22027BT-EE003,2,IIT Delhi,IITD-EE,Electrical Engineering,2027,Avni Shah,avni-shah-0303@seed.example
+22027BT-EE004,2,IIT Delhi,IITD-EE,Electrical Engineering,2027,Avni Sen,avni-sen-0304@seed.example
+22027BT-EE005,2,IIT Delhi,IITD-EE,Electrical Engineering,2027,Avni Bhat,avni-bhat-0305@seed.example
+22027BT-EE006,2,IIT Delhi,IITD-EE,Electrical Engineering,2027,Avni Roy,avni-roy-0306@seed.example
+22027BT-EE007,2,IIT Delhi,IITD-EE,Electrical Engineering,2027,Avni Thomas,avni-thomas-0307@seed.example
+22027BT-EE008,2,IIT Delhi,IITD-EE,Electrical Engineering,2027,Avni Kapoor,avni-kapoor-0308@seed.example
+22027BT-EE009,2,IIT Delhi,IITD-EE,Electrical Engineering,2027,Avni Malhotra,avni-malhotra-0309@seed.example
+22027BT-EE010,2,IIT Delhi,IITD-EE,Electrical Engineering,2027,Avni Arora,avni-arora-0310@seed.example
+22027BT-EE011,2,IIT Delhi,IITD-EE,Electrical Engineering,2027,Avni Gupta,avni-gupta-0311@seed.example
+22027BT-EE012,2,IIT Delhi,IITD-EE,Electrical Engineering,2027,Avni Jain,avni-jain-0312@seed.example
+22027BT-EE013,2,IIT Delhi,IITD-EE,Electrical Engineering,2027,Avni Rao,avni-rao-0313@seed.example
+22027BT-EE014,2,IIT Delhi,IITD-EE,Electrical Engineering,2027,Avni Singh,avni-singh-0314@seed.example
+22027BT-EE015,2,IIT Delhi,IITD-EE,Electrical Engineering,2027,Avni Chawla,avni-chawla-0315@seed.example
+22027BT-EE016,2,IIT Delhi,IITD-EE,Electrical Engineering,2027,Avni Das,avni-das-0316@seed.example
+22027BT-EE017,2,IIT Delhi,IITD-EE,Electrical Engineering,2027,Avni Mittal,avni-mittal-0317@seed.example
+22027BT-EE018,2,IIT Delhi,IITD-EE,Electrical Engineering,2027,Avni Joshi,avni-joshi-0318@seed.example
+22027BT-EE019,2,IIT Delhi,IITD-EE,Electrical Engineering,2027,Avni Verma,avni-verma-0319@seed.example
+22027BT-EE020,2,IIT Delhi,IITD-EE,Electrical Engineering,2027,Avni Pillai,avni-pillai-0320@seed.example
+22026BT-EN001,2,IIT Delhi,IITD-ES,Energy Science and Engineering,2026,Aarohi Mehta,aarohi-mehta-0321@seed.example
+22026BT-EN002,2,IIT Delhi,IITD-ES,Energy Science and Engineering,2026,Aarohi Nair,aarohi-nair-0322@seed.example
+22026BT-EN003,2,IIT Delhi,IITD-ES,Energy Science and Engineering,2026,Aarohi Shah,aarohi-shah-0323@seed.example
+22026BT-EN004,2,IIT Delhi,IITD-ES,Energy Science and Engineering,2026,Aarohi Sen,aarohi-sen-0324@seed.example
+22026BT-EN005,2,IIT Delhi,IITD-ES,Energy Science and Engineering,2026,Aarohi Bhat,aarohi-bhat-0325@seed.example
+22026BT-EN006,2,IIT Delhi,IITD-ES,Energy Science and Engineering,2026,Aarohi Roy,aarohi-roy-0326@seed.example
+22026BT-EN007,2,IIT Delhi,IITD-ES,Energy Science and Engineering,2026,Aarohi Thomas,aarohi-thomas-0327@seed.example
+22026BT-EN008,2,IIT Delhi,IITD-ES,Energy Science and Engineering,2026,Aarohi Kapoor,aarohi-kapoor-0328@seed.example
+22026BT-EN009,2,IIT Delhi,IITD-ES,Energy Science and Engineering,2026,Aarohi Malhotra,aarohi-malhotra-0329@seed.example
+22026BT-EN010,2,IIT Delhi,IITD-ES,Energy Science and Engineering,2026,Aarohi Arora,aarohi-arora-0330@seed.example
+22026BT-EN011,2,IIT Delhi,IITD-ES,Energy Science and Engineering,2026,Aarohi Gupta,aarohi-gupta-0331@seed.example
+22026BT-EN012,2,IIT Delhi,IITD-ES,Energy Science and Engineering,2026,Aarohi Jain,aarohi-jain-0332@seed.example
+22026BT-EN013,2,IIT Delhi,IITD-ES,Energy Science and Engineering,2026,Aarohi Rao,aarohi-rao-0333@seed.example
+22026BT-EN014,2,IIT Delhi,IITD-ES,Energy Science and Engineering,2026,Aarohi Singh,aarohi-singh-0334@seed.example
+22026BT-EN015,2,IIT Delhi,IITD-ES,Energy Science and Engineering,2026,Aarohi Chawla,aarohi-chawla-0335@seed.example
+22026BT-EN016,2,IIT Delhi,IITD-ES,Energy Science and Engineering,2026,Aarohi Das,aarohi-das-0336@seed.example
+22026BT-EN017,2,IIT Delhi,IITD-ES,Energy Science and Engineering,2026,Aarohi Mittal,aarohi-mittal-0337@seed.example
+22026BT-EN018,2,IIT Delhi,IITD-ES,Energy Science and Engineering,2026,Aarohi Joshi,aarohi-joshi-0338@seed.example
+22026BT-EN019,2,IIT Delhi,IITD-ES,Energy Science and Engineering,2026,Aarohi Verma,aarohi-verma-0339@seed.example
+22026BT-EN020,2,IIT Delhi,IITD-ES,Energy Science and Engineering,2026,Aarohi Pillai,aarohi-pillai-0340@seed.example
+22027MBA001,2,IIT Delhi,IITD-MGMT,Management Studies,2027,Bhavya Mehta,bhavya-mehta-0341@seed.example
+22027MBA002,2,IIT Delhi,IITD-MGMT,Management Studies,2027,Bhavya Nair,bhavya-nair-0342@seed.example
+22027MBA003,2,IIT Delhi,IITD-MGMT,Management Studies,2027,Bhavya Shah,bhavya-shah-0343@seed.example
+22027MBA004,2,IIT Delhi,IITD-MGMT,Management Studies,2027,Bhavya Sen,bhavya-sen-0344@seed.example
+22027MBA005,2,IIT Delhi,IITD-MGMT,Management Studies,2027,Bhavya Bhat,bhavya-bhat-0345@seed.example
+22027MBA006,2,IIT Delhi,IITD-MGMT,Management Studies,2027,Bhavya Roy,bhavya-roy-0346@seed.example
+22027MBA007,2,IIT Delhi,IITD-MGMT,Management Studies,2027,Bhavya Thomas,bhavya-thomas-0347@seed.example
+22027MBA008,2,IIT Delhi,IITD-MGMT,Management Studies,2027,Bhavya Kapoor,bhavya-kapoor-0348@seed.example
+22027MBA009,2,IIT Delhi,IITD-MGMT,Management Studies,2027,Bhavya Malhotra,bhavya-malhotra-0349@seed.example
+22027MBA010,2,IIT Delhi,IITD-MGMT,Management Studies,2027,Bhavya Arora,bhavya-arora-0350@seed.example
+22027MBA011,2,IIT Delhi,IITD-MGMT,Management Studies,2027,Bhavya Gupta,bhavya-gupta-0351@seed.example
+22027MBA012,2,IIT Delhi,IITD-MGMT,Management Studies,2027,Bhavya Jain,bhavya-jain-0352@seed.example
+22027MBA013,2,IIT Delhi,IITD-MGMT,Management Studies,2027,Bhavya Rao,bhavya-rao-0353@seed.example
+22027MBA014,2,IIT Delhi,IITD-MGMT,Management Studies,2027,Bhavya Singh,bhavya-singh-0354@seed.example
+22027MBA015,2,IIT Delhi,IITD-MGMT,Management Studies,2027,Bhavya Chawla,bhavya-chawla-0355@seed.example
+22027MBA016,2,IIT Delhi,IITD-MGMT,Management Studies,2027,Bhavya Das,bhavya-das-0356@seed.example
+22027MBA017,2,IIT Delhi,IITD-MGMT,Management Studies,2027,Bhavya Mittal,bhavya-mittal-0357@seed.example
+22027MBA018,2,IIT Delhi,IITD-MGMT,Management Studies,2027,Bhavya Joshi,bhavya-joshi-0358@seed.example
+22027MBA019,2,IIT Delhi,IITD-MGMT,Management Studies,2027,Bhavya Verma,bhavya-verma-0359@seed.example
+22027MBA020,2,IIT Delhi,IITD-MGMT,Management Studies,2027,Bhavya Pillai,bhavya-pillai-0360@seed.example
+22026BT-MC001,2,IIT Delhi,IITD-MATH,Mathematics,2026,Chaitanya Mehta,chaitanya-mehta-0361@seed.example
+22026BT-MC002,2,IIT Delhi,IITD-MATH,Mathematics,2026,Chaitanya Nair,chaitanya-nair-0362@seed.example
+22026BT-MC003,2,IIT Delhi,IITD-MATH,Mathematics,2026,Chaitanya Shah,chaitanya-shah-0363@seed.example
+22026BT-MC004,2,IIT Delhi,IITD-MATH,Mathematics,2026,Chaitanya Sen,chaitanya-sen-0364@seed.example
+22026BT-MC005,2,IIT Delhi,IITD-MATH,Mathematics,2026,Chaitanya Bhat,chaitanya-bhat-0365@seed.example
+22026BT-MC006,2,IIT Delhi,IITD-MATH,Mathematics,2026,Chaitanya Roy,chaitanya-roy-0366@seed.example
+22026BT-MC007,2,IIT Delhi,IITD-MATH,Mathematics,2026,Chaitanya Thomas,chaitanya-thomas-0367@seed.example
+22026BT-MC008,2,IIT Delhi,IITD-MATH,Mathematics,2026,Chaitanya Kapoor,chaitanya-kapoor-0368@seed.example
+22026BT-MC009,2,IIT Delhi,IITD-MATH,Mathematics,2026,Chaitanya Malhotra,chaitanya-malhotra-0369@seed.example
+22026BT-MC010,2,IIT Delhi,IITD-MATH,Mathematics,2026,Chaitanya Arora,chaitanya-arora-0370@seed.example
+22026BT-MC011,2,IIT Delhi,IITD-MATH,Mathematics,2026,Chaitanya Gupta,chaitanya-gupta-0371@seed.example
+22026BT-MC012,2,IIT Delhi,IITD-MATH,Mathematics,2026,Chaitanya Jain,chaitanya-jain-0372@seed.example
+22026BT-MC013,2,IIT Delhi,IITD-MATH,Mathematics,2026,Chaitanya Rao,chaitanya-rao-0373@seed.example
+22026BT-MC014,2,IIT Delhi,IITD-MATH,Mathematics,2026,Chaitanya Singh,chaitanya-singh-0374@seed.example
+22026BT-MC015,2,IIT Delhi,IITD-MATH,Mathematics,2026,Chaitanya Chawla,chaitanya-chawla-0375@seed.example
+22026BT-MC016,2,IIT Delhi,IITD-MATH,Mathematics,2026,Chaitanya Das,chaitanya-das-0376@seed.example
+22026BT-MC017,2,IIT Delhi,IITD-MATH,Mathematics,2026,Chaitanya Mittal,chaitanya-mittal-0377@seed.example
+22026BT-MC018,2,IIT Delhi,IITD-MATH,Mathematics,2026,Chaitanya Joshi,chaitanya-joshi-0378@seed.example
+22026BT-MC019,2,IIT Delhi,IITD-MATH,Mathematics,2026,Chaitanya Verma,chaitanya-verma-0379@seed.example
+22026BT-MC020,2,IIT Delhi,IITD-MATH,Mathematics,2026,Chaitanya Pillai,chaitanya-pillai-0380@seed.example
+22027BT-ME001,2,IIT Delhi,IITD-ME,Mechanical Engineering,2027,Charvi Mehta,charvi-mehta-0381@seed.example
+22027BT-ME002,2,IIT Delhi,IITD-ME,Mechanical Engineering,2027,Charvi Nair,charvi-nair-0382@seed.example
+22027BT-ME003,2,IIT Delhi,IITD-ME,Mechanical Engineering,2027,Charvi Shah,charvi-shah-0383@seed.example
+22027BT-ME004,2,IIT Delhi,IITD-ME,Mechanical Engineering,2027,Charvi Sen,charvi-sen-0384@seed.example
+22027BT-ME005,2,IIT Delhi,IITD-ME,Mechanical Engineering,2027,Charvi Bhat,charvi-bhat-0385@seed.example
+22027BT-ME006,2,IIT Delhi,IITD-ME,Mechanical Engineering,2027,Charvi Roy,charvi-roy-0386@seed.example
+22027BT-ME007,2,IIT Delhi,IITD-ME,Mechanical Engineering,2027,Charvi Thomas,charvi-thomas-0387@seed.example
+22027BT-ME008,2,IIT Delhi,IITD-ME,Mechanical Engineering,2027,Charvi Kapoor,charvi-kapoor-0388@seed.example
+22027BT-ME009,2,IIT Delhi,IITD-ME,Mechanical Engineering,2027,Charvi Malhotra,charvi-malhotra-0389@seed.example
+22027BT-ME010,2,IIT Delhi,IITD-ME,Mechanical Engineering,2027,Charvi Arora,charvi-arora-0390@seed.example
+22027BT-ME011,2,IIT Delhi,IITD-ME,Mechanical Engineering,2027,Charvi Gupta,charvi-gupta-0391@seed.example
+22027BT-ME012,2,IIT Delhi,IITD-ME,Mechanical Engineering,2027,Charvi Jain,charvi-jain-0392@seed.example
+22027BT-ME013,2,IIT Delhi,IITD-ME,Mechanical Engineering,2027,Charvi Rao,charvi-rao-0393@seed.example
+22027BT-ME014,2,IIT Delhi,IITD-ME,Mechanical Engineering,2027,Charvi Singh,charvi-singh-0394@seed.example
+22027BT-ME015,2,IIT Delhi,IITD-ME,Mechanical Engineering,2027,Charvi Chawla,charvi-chawla-0395@seed.example
+22027BT-ME016,2,IIT Delhi,IITD-ME,Mechanical Engineering,2027,Charvi Das,charvi-das-0396@seed.example
+22027BT-ME017,2,IIT Delhi,IITD-ME,Mechanical Engineering,2027,Charvi Mittal,charvi-mittal-0397@seed.example
+22027BT-ME018,2,IIT Delhi,IITD-ME,Mechanical Engineering,2027,Charvi Joshi,charvi-joshi-0398@seed.example
+22027BT-ME019,2,IIT Delhi,IITD-ME,Mechanical Engineering,2027,Charvi Verma,charvi-verma-0399@seed.example
+22027BT-ME020,2,IIT Delhi,IITD-ME,Mechanical Engineering,2027,Charvi Pillai,charvi-pillai-0400@seed.example
+32026BT-BIO001,3,Vellore Institute of Technology,VIT-BIO,School of Bio Sciences and Technology,2026,Daksh Mehta,daksh-mehta-0401@seed.example
+32026BT-BIO002,3,Vellore Institute of Technology,VIT-BIO,School of Bio Sciences and Technology,2026,Daksh Nair,daksh-nair-0402@seed.example
+32026BT-BIO003,3,Vellore Institute of Technology,VIT-BIO,School of Bio Sciences and Technology,2026,Daksh Shah,daksh-shah-0403@seed.example
+32026BT-BIO004,3,Vellore Institute of Technology,VIT-BIO,School of Bio Sciences and Technology,2026,Daksh Sen,daksh-sen-0404@seed.example
+32026BT-BIO005,3,Vellore Institute of Technology,VIT-BIO,School of Bio Sciences and Technology,2026,Daksh Bhat,daksh-bhat-0405@seed.example
+32026BT-BIO006,3,Vellore Institute of Technology,VIT-BIO,School of Bio Sciences and Technology,2026,Daksh Roy,daksh-roy-0406@seed.example
+32026BT-BIO007,3,Vellore Institute of Technology,VIT-BIO,School of Bio Sciences and Technology,2026,Daksh Thomas,daksh-thomas-0407@seed.example
+32026BT-BIO008,3,Vellore Institute of Technology,VIT-BIO,School of Bio Sciences and Technology,2026,Daksh Kapoor,daksh-kapoor-0408@seed.example
+32026BT-BIO009,3,Vellore Institute of Technology,VIT-BIO,School of Bio Sciences and Technology,2026,Daksh Malhotra,daksh-malhotra-0409@seed.example
+32026BT-BIO010,3,Vellore Institute of Technology,VIT-BIO,School of Bio Sciences and Technology,2026,Daksh Arora,daksh-arora-0410@seed.example
+32026BT-BIO011,3,Vellore Institute of Technology,VIT-BIO,School of Bio Sciences and Technology,2026,Daksh Gupta,daksh-gupta-0411@seed.example
+32026BT-BIO012,3,Vellore Institute of Technology,VIT-BIO,School of Bio Sciences and Technology,2026,Daksh Jain,daksh-jain-0412@seed.example
+32026BT-BIO013,3,Vellore Institute of Technology,VIT-BIO,School of Bio Sciences and Technology,2026,Daksh Rao,daksh-rao-0413@seed.example
+32026BT-BIO014,3,Vellore Institute of Technology,VIT-BIO,School of Bio Sciences and Technology,2026,Daksh Singh,daksh-singh-0414@seed.example
+32026BT-BIO015,3,Vellore Institute of Technology,VIT-BIO,School of Bio Sciences and Technology,2026,Daksh Chawla,daksh-chawla-0415@seed.example
+32026BT-BIO016,3,Vellore Institute of Technology,VIT-BIO,School of Bio Sciences and Technology,2026,Daksh Das,daksh-das-0416@seed.example
+32026BT-BIO017,3,Vellore Institute of Technology,VIT-BIO,School of Bio Sciences and Technology,2026,Daksh Mittal,daksh-mittal-0417@seed.example
+32026BT-BIO018,3,Vellore Institute of Technology,VIT-BIO,School of Bio Sciences and Technology,2026,Daksh Joshi,daksh-joshi-0418@seed.example
+32026BT-BIO019,3,Vellore Institute of Technology,VIT-BIO,School of Bio Sciences and Technology,2026,Daksh Verma,daksh-verma-0419@seed.example
+32026BT-BIO020,3,Vellore Institute of Technology,VIT-BIO,School of Bio Sciences and Technology,2026,Daksh Pillai,daksh-pillai-0420@seed.example
+32027BT-CHE001,3,Vellore Institute of Technology,VIT-CHEM,School of Chemical Engineering,2027,Diya Mehta,diya-mehta-0421@seed.example
+32027BT-CHE002,3,Vellore Institute of Technology,VIT-CHEM,School of Chemical Engineering,2027,Diya Nair,diya-nair-0422@seed.example
+32027BT-CHE003,3,Vellore Institute of Technology,VIT-CHEM,School of Chemical Engineering,2027,Diya Shah,diya-shah-0423@seed.example
+32027BT-CHE004,3,Vellore Institute of Technology,VIT-CHEM,School of Chemical Engineering,2027,Diya Sen,diya-sen-0424@seed.example
+32027BT-CHE005,3,Vellore Institute of Technology,VIT-CHEM,School of Chemical Engineering,2027,Diya Bhat,diya-bhat-0425@seed.example
+32027BT-CHE006,3,Vellore Institute of Technology,VIT-CHEM,School of Chemical Engineering,2027,Diya Roy,diya-roy-0426@seed.example
+32027BT-CHE007,3,Vellore Institute of Technology,VIT-CHEM,School of Chemical Engineering,2027,Diya Thomas,diya-thomas-0427@seed.example
+32027BT-CHE008,3,Vellore Institute of Technology,VIT-CHEM,School of Chemical Engineering,2027,Diya Kapoor,diya-kapoor-0428@seed.example
+32027BT-CHE009,3,Vellore Institute of Technology,VIT-CHEM,School of Chemical Engineering,2027,Diya Malhotra,diya-malhotra-0429@seed.example
+32027BT-CHE010,3,Vellore Institute of Technology,VIT-CHEM,School of Chemical Engineering,2027,Diya Arora,diya-arora-0430@seed.example
+32027BT-CHE011,3,Vellore Institute of Technology,VIT-CHEM,School of Chemical Engineering,2027,Diya Gupta,diya-gupta-0431@seed.example
+32027BT-CHE012,3,Vellore Institute of Technology,VIT-CHEM,School of Chemical Engineering,2027,Diya Jain,diya-jain-0432@seed.example
+32027BT-CHE013,3,Vellore Institute of Technology,VIT-CHEM,School of Chemical Engineering,2027,Diya Rao,diya-rao-0433@seed.example
+32027BT-CHE014,3,Vellore Institute of Technology,VIT-CHEM,School of Chemical Engineering,2027,Diya Singh,diya-singh-0434@seed.example
+32027BT-CHE015,3,Vellore Institute of Technology,VIT-CHEM,School of Chemical Engineering,2027,Diya Chawla,diya-chawla-0435@seed.example
+32027BT-CHE016,3,Vellore Institute of Technology,VIT-CHEM,School of Chemical Engineering,2027,Diya Das,diya-das-0436@seed.example
+32027BT-CHE017,3,Vellore Institute of Technology,VIT-CHEM,School of Chemical Engineering,2027,Diya Mittal,diya-mittal-0437@seed.example
+32027BT-CHE018,3,Vellore Institute of Technology,VIT-CHEM,School of Chemical Engineering,2027,Diya Joshi,diya-joshi-0438@seed.example
+32027BT-CHE019,3,Vellore Institute of Technology,VIT-CHEM,School of Chemical Engineering,2027,Diya Verma,diya-verma-0439@seed.example
+32027BT-CHE020,3,Vellore Institute of Technology,VIT-CHEM,School of Chemical Engineering,2027,Diya Pillai,diya-pillai-0440@seed.example
+32026BT-CIV001,3,Vellore Institute of Technology,VIT-CIV,School of Civil Engineering,2026,Dev Mehta,dev-mehta-0441@seed.example
+32026BT-CIV002,3,Vellore Institute of Technology,VIT-CIV,School of Civil Engineering,2026,Dev Nair,dev-nair-0442@seed.example
+32026BT-CIV003,3,Vellore Institute of Technology,VIT-CIV,School of Civil Engineering,2026,Dev Shah,dev-shah-0443@seed.example
+32026BT-CIV004,3,Vellore Institute of Technology,VIT-CIV,School of Civil Engineering,2026,Dev Sen,dev-sen-0444@seed.example
+32026BT-CIV005,3,Vellore Institute of Technology,VIT-CIV,School of Civil Engineering,2026,Dev Bhat,dev-bhat-0445@seed.example
+32026BT-CIV006,3,Vellore Institute of Technology,VIT-CIV,School of Civil Engineering,2026,Dev Roy,dev-roy-0446@seed.example
+32026BT-CIV007,3,Vellore Institute of Technology,VIT-CIV,School of Civil Engineering,2026,Dev Thomas,dev-thomas-0447@seed.example
+32026BT-CIV008,3,Vellore Institute of Technology,VIT-CIV,School of Civil Engineering,2026,Dev Kapoor,dev-kapoor-0448@seed.example
+32026BT-CIV009,3,Vellore Institute of Technology,VIT-CIV,School of Civil Engineering,2026,Dev Malhotra,dev-malhotra-0449@seed.example
+32026BT-CIV010,3,Vellore Institute of Technology,VIT-CIV,School of Civil Engineering,2026,Dev Arora,dev-arora-0450@seed.example
+32026BT-CIV011,3,Vellore Institute of Technology,VIT-CIV,School of Civil Engineering,2026,Dev Gupta,dev-gupta-0451@seed.example
+32026BT-CIV012,3,Vellore Institute of Technology,VIT-CIV,School of Civil Engineering,2026,Dev Jain,dev-jain-0452@seed.example
+32026BT-CIV013,3,Vellore Institute of Technology,VIT-CIV,School of Civil Engineering,2026,Dev Rao,dev-rao-0453@seed.example
+32026BT-CIV014,3,Vellore Institute of Technology,VIT-CIV,School of Civil Engineering,2026,Dev Singh,dev-singh-0454@seed.example
+32026BT-CIV015,3,Vellore Institute of Technology,VIT-CIV,School of Civil Engineering,2026,Dev Chawla,dev-chawla-0455@seed.example
+32026BT-CIV016,3,Vellore Institute of Technology,VIT-CIV,School of Civil Engineering,2026,Dev Das,dev-das-0456@seed.example
+32026BT-CIV017,3,Vellore Institute of Technology,VIT-CIV,School of Civil Engineering,2026,Dev Mittal,dev-mittal-0457@seed.example
+32026BT-CIV018,3,Vellore Institute of Technology,VIT-CIV,School of Civil Engineering,2026,Dev Joshi,dev-joshi-0458@seed.example
+32026BT-CIV019,3,Vellore Institute of Technology,VIT-CIV,School of Civil Engineering,2026,Dev Verma,dev-verma-0459@seed.example
+32026BT-CIV020,3,Vellore Institute of Technology,VIT-CIV,School of Civil Engineering,2026,Dev Pillai,dev-pillai-0460@seed.example
+32027BT-CSE001,3,Vellore Institute of Technology,VIT-CS,School of Computer Science and Engineering,2027,Dhruv Mehta,dhruv-mehta-0461@seed.example
+32027BT-CSE002,3,Vellore Institute of Technology,VIT-CS,School of Computer Science and Engineering,2027,Dhruv Nair,dhruv-nair-0462@seed.example
+32027BT-CSE003,3,Vellore Institute of Technology,VIT-CS,School of Computer Science and Engineering,2027,Dhruv Shah,dhruv-shah-0463@seed.example
+32027BT-CSE004,3,Vellore Institute of Technology,VIT-CS,School of Computer Science and Engineering,2027,Dhruv Sen,dhruv-sen-0464@seed.example
+32027BT-CSE005,3,Vellore Institute of Technology,VIT-CS,School of Computer Science and Engineering,2027,Dhruv Bhat,dhruv-bhat-0465@seed.example
+32027BT-CSE006,3,Vellore Institute of Technology,VIT-CS,School of Computer Science and Engineering,2027,Dhruv Roy,dhruv-roy-0466@seed.example
+32027BT-CSE007,3,Vellore Institute of Technology,VIT-CS,School of Computer Science and Engineering,2027,Dhruv Thomas,dhruv-thomas-0467@seed.example
+32027BT-CSE008,3,Vellore Institute of Technology,VIT-CS,School of Computer Science and Engineering,2027,Dhruv Kapoor,dhruv-kapoor-0468@seed.example
+32027BT-CSE009,3,Vellore Institute of Technology,VIT-CS,School of Computer Science and Engineering,2027,Dhruv Malhotra,dhruv-malhotra-0469@seed.example
+32027BT-CSE010,3,Vellore Institute of Technology,VIT-CS,School of Computer Science and Engineering,2027,Dhruv Arora,dhruv-arora-0470@seed.example
+32027BT-CSE011,3,Vellore Institute of Technology,VIT-CS,School of Computer Science and Engineering,2027,Dhruv Gupta,dhruv-gupta-0471@seed.example
+32027BT-CSE012,3,Vellore Institute of Technology,VIT-CS,School of Computer Science and Engineering,2027,Dhruv Jain,dhruv-jain-0472@seed.example
+32027BT-CSE013,3,Vellore Institute of Technology,VIT-CS,School of Computer Science and Engineering,2027,Dhruv Rao,dhruv-rao-0473@seed.example
+32027BT-CSE014,3,Vellore Institute of Technology,VIT-CS,School of Computer Science and Engineering,2027,Dhruv Singh,dhruv-singh-0474@seed.example
+32027BT-CSE015,3,Vellore Institute of Technology,VIT-CS,School of Computer Science and Engineering,2027,Dhruv Chawla,dhruv-chawla-0475@seed.example
+32027BT-CSE016,3,Vellore Institute of Technology,VIT-CS,School of Computer Science and Engineering,2027,Dhruv Das,dhruv-das-0476@seed.example
+32027BT-CSE017,3,Vellore Institute of Technology,VIT-CS,School of Computer Science and Engineering,2027,Dhruv Mittal,dhruv-mittal-0477@seed.example
+32027BT-CSE018,3,Vellore Institute of Technology,VIT-CS,School of Computer Science and Engineering,2027,Dhruv Joshi,dhruv-joshi-0478@seed.example
+32027BT-CSE019,3,Vellore Institute of Technology,VIT-CS,School of Computer Science and Engineering,2027,Dhruv Verma,dhruv-verma-0479@seed.example
+32027BT-CSE020,3,Vellore Institute of Technology,VIT-CS,School of Computer Science and Engineering,2027,Dhruv Pillai,dhruv-pillai-0480@seed.example
+32026BT-ECE001,3,Vellore Institute of Technology,VIT-EC,School of Electronics Engineering,2026,Esha Mehta,esha-mehta-0481@seed.example
+32026BT-ECE002,3,Vellore Institute of Technology,VIT-EC,School of Electronics Engineering,2026,Esha Nair,esha-nair-0482@seed.example
+32026BT-ECE003,3,Vellore Institute of Technology,VIT-EC,School of Electronics Engineering,2026,Esha Shah,esha-shah-0483@seed.example
+32026BT-ECE004,3,Vellore Institute of Technology,VIT-EC,School of Electronics Engineering,2026,Esha Sen,esha-sen-0484@seed.example
+32026BT-ECE005,3,Vellore Institute of Technology,VIT-EC,School of Electronics Engineering,2026,Esha Bhat,esha-bhat-0485@seed.example
+32026BT-ECE006,3,Vellore Institute of Technology,VIT-EC,School of Electronics Engineering,2026,Esha Roy,esha-roy-0486@seed.example
+32026BT-ECE007,3,Vellore Institute of Technology,VIT-EC,School of Electronics Engineering,2026,Esha Thomas,esha-thomas-0487@seed.example
+32026BT-ECE008,3,Vellore Institute of Technology,VIT-EC,School of Electronics Engineering,2026,Esha Kapoor,esha-kapoor-0488@seed.example
+32026BT-ECE009,3,Vellore Institute of Technology,VIT-EC,School of Electronics Engineering,2026,Esha Malhotra,esha-malhotra-0489@seed.example
+32026BT-ECE010,3,Vellore Institute of Technology,VIT-EC,School of Electronics Engineering,2026,Esha Arora,esha-arora-0490@seed.example
+32026BT-ECE011,3,Vellore Institute of Technology,VIT-EC,School of Electronics Engineering,2026,Esha Gupta,esha-gupta-0491@seed.example
+32026BT-ECE012,3,Vellore Institute of Technology,VIT-EC,School of Electronics Engineering,2026,Esha Jain,esha-jain-0492@seed.example
+32026BT-ECE013,3,Vellore Institute of Technology,VIT-EC,School of Electronics Engineering,2026,Esha Rao,esha-rao-0493@seed.example
+32026BT-ECE014,3,Vellore Institute of Technology,VIT-EC,School of Electronics Engineering,2026,Esha Singh,esha-singh-0494@seed.example
+32026BT-ECE015,3,Vellore Institute of Technology,VIT-EC,School of Electronics Engineering,2026,Esha Chawla,esha-chawla-0495@seed.example
+32026BT-ECE016,3,Vellore Institute of Technology,VIT-EC,School of Electronics Engineering,2026,Esha Das,esha-das-0496@seed.example
+32026BT-ECE017,3,Vellore Institute of Technology,VIT-EC,School of Electronics Engineering,2026,Esha Mittal,esha-mittal-0497@seed.example
+32026BT-ECE018,3,Vellore Institute of Technology,VIT-EC,School of Electronics Engineering,2026,Esha Joshi,esha-joshi-0498@seed.example
+32026BT-ECE019,3,Vellore Institute of Technology,VIT-EC,School of Electronics Engineering,2026,Esha Verma,esha-verma-0499@seed.example
+32026BT-ECE020,3,Vellore Institute of Technology,VIT-EC,School of Electronics Engineering,2026,Esha Pillai,esha-pillai-0500@seed.example
+32027BT-EEE001,3,Vellore Institute of Technology,VIT-EE,School of Electrical Engineering,2027,Ishaan Mehta,ishaan-mehta-0501@seed.example
+32027BT-EEE002,3,Vellore Institute of Technology,VIT-EE,School of Electrical Engineering,2027,Ishaan Nair,ishaan-nair-0502@seed.example
+32027BT-EEE003,3,Vellore Institute of Technology,VIT-EE,School of Electrical Engineering,2027,Ishaan Shah,ishaan-shah-0503@seed.example
+32027BT-EEE004,3,Vellore Institute of Technology,VIT-EE,School of Electrical Engineering,2027,Ishaan Sen,ishaan-sen-0504@seed.example
+32027BT-EEE005,3,Vellore Institute of Technology,VIT-EE,School of Electrical Engineering,2027,Ishaan Bhat,ishaan-bhat-0505@seed.example
+32027BT-EEE006,3,Vellore Institute of Technology,VIT-EE,School of Electrical Engineering,2027,Ishaan Roy,ishaan-roy-0506@seed.example
+32027BT-EEE007,3,Vellore Institute of Technology,VIT-EE,School of Electrical Engineering,2027,Ishaan Thomas,ishaan-thomas-0507@seed.example
+32027BT-EEE008,3,Vellore Institute of Technology,VIT-EE,School of Electrical Engineering,2027,Ishaan Kapoor,ishaan-kapoor-0508@seed.example
+32027BT-EEE009,3,Vellore Institute of Technology,VIT-EE,School of Electrical Engineering,2027,Ishaan Malhotra,ishaan-malhotra-0509@seed.example
+32027BT-EEE010,3,Vellore Institute of Technology,VIT-EE,School of Electrical Engineering,2027,Ishaan Arora,ishaan-arora-0510@seed.example
+32027BT-EEE011,3,Vellore Institute of Technology,VIT-EE,School of Electrical Engineering,2027,Ishaan Gupta,ishaan-gupta-0511@seed.example
+32027BT-EEE012,3,Vellore Institute of Technology,VIT-EE,School of Electrical Engineering,2027,Ishaan Jain,ishaan-jain-0512@seed.example
+32027BT-EEE013,3,Vellore Institute of Technology,VIT-EE,School of Electrical Engineering,2027,Ishaan Rao,ishaan-rao-0513@seed.example
+32027BT-EEE014,3,Vellore Institute of Technology,VIT-EE,School of Electrical Engineering,2027,Ishaan Singh,ishaan-singh-0514@seed.example
+32027BT-EEE015,3,Vellore Institute of Technology,VIT-EE,School of Electrical Engineering,2027,Ishaan Chawla,ishaan-chawla-0515@seed.example
+32027BT-EEE016,3,Vellore Institute of Technology,VIT-EE,School of Electrical Engineering,2027,Ishaan Das,ishaan-das-0516@seed.example
+32027BT-EEE017,3,Vellore Institute of Technology,VIT-EE,School of Electrical Engineering,2027,Ishaan Mittal,ishaan-mittal-0517@seed.example
+32027BT-EEE018,3,Vellore Institute of Technology,VIT-EE,School of Electrical Engineering,2027,Ishaan Joshi,ishaan-joshi-0518@seed.example
+32027BT-EEE019,3,Vellore Institute of Technology,VIT-EE,School of Electrical Engineering,2027,Ishaan Verma,ishaan-verma-0519@seed.example
+32027BT-EEE020,3,Vellore Institute of Technology,VIT-EE,School of Electrical Engineering,2027,Ishaan Pillai,ishaan-pillai-0520@seed.example
+32026BT-MECH001,3,Vellore Institute of Technology,VIT-MECH,School of Mechanical Engineering,2026,Ishita Mehta,ishita-mehta-0521@seed.example
+32026BT-MECH002,3,Vellore Institute of Technology,VIT-MECH,School of Mechanical Engineering,2026,Ishita Nair,ishita-nair-0522@seed.example
+32026BT-MECH003,3,Vellore Institute of Technology,VIT-MECH,School of Mechanical Engineering,2026,Ishita Shah,ishita-shah-0523@seed.example
+32026BT-MECH004,3,Vellore Institute of Technology,VIT-MECH,School of Mechanical Engineering,2026,Ishita Sen,ishita-sen-0524@seed.example
+32026BT-MECH005,3,Vellore Institute of Technology,VIT-MECH,School of Mechanical Engineering,2026,Ishita Bhat,ishita-bhat-0525@seed.example
+32026BT-MECH006,3,Vellore Institute of Technology,VIT-MECH,School of Mechanical Engineering,2026,Ishita Roy,ishita-roy-0526@seed.example
+32026BT-MECH007,3,Vellore Institute of Technology,VIT-MECH,School of Mechanical Engineering,2026,Ishita Thomas,ishita-thomas-0527@seed.example
+32026BT-MECH008,3,Vellore Institute of Technology,VIT-MECH,School of Mechanical Engineering,2026,Ishita Kapoor,ishita-kapoor-0528@seed.example
+32026BT-MECH009,3,Vellore Institute of Technology,VIT-MECH,School of Mechanical Engineering,2026,Ishita Malhotra,ishita-malhotra-0529@seed.example
+32026BT-MECH010,3,Vellore Institute of Technology,VIT-MECH,School of Mechanical Engineering,2026,Ishita Arora,ishita-arora-0530@seed.example
+32026BT-MECH011,3,Vellore Institute of Technology,VIT-MECH,School of Mechanical Engineering,2026,Ishita Gupta,ishita-gupta-0531@seed.example
+32026BT-MECH012,3,Vellore Institute of Technology,VIT-MECH,School of Mechanical Engineering,2026,Ishita Jain,ishita-jain-0532@seed.example
+32026BT-MECH013,3,Vellore Institute of Technology,VIT-MECH,School of Mechanical Engineering,2026,Ishita Rao,ishita-rao-0533@seed.example
+32026BT-MECH014,3,Vellore Institute of Technology,VIT-MECH,School of Mechanical Engineering,2026,Ishita Singh,ishita-singh-0534@seed.example
+32026BT-MECH015,3,Vellore Institute of Technology,VIT-MECH,School of Mechanical Engineering,2026,Ishita Chawla,ishita-chawla-0535@seed.example
+32026BT-MECH016,3,Vellore Institute of Technology,VIT-MECH,School of Mechanical Engineering,2026,Ishita Das,ishita-das-0536@seed.example
+32026BT-MECH017,3,Vellore Institute of Technology,VIT-MECH,School of Mechanical Engineering,2026,Ishita Mittal,ishita-mittal-0537@seed.example
+32026BT-MECH018,3,Vellore Institute of Technology,VIT-MECH,School of Mechanical Engineering,2026,Ishita Joshi,ishita-joshi-0538@seed.example
+32026BT-MECH019,3,Vellore Institute of Technology,VIT-MECH,School of Mechanical Engineering,2026,Ishita Verma,ishita-verma-0539@seed.example
+32026BT-MECH020,3,Vellore Institute of Technology,VIT-MECH,School of Mechanical Engineering,2026,Ishita Pillai,ishita-pillai-0540@seed.example
+32027BBA001,3,Vellore Institute of Technology,VIT-MGMT,VIT Business School,2027,Kabir Mehta,kabir-mehta-0541@seed.example
+32027BBA002,3,Vellore Institute of Technology,VIT-MGMT,VIT Business School,2027,Kabir Nair,kabir-nair-0542@seed.example
+32027BBA003,3,Vellore Institute of Technology,VIT-MGMT,VIT Business School,2027,Kabir Shah,kabir-shah-0543@seed.example
+32027BBA004,3,Vellore Institute of Technology,VIT-MGMT,VIT Business School,2027,Kabir Sen,kabir-sen-0544@seed.example
+32027BBA005,3,Vellore Institute of Technology,VIT-MGMT,VIT Business School,2027,Kabir Bhat,kabir-bhat-0545@seed.example
+32027BBA006,3,Vellore Institute of Technology,VIT-MGMT,VIT Business School,2027,Kabir Roy,kabir-roy-0546@seed.example
+32027BBA007,3,Vellore Institute of Technology,VIT-MGMT,VIT Business School,2027,Kabir Thomas,kabir-thomas-0547@seed.example
+32027BBA008,3,Vellore Institute of Technology,VIT-MGMT,VIT Business School,2027,Kabir Kapoor,kabir-kapoor-0548@seed.example
+32027BBA009,3,Vellore Institute of Technology,VIT-MGMT,VIT Business School,2027,Kabir Malhotra,kabir-malhotra-0549@seed.example
+32027BBA010,3,Vellore Institute of Technology,VIT-MGMT,VIT Business School,2027,Kabir Arora,kabir-arora-0550@seed.example
+32027BBA011,3,Vellore Institute of Technology,VIT-MGMT,VIT Business School,2027,Kabir Gupta,kabir-gupta-0551@seed.example
+32027BBA012,3,Vellore Institute of Technology,VIT-MGMT,VIT Business School,2027,Kabir Jain,kabir-jain-0552@seed.example
+32027BBA013,3,Vellore Institute of Technology,VIT-MGMT,VIT Business School,2027,Kabir Rao,kabir-rao-0553@seed.example
+32027BBA014,3,Vellore Institute of Technology,VIT-MGMT,VIT Business School,2027,Kabir Singh,kabir-singh-0554@seed.example
+32027BBA015,3,Vellore Institute of Technology,VIT-MGMT,VIT Business School,2027,Kabir Chawla,kabir-chawla-0555@seed.example
+32027BBA016,3,Vellore Institute of Technology,VIT-MGMT,VIT Business School,2027,Kabir Das,kabir-das-0556@seed.example
+32027BBA017,3,Vellore Institute of Technology,VIT-MGMT,VIT Business School,2027,Kabir Mittal,kabir-mittal-0557@seed.example
+32027BBA018,3,Vellore Institute of Technology,VIT-MGMT,VIT Business School,2027,Kabir Joshi,kabir-joshi-0558@seed.example
+32027BBA019,3,Vellore Institute of Technology,VIT-MGMT,VIT Business School,2027,Kabir Verma,kabir-verma-0559@seed.example
+32027BBA020,3,Vellore Institute of Technology,VIT-MGMT,VIT Business School,2027,Kabir Pillai,kabir-pillai-0560@seed.example
+32026BSC-MATH001,3,Vellore Institute of Technology,VIT-SCI,School of Advanced Sciences,2026,Karan Mehta,karan-mehta-0561@seed.example
+32026BSC-MATH002,3,Vellore Institute of Technology,VIT-SCI,School of Advanced Sciences,2026,Karan Nair,karan-nair-0562@seed.example
+32026BSC-MATH003,3,Vellore Institute of Technology,VIT-SCI,School of Advanced Sciences,2026,Karan Shah,karan-shah-0563@seed.example
+32026BSC-MATH004,3,Vellore Institute of Technology,VIT-SCI,School of Advanced Sciences,2026,Karan Sen,karan-sen-0564@seed.example
+32026BSC-MATH005,3,Vellore Institute of Technology,VIT-SCI,School of Advanced Sciences,2026,Karan Bhat,karan-bhat-0565@seed.example
+32026BSC-MATH006,3,Vellore Institute of Technology,VIT-SCI,School of Advanced Sciences,2026,Karan Roy,karan-roy-0566@seed.example
+32026BSC-MATH007,3,Vellore Institute of Technology,VIT-SCI,School of Advanced Sciences,2026,Karan Thomas,karan-thomas-0567@seed.example
+32026BSC-MATH008,3,Vellore Institute of Technology,VIT-SCI,School of Advanced Sciences,2026,Karan Kapoor,karan-kapoor-0568@seed.example
+32026BSC-MATH009,3,Vellore Institute of Technology,VIT-SCI,School of Advanced Sciences,2026,Karan Malhotra,karan-malhotra-0569@seed.example
+32026BSC-MATH010,3,Vellore Institute of Technology,VIT-SCI,School of Advanced Sciences,2026,Karan Arora,karan-arora-0570@seed.example
+32026BSC-MATH011,3,Vellore Institute of Technology,VIT-SCI,School of Advanced Sciences,2026,Karan Gupta,karan-gupta-0571@seed.example
+32026BSC-MATH012,3,Vellore Institute of Technology,VIT-SCI,School of Advanced Sciences,2026,Karan Jain,karan-jain-0572@seed.example
+32026BSC-MATH013,3,Vellore Institute of Technology,VIT-SCI,School of Advanced Sciences,2026,Karan Rao,karan-rao-0573@seed.example
+32026BSC-MATH014,3,Vellore Institute of Technology,VIT-SCI,School of Advanced Sciences,2026,Karan Singh,karan-singh-0574@seed.example
+32026BSC-MATH015,3,Vellore Institute of Technology,VIT-SCI,School of Advanced Sciences,2026,Karan Chawla,karan-chawla-0575@seed.example
+32026BSC-MATH016,3,Vellore Institute of Technology,VIT-SCI,School of Advanced Sciences,2026,Karan Das,karan-das-0576@seed.example
+32026BSC-MATH017,3,Vellore Institute of Technology,VIT-SCI,School of Advanced Sciences,2026,Karan Mittal,karan-mittal-0577@seed.example
+32026BSC-MATH018,3,Vellore Institute of Technology,VIT-SCI,School of Advanced Sciences,2026,Karan Joshi,karan-joshi-0578@seed.example
+32026BSC-MATH019,3,Vellore Institute of Technology,VIT-SCI,School of Advanced Sciences,2026,Karan Verma,karan-verma-0579@seed.example
+32026BSC-MATH020,3,Vellore Institute of Technology,VIT-SCI,School of Advanced Sciences,2026,Karan Pillai,karan-pillai-0580@seed.example
+32027BA-ENG001,3,Vellore Institute of Technology,VIT-HS,School of Social Sciences and Languages,2027,Kavya Mehta,kavya-mehta-0581@seed.example
+32027BA-ENG002,3,Vellore Institute of Technology,VIT-HS,School of Social Sciences and Languages,2027,Kavya Nair,kavya-nair-0582@seed.example
+32027BA-ENG003,3,Vellore Institute of Technology,VIT-HS,School of Social Sciences and Languages,2027,Kavya Shah,kavya-shah-0583@seed.example
+32027BA-ENG004,3,Vellore Institute of Technology,VIT-HS,School of Social Sciences and Languages,2027,Kavya Sen,kavya-sen-0584@seed.example
+32027BA-ENG005,3,Vellore Institute of Technology,VIT-HS,School of Social Sciences and Languages,2027,Kavya Bhat,kavya-bhat-0585@seed.example
+32027BA-ENG006,3,Vellore Institute of Technology,VIT-HS,School of Social Sciences and Languages,2027,Kavya Roy,kavya-roy-0586@seed.example
+32027BA-ENG007,3,Vellore Institute of Technology,VIT-HS,School of Social Sciences and Languages,2027,Kavya Thomas,kavya-thomas-0587@seed.example
+32027BA-ENG008,3,Vellore Institute of Technology,VIT-HS,School of Social Sciences and Languages,2027,Kavya Kapoor,kavya-kapoor-0588@seed.example
+32027BA-ENG009,3,Vellore Institute of Technology,VIT-HS,School of Social Sciences and Languages,2027,Kavya Malhotra,kavya-malhotra-0589@seed.example
+32027BA-ENG010,3,Vellore Institute of Technology,VIT-HS,School of Social Sciences and Languages,2027,Kavya Arora,kavya-arora-0590@seed.example
+32027BA-ENG011,3,Vellore Institute of Technology,VIT-HS,School of Social Sciences and Languages,2027,Kavya Gupta,kavya-gupta-0591@seed.example
+32027BA-ENG012,3,Vellore Institute of Technology,VIT-HS,School of Social Sciences and Languages,2027,Kavya Jain,kavya-jain-0592@seed.example
+32027BA-ENG013,3,Vellore Institute of Technology,VIT-HS,School of Social Sciences and Languages,2027,Kavya Rao,kavya-rao-0593@seed.example
+32027BA-ENG014,3,Vellore Institute of Technology,VIT-HS,School of Social Sciences and Languages,2027,Kavya Singh,kavya-singh-0594@seed.example
+32027BA-ENG015,3,Vellore Institute of Technology,VIT-HS,School of Social Sciences and Languages,2027,Kavya Chawla,kavya-chawla-0595@seed.example
+32027BA-ENG016,3,Vellore Institute of Technology,VIT-HS,School of Social Sciences and Languages,2027,Kavya Das,kavya-das-0596@seed.example
+32027BA-ENG017,3,Vellore Institute of Technology,VIT-HS,School of Social Sciences and Languages,2027,Kavya Mittal,kavya-mittal-0597@seed.example
+32027BA-ENG018,3,Vellore Institute of Technology,VIT-HS,School of Social Sciences and Languages,2027,Kavya Joshi,kavya-joshi-0598@seed.example
+32027BA-ENG019,3,Vellore Institute of Technology,VIT-HS,School of Social Sciences and Languages,2027,Kavya Verma,kavya-verma-0599@seed.example
+32027BA-ENG020,3,Vellore Institute of Technology,VIT-HS,School of Social Sciences and Languages,2027,Kavya Pillai,kavya-pillai-0600@seed.example
+42026BARCH001,4,CHRIST University,CHRIST-ARCH,School of Architecture,2026,Kiara Mehta,kiara-mehta-0601@seed.example
+42026BARCH002,4,CHRIST University,CHRIST-ARCH,School of Architecture,2026,Kiara Nair,kiara-nair-0602@seed.example
+42026BARCH003,4,CHRIST University,CHRIST-ARCH,School of Architecture,2026,Kiara Shah,kiara-shah-0603@seed.example
+42026BARCH004,4,CHRIST University,CHRIST-ARCH,School of Architecture,2026,Kiara Sen,kiara-sen-0604@seed.example
+42026BARCH005,4,CHRIST University,CHRIST-ARCH,School of Architecture,2026,Kiara Bhat,kiara-bhat-0605@seed.example
+42026BARCH006,4,CHRIST University,CHRIST-ARCH,School of Architecture,2026,Kiara Roy,kiara-roy-0606@seed.example
+42026BARCH007,4,CHRIST University,CHRIST-ARCH,School of Architecture,2026,Kiara Thomas,kiara-thomas-0607@seed.example
+42026BARCH008,4,CHRIST University,CHRIST-ARCH,School of Architecture,2026,Kiara Kapoor,kiara-kapoor-0608@seed.example
+42026BARCH009,4,CHRIST University,CHRIST-ARCH,School of Architecture,2026,Kiara Malhotra,kiara-malhotra-0609@seed.example
+42026BARCH010,4,CHRIST University,CHRIST-ARCH,School of Architecture,2026,Kiara Arora,kiara-arora-0610@seed.example
+42026BARCH011,4,CHRIST University,CHRIST-ARCH,School of Architecture,2026,Kiara Gupta,kiara-gupta-0611@seed.example
+42026BARCH012,4,CHRIST University,CHRIST-ARCH,School of Architecture,2026,Kiara Jain,kiara-jain-0612@seed.example
+42026BARCH013,4,CHRIST University,CHRIST-ARCH,School of Architecture,2026,Kiara Rao,kiara-rao-0613@seed.example
+42026BARCH014,4,CHRIST University,CHRIST-ARCH,School of Architecture,2026,Kiara Singh,kiara-singh-0614@seed.example
+42026BARCH015,4,CHRIST University,CHRIST-ARCH,School of Architecture,2026,Kiara Chawla,kiara-chawla-0615@seed.example
+42026BARCH016,4,CHRIST University,CHRIST-ARCH,School of Architecture,2026,Kiara Das,kiara-das-0616@seed.example
+42026BARCH017,4,CHRIST University,CHRIST-ARCH,School of Architecture,2026,Kiara Mittal,kiara-mittal-0617@seed.example
+42026BARCH018,4,CHRIST University,CHRIST-ARCH,School of Architecture,2026,Kiara Joshi,kiara-joshi-0618@seed.example
+42026BARCH019,4,CHRIST University,CHRIST-ARCH,School of Architecture,2026,Kiara Verma,kiara-verma-0619@seed.example
+42026BARCH020,4,CHRIST University,CHRIST-ARCH,School of Architecture,2026,Kiara Pillai,kiara-pillai-0620@seed.example
+42027BA-ENG001,4,CHRIST University,CHRIST-ARTS,School of Arts and Humanities,2027,Krishna Mehta,krishna-mehta-0621@seed.example
+42027BA-ENG002,4,CHRIST University,CHRIST-ARTS,School of Arts and Humanities,2027,Krishna Nair,krishna-nair-0622@seed.example
+42027BA-ENG003,4,CHRIST University,CHRIST-ARTS,School of Arts and Humanities,2027,Krishna Shah,krishna-shah-0623@seed.example
+42027BA-ENG004,4,CHRIST University,CHRIST-ARTS,School of Arts and Humanities,2027,Krishna Sen,krishna-sen-0624@seed.example
+42027BA-ENG005,4,CHRIST University,CHRIST-ARTS,School of Arts and Humanities,2027,Krishna Bhat,krishna-bhat-0625@seed.example
+42027BA-ENG006,4,CHRIST University,CHRIST-ARTS,School of Arts and Humanities,2027,Krishna Roy,krishna-roy-0626@seed.example
+42027BA-ENG007,4,CHRIST University,CHRIST-ARTS,School of Arts and Humanities,2027,Krishna Thomas,krishna-thomas-0627@seed.example
+42027BA-ENG008,4,CHRIST University,CHRIST-ARTS,School of Arts and Humanities,2027,Krishna Kapoor,krishna-kapoor-0628@seed.example
+42027BA-ENG009,4,CHRIST University,CHRIST-ARTS,School of Arts and Humanities,2027,Krishna Malhotra,krishna-malhotra-0629@seed.example
+42027BA-ENG010,4,CHRIST University,CHRIST-ARTS,School of Arts and Humanities,2027,Krishna Arora,krishna-arora-0630@seed.example
+42027BA-ENG011,4,CHRIST University,CHRIST-ARTS,School of Arts and Humanities,2027,Krishna Gupta,krishna-gupta-0631@seed.example
+42027BA-ENG012,4,CHRIST University,CHRIST-ARTS,School of Arts and Humanities,2027,Krishna Jain,krishna-jain-0632@seed.example
+42027BA-ENG013,4,CHRIST University,CHRIST-ARTS,School of Arts and Humanities,2027,Krishna Rao,krishna-rao-0633@seed.example
+42027BA-ENG014,4,CHRIST University,CHRIST-ARTS,School of Arts and Humanities,2027,Krishna Singh,krishna-singh-0634@seed.example
+42027BA-ENG015,4,CHRIST University,CHRIST-ARTS,School of Arts and Humanities,2027,Krishna Chawla,krishna-chawla-0635@seed.example
+42027BA-ENG016,4,CHRIST University,CHRIST-ARTS,School of Arts and Humanities,2027,Krishna Das,krishna-das-0636@seed.example
+42027BA-ENG017,4,CHRIST University,CHRIST-ARTS,School of Arts and Humanities,2027,Krishna Mittal,krishna-mittal-0637@seed.example
+42027BA-ENG018,4,CHRIST University,CHRIST-ARTS,School of Arts and Humanities,2027,Krishna Joshi,krishna-joshi-0638@seed.example
+42027BA-ENG019,4,CHRIST University,CHRIST-ARTS,School of Arts and Humanities,2027,Krishna Verma,krishna-verma-0639@seed.example
+42027BA-ENG020,4,CHRIST University,CHRIST-ARTS,School of Arts and Humanities,2027,Krishna Pillai,krishna-pillai-0640@seed.example
+42026BBA001,4,CHRIST University,CHRIST-BUS,School of Business and Management,2026,Meera Mehta,meera-mehta-0641@seed.example
+42026BBA002,4,CHRIST University,CHRIST-BUS,School of Business and Management,2026,Meera Nair,meera-nair-0642@seed.example
+42026BBA003,4,CHRIST University,CHRIST-BUS,School of Business and Management,2026,Meera Shah,meera-shah-0643@seed.example
+42026BBA004,4,CHRIST University,CHRIST-BUS,School of Business and Management,2026,Meera Sen,meera-sen-0644@seed.example
+42026BBA005,4,CHRIST University,CHRIST-BUS,School of Business and Management,2026,Meera Bhat,meera-bhat-0645@seed.example
+42026BBA006,4,CHRIST University,CHRIST-BUS,School of Business and Management,2026,Meera Roy,meera-roy-0646@seed.example
+42026BBA007,4,CHRIST University,CHRIST-BUS,School of Business and Management,2026,Meera Thomas,meera-thomas-0647@seed.example
+42026BBA008,4,CHRIST University,CHRIST-BUS,School of Business and Management,2026,Meera Kapoor,meera-kapoor-0648@seed.example
+42026BBA009,4,CHRIST University,CHRIST-BUS,School of Business and Management,2026,Meera Malhotra,meera-malhotra-0649@seed.example
+42026BBA010,4,CHRIST University,CHRIST-BUS,School of Business and Management,2026,Meera Arora,meera-arora-0650@seed.example
+42026BBA011,4,CHRIST University,CHRIST-BUS,School of Business and Management,2026,Meera Gupta,meera-gupta-0651@seed.example
+42026BBA012,4,CHRIST University,CHRIST-BUS,School of Business and Management,2026,Meera Jain,meera-jain-0652@seed.example
+42026BBA013,4,CHRIST University,CHRIST-BUS,School of Business and Management,2026,Meera Rao,meera-rao-0653@seed.example
+42026BBA014,4,CHRIST University,CHRIST-BUS,School of Business and Management,2026,Meera Singh,meera-singh-0654@seed.example
+42026BBA015,4,CHRIST University,CHRIST-BUS,School of Business and Management,2026,Meera Chawla,meera-chawla-0655@seed.example
+42026BBA016,4,CHRIST University,CHRIST-BUS,School of Business and Management,2026,Meera Das,meera-das-0656@seed.example
+42026BBA017,4,CHRIST University,CHRIST-BUS,School of Business and Management,2026,Meera Mittal,meera-mittal-0657@seed.example
+42026BBA018,4,CHRIST University,CHRIST-BUS,School of Business and Management,2026,Meera Joshi,meera-joshi-0658@seed.example
+42026BBA019,4,CHRIST University,CHRIST-BUS,School of Business and Management,2026,Meera Verma,meera-verma-0659@seed.example
+42026BBA020,4,CHRIST University,CHRIST-BUS,School of Business and Management,2026,Meera Pillai,meera-pillai-0660@seed.example
+42027BCOM001,4,CHRIST University,CHRIST-COM,School of Commerce Finance and Accountancy,2027,Mehul Mehta,mehul-mehta-0661@seed.example
+42027BCOM002,4,CHRIST University,CHRIST-COM,School of Commerce Finance and Accountancy,2027,Mehul Nair,mehul-nair-0662@seed.example
+42027BCOM003,4,CHRIST University,CHRIST-COM,School of Commerce Finance and Accountancy,2027,Mehul Shah,mehul-shah-0663@seed.example
+42027BCOM004,4,CHRIST University,CHRIST-COM,School of Commerce Finance and Accountancy,2027,Mehul Sen,mehul-sen-0664@seed.example
+42027BCOM005,4,CHRIST University,CHRIST-COM,School of Commerce Finance and Accountancy,2027,Mehul Bhat,mehul-bhat-0665@seed.example
+42027BCOM006,4,CHRIST University,CHRIST-COM,School of Commerce Finance and Accountancy,2027,Mehul Roy,mehul-roy-0666@seed.example
+42027BCOM007,4,CHRIST University,CHRIST-COM,School of Commerce Finance and Accountancy,2027,Mehul Thomas,mehul-thomas-0667@seed.example
+42027BCOM008,4,CHRIST University,CHRIST-COM,School of Commerce Finance and Accountancy,2027,Mehul Kapoor,mehul-kapoor-0668@seed.example
+42027BCOM009,4,CHRIST University,CHRIST-COM,School of Commerce Finance and Accountancy,2027,Mehul Malhotra,mehul-malhotra-0669@seed.example
+42027BCOM010,4,CHRIST University,CHRIST-COM,School of Commerce Finance and Accountancy,2027,Mehul Arora,mehul-arora-0670@seed.example
+42027BCOM011,4,CHRIST University,CHRIST-COM,School of Commerce Finance and Accountancy,2027,Mehul Gupta,mehul-gupta-0671@seed.example
+42027BCOM012,4,CHRIST University,CHRIST-COM,School of Commerce Finance and Accountancy,2027,Mehul Jain,mehul-jain-0672@seed.example
+42027BCOM013,4,CHRIST University,CHRIST-COM,School of Commerce Finance and Accountancy,2027,Mehul Rao,mehul-rao-0673@seed.example
+42027BCOM014,4,CHRIST University,CHRIST-COM,School of Commerce Finance and Accountancy,2027,Mehul Singh,mehul-singh-0674@seed.example
+42027BCOM015,4,CHRIST University,CHRIST-COM,School of Commerce Finance and Accountancy,2027,Mehul Chawla,mehul-chawla-0675@seed.example
+42027BCOM016,4,CHRIST University,CHRIST-COM,School of Commerce Finance and Accountancy,2027,Mehul Das,mehul-das-0676@seed.example
+42027BCOM017,4,CHRIST University,CHRIST-COM,School of Commerce Finance and Accountancy,2027,Mehul Mittal,mehul-mittal-0677@seed.example
+42027BCOM018,4,CHRIST University,CHRIST-COM,School of Commerce Finance and Accountancy,2027,Mehul Joshi,mehul-joshi-0678@seed.example
+42027BCOM019,4,CHRIST University,CHRIST-COM,School of Commerce Finance and Accountancy,2027,Mehul Verma,mehul-verma-0679@seed.example
+42027BCOM020,4,CHRIST University,CHRIST-COM,School of Commerce Finance and Accountancy,2027,Mehul Pillai,mehul-pillai-0680@seed.example
+42026BED001,4,CHRIST University,CHRIST-EDU,School of Education,2026,Mihir Mehta,mihir-mehta-0681@seed.example
+42026BED002,4,CHRIST University,CHRIST-EDU,School of Education,2026,Mihir Nair,mihir-nair-0682@seed.example
+42026BED003,4,CHRIST University,CHRIST-EDU,School of Education,2026,Mihir Shah,mihir-shah-0683@seed.example
+42026BED004,4,CHRIST University,CHRIST-EDU,School of Education,2026,Mihir Sen,mihir-sen-0684@seed.example
+42026BED005,4,CHRIST University,CHRIST-EDU,School of Education,2026,Mihir Bhat,mihir-bhat-0685@seed.example
+42026BED006,4,CHRIST University,CHRIST-EDU,School of Education,2026,Mihir Roy,mihir-roy-0686@seed.example
+42026BED007,4,CHRIST University,CHRIST-EDU,School of Education,2026,Mihir Thomas,mihir-thomas-0687@seed.example
+42026BED008,4,CHRIST University,CHRIST-EDU,School of Education,2026,Mihir Kapoor,mihir-kapoor-0688@seed.example
+42026BED009,4,CHRIST University,CHRIST-EDU,School of Education,2026,Mihir Malhotra,mihir-malhotra-0689@seed.example
+42026BED010,4,CHRIST University,CHRIST-EDU,School of Education,2026,Mihir Arora,mihir-arora-0690@seed.example
+42026BED011,4,CHRIST University,CHRIST-EDU,School of Education,2026,Mihir Gupta,mihir-gupta-0691@seed.example
+42026BED012,4,CHRIST University,CHRIST-EDU,School of Education,2026,Mihir Jain,mihir-jain-0692@seed.example
+42026BED013,4,CHRIST University,CHRIST-EDU,School of Education,2026,Mihir Rao,mihir-rao-0693@seed.example
+42026BED014,4,CHRIST University,CHRIST-EDU,School of Education,2026,Mihir Singh,mihir-singh-0694@seed.example
+42026BED015,4,CHRIST University,CHRIST-EDU,School of Education,2026,Mihir Chawla,mihir-chawla-0695@seed.example
+42026BED016,4,CHRIST University,CHRIST-EDU,School of Education,2026,Mihir Das,mihir-das-0696@seed.example
+42026BED017,4,CHRIST University,CHRIST-EDU,School of Education,2026,Mihir Mittal,mihir-mittal-0697@seed.example
+42026BED018,4,CHRIST University,CHRIST-EDU,School of Education,2026,Mihir Joshi,mihir-joshi-0698@seed.example
+42026BED019,4,CHRIST University,CHRIST-EDU,School of Education,2026,Mihir Verma,mihir-verma-0699@seed.example
+42026BED020,4,CHRIST University,CHRIST-EDU,School of Education,2026,Mihir Pillai,mihir-pillai-0700@seed.example
+42027BTECH-CSE001,4,CHRIST University,CHRIST-ENG,School of Engineering and Technology,2027,Myra Mehta,myra-mehta-0701@seed.example
+42027BTECH-CSE002,4,CHRIST University,CHRIST-ENG,School of Engineering and Technology,2027,Myra Nair,myra-nair-0702@seed.example
+42027BTECH-CSE003,4,CHRIST University,CHRIST-ENG,School of Engineering and Technology,2027,Myra Shah,myra-shah-0703@seed.example
+42027BTECH-CSE004,4,CHRIST University,CHRIST-ENG,School of Engineering and Technology,2027,Myra Sen,myra-sen-0704@seed.example
+42027BTECH-CSE005,4,CHRIST University,CHRIST-ENG,School of Engineering and Technology,2027,Myra Bhat,myra-bhat-0705@seed.example
+42027BTECH-CSE006,4,CHRIST University,CHRIST-ENG,School of Engineering and Technology,2027,Myra Roy,myra-roy-0706@seed.example
+42027BTECH-CSE007,4,CHRIST University,CHRIST-ENG,School of Engineering and Technology,2027,Myra Thomas,myra-thomas-0707@seed.example
+42027BTECH-CSE008,4,CHRIST University,CHRIST-ENG,School of Engineering and Technology,2027,Myra Kapoor,myra-kapoor-0708@seed.example
+42027BTECH-CSE009,4,CHRIST University,CHRIST-ENG,School of Engineering and Technology,2027,Myra Malhotra,myra-malhotra-0709@seed.example
+42027BTECH-CSE010,4,CHRIST University,CHRIST-ENG,School of Engineering and Technology,2027,Myra Arora,myra-arora-0710@seed.example
+42027BTECH-CSE011,4,CHRIST University,CHRIST-ENG,School of Engineering and Technology,2027,Myra Gupta,myra-gupta-0711@seed.example
+42027BTECH-CSE012,4,CHRIST University,CHRIST-ENG,School of Engineering and Technology,2027,Myra Jain,myra-jain-0712@seed.example
+42027BTECH-CSE013,4,CHRIST University,CHRIST-ENG,School of Engineering and Technology,2027,Myra Rao,myra-rao-0713@seed.example
+42027BTECH-CSE014,4,CHRIST University,CHRIST-ENG,School of Engineering and Technology,2027,Myra Singh,myra-singh-0714@seed.example
+42027BTECH-CSE015,4,CHRIST University,CHRIST-ENG,School of Engineering and Technology,2027,Myra Chawla,myra-chawla-0715@seed.example
+42027BTECH-CSE016,4,CHRIST University,CHRIST-ENG,School of Engineering and Technology,2027,Myra Das,myra-das-0716@seed.example
+42027BTECH-CSE017,4,CHRIST University,CHRIST-ENG,School of Engineering and Technology,2027,Myra Mittal,myra-mittal-0717@seed.example
+42027BTECH-CSE018,4,CHRIST University,CHRIST-ENG,School of Engineering and Technology,2027,Myra Joshi,myra-joshi-0718@seed.example
+42027BTECH-CSE019,4,CHRIST University,CHRIST-ENG,School of Engineering and Technology,2027,Myra Verma,myra-verma-0719@seed.example
+42027BTECH-CSE020,4,CHRIST University,CHRIST-ENG,School of Engineering and Technology,2027,Myra Pillai,myra-pillai-0720@seed.example
+42026BBALLB001,4,CHRIST University,CHRIST-LAW,School of Law,2026,Navya Mehta,navya-mehta-0721@seed.example
+42026BBALLB002,4,CHRIST University,CHRIST-LAW,School of Law,2026,Navya Nair,navya-nair-0722@seed.example
+42026BBALLB003,4,CHRIST University,CHRIST-LAW,School of Law,2026,Navya Shah,navya-shah-0723@seed.example
+42026BBALLB004,4,CHRIST University,CHRIST-LAW,School of Law,2026,Navya Sen,navya-sen-0724@seed.example
+42026BBALLB005,4,CHRIST University,CHRIST-LAW,School of Law,2026,Navya Bhat,navya-bhat-0725@seed.example
+42026BBALLB006,4,CHRIST University,CHRIST-LAW,School of Law,2026,Navya Roy,navya-roy-0726@seed.example
+42026BBALLB007,4,CHRIST University,CHRIST-LAW,School of Law,2026,Navya Thomas,navya-thomas-0727@seed.example
+42026BBALLB008,4,CHRIST University,CHRIST-LAW,School of Law,2026,Navya Kapoor,navya-kapoor-0728@seed.example
+42026BBALLB009,4,CHRIST University,CHRIST-LAW,School of Law,2026,Navya Malhotra,navya-malhotra-0729@seed.example
+42026BBALLB010,4,CHRIST University,CHRIST-LAW,School of Law,2026,Navya Arora,navya-arora-0730@seed.example
+42026BBALLB011,4,CHRIST University,CHRIST-LAW,School of Law,2026,Navya Gupta,navya-gupta-0731@seed.example
+42026BBALLB012,4,CHRIST University,CHRIST-LAW,School of Law,2026,Navya Jain,navya-jain-0732@seed.example
+42026BBALLB013,4,CHRIST University,CHRIST-LAW,School of Law,2026,Navya Rao,navya-rao-0733@seed.example
+42026BBALLB014,4,CHRIST University,CHRIST-LAW,School of Law,2026,Navya Singh,navya-singh-0734@seed.example
+42026BBALLB015,4,CHRIST University,CHRIST-LAW,School of Law,2026,Navya Chawla,navya-chawla-0735@seed.example
+42026BBALLB016,4,CHRIST University,CHRIST-LAW,School of Law,2026,Navya Das,navya-das-0736@seed.example
+42026BBALLB017,4,CHRIST University,CHRIST-LAW,School of Law,2026,Navya Mittal,navya-mittal-0737@seed.example
+42026BBALLB018,4,CHRIST University,CHRIST-LAW,School of Law,2026,Navya Joshi,navya-joshi-0738@seed.example
+42026BBALLB019,4,CHRIST University,CHRIST-LAW,School of Law,2026,Navya Verma,navya-verma-0739@seed.example
+42026BBALLB020,4,CHRIST University,CHRIST-LAW,School of Law,2026,Navya Pillai,navya-pillai-0740@seed.example
+42027BSC-CHEM001,4,CHRIST University,CHRIST-SCI,School of Sciences,2027,Neil Mehta,neil-mehta-0741@seed.example
+42027BSC-CHEM002,4,CHRIST University,CHRIST-SCI,School of Sciences,2027,Neil Nair,neil-nair-0742@seed.example
+42027BSC-CHEM003,4,CHRIST University,CHRIST-SCI,School of Sciences,2027,Neil Shah,neil-shah-0743@seed.example
+42027BSC-CHEM004,4,CHRIST University,CHRIST-SCI,School of Sciences,2027,Neil Sen,neil-sen-0744@seed.example
+42027BSC-CHEM005,4,CHRIST University,CHRIST-SCI,School of Sciences,2027,Neil Bhat,neil-bhat-0745@seed.example
+42027BSC-CHEM006,4,CHRIST University,CHRIST-SCI,School of Sciences,2027,Neil Roy,neil-roy-0746@seed.example
+42027BSC-CHEM007,4,CHRIST University,CHRIST-SCI,School of Sciences,2027,Neil Thomas,neil-thomas-0747@seed.example
+42027BSC-CHEM008,4,CHRIST University,CHRIST-SCI,School of Sciences,2027,Neil Kapoor,neil-kapoor-0748@seed.example
+42027BSC-CHEM009,4,CHRIST University,CHRIST-SCI,School of Sciences,2027,Neil Malhotra,neil-malhotra-0749@seed.example
+42027BSC-CHEM010,4,CHRIST University,CHRIST-SCI,School of Sciences,2027,Neil Arora,neil-arora-0750@seed.example
+42027BSC-CHEM011,4,CHRIST University,CHRIST-SCI,School of Sciences,2027,Neil Gupta,neil-gupta-0751@seed.example
+42027BSC-CHEM012,4,CHRIST University,CHRIST-SCI,School of Sciences,2027,Neil Jain,neil-jain-0752@seed.example
+42027BSC-CHEM013,4,CHRIST University,CHRIST-SCI,School of Sciences,2027,Neil Rao,neil-rao-0753@seed.example
+42027BSC-CHEM014,4,CHRIST University,CHRIST-SCI,School of Sciences,2027,Neil Singh,neil-singh-0754@seed.example
+42027BSC-CHEM015,4,CHRIST University,CHRIST-SCI,School of Sciences,2027,Neil Chawla,neil-chawla-0755@seed.example
+42027BSC-CHEM016,4,CHRIST University,CHRIST-SCI,School of Sciences,2027,Neil Das,neil-das-0756@seed.example
+42027BSC-CHEM017,4,CHRIST University,CHRIST-SCI,School of Sciences,2027,Neil Mittal,neil-mittal-0757@seed.example
+42027BSC-CHEM018,4,CHRIST University,CHRIST-SCI,School of Sciences,2027,Neil Joshi,neil-joshi-0758@seed.example
+42027BSC-CHEM019,4,CHRIST University,CHRIST-SCI,School of Sciences,2027,Neil Verma,neil-verma-0759@seed.example
+42027BSC-CHEM020,4,CHRIST University,CHRIST-SCI,School of Sciences,2027,Neil Pillai,neil-pillai-0760@seed.example
+42026BA-PSY001,4,CHRIST University,CHRIST-SOC,School of Social Sciences,2026,Niharika Mehta,niharika-mehta-0761@seed.example
+42026BA-PSY002,4,CHRIST University,CHRIST-SOC,School of Social Sciences,2026,Niharika Nair,niharika-nair-0762@seed.example
+42026BA-PSY003,4,CHRIST University,CHRIST-SOC,School of Social Sciences,2026,Niharika Shah,niharika-shah-0763@seed.example
+42026BA-PSY004,4,CHRIST University,CHRIST-SOC,School of Social Sciences,2026,Niharika Sen,niharika-sen-0764@seed.example
+42026BA-PSY005,4,CHRIST University,CHRIST-SOC,School of Social Sciences,2026,Niharika Bhat,niharika-bhat-0765@seed.example
+42026BA-PSY006,4,CHRIST University,CHRIST-SOC,School of Social Sciences,2026,Niharika Roy,niharika-roy-0766@seed.example
+42026BA-PSY007,4,CHRIST University,CHRIST-SOC,School of Social Sciences,2026,Niharika Thomas,niharika-thomas-0767@seed.example
+42026BA-PSY008,4,CHRIST University,CHRIST-SOC,School of Social Sciences,2026,Niharika Kapoor,niharika-kapoor-0768@seed.example
+42026BA-PSY009,4,CHRIST University,CHRIST-SOC,School of Social Sciences,2026,Niharika Malhotra,niharika-malhotra-0769@seed.example
+42026BA-PSY010,4,CHRIST University,CHRIST-SOC,School of Social Sciences,2026,Niharika Arora,niharika-arora-0770@seed.example
+42026BA-PSY011,4,CHRIST University,CHRIST-SOC,School of Social Sciences,2026,Niharika Gupta,niharika-gupta-0771@seed.example
+42026BA-PSY012,4,CHRIST University,CHRIST-SOC,School of Social Sciences,2026,Niharika Jain,niharika-jain-0772@seed.example
+42026BA-PSY013,4,CHRIST University,CHRIST-SOC,School of Social Sciences,2026,Niharika Rao,niharika-rao-0773@seed.example
+42026BA-PSY014,4,CHRIST University,CHRIST-SOC,School of Social Sciences,2026,Niharika Singh,niharika-singh-0774@seed.example
+42026BA-PSY015,4,CHRIST University,CHRIST-SOC,School of Social Sciences,2026,Niharika Chawla,niharika-chawla-0775@seed.example
+42026BA-PSY016,4,CHRIST University,CHRIST-SOC,School of Social Sciences,2026,Niharika Das,niharika-das-0776@seed.example
+42026BA-PSY017,4,CHRIST University,CHRIST-SOC,School of Social Sciences,2026,Niharika Mittal,niharika-mittal-0777@seed.example
+42026BA-PSY018,4,CHRIST University,CHRIST-SOC,School of Social Sciences,2026,Niharika Joshi,niharika-joshi-0778@seed.example
+42026BA-PSY019,4,CHRIST University,CHRIST-SOC,School of Social Sciences,2026,Niharika Verma,niharika-verma-0779@seed.example
+42026BA-PSY020,4,CHRIST University,CHRIST-SOC,School of Social Sciences,2026,Niharika Pillai,niharika-pillai-0780@seed.example
+42027BA-MEDIA001,4,CHRIST University,CHRIST-MEDIA,Department of Media Studies,2027,Nitya Mehta,nitya-mehta-0781@seed.example
+42027BA-MEDIA002,4,CHRIST University,CHRIST-MEDIA,Department of Media Studies,2027,Nitya Nair,nitya-nair-0782@seed.example
+42027BA-MEDIA003,4,CHRIST University,CHRIST-MEDIA,Department of Media Studies,2027,Nitya Shah,nitya-shah-0783@seed.example
+42027BA-MEDIA004,4,CHRIST University,CHRIST-MEDIA,Department of Media Studies,2027,Nitya Sen,nitya-sen-0784@seed.example
+42027BA-MEDIA005,4,CHRIST University,CHRIST-MEDIA,Department of Media Studies,2027,Nitya Bhat,nitya-bhat-0785@seed.example
+42027BA-MEDIA006,4,CHRIST University,CHRIST-MEDIA,Department of Media Studies,2027,Nitya Roy,nitya-roy-0786@seed.example
+42027BA-MEDIA007,4,CHRIST University,CHRIST-MEDIA,Department of Media Studies,2027,Nitya Thomas,nitya-thomas-0787@seed.example
+42027BA-MEDIA008,4,CHRIST University,CHRIST-MEDIA,Department of Media Studies,2027,Nitya Kapoor,nitya-kapoor-0788@seed.example
+42027BA-MEDIA009,4,CHRIST University,CHRIST-MEDIA,Department of Media Studies,2027,Nitya Malhotra,nitya-malhotra-0789@seed.example
+42027BA-MEDIA010,4,CHRIST University,CHRIST-MEDIA,Department of Media Studies,2027,Nitya Arora,nitya-arora-0790@seed.example
+42027BA-MEDIA011,4,CHRIST University,CHRIST-MEDIA,Department of Media Studies,2027,Nitya Gupta,nitya-gupta-0791@seed.example
+42027BA-MEDIA012,4,CHRIST University,CHRIST-MEDIA,Department of Media Studies,2027,Nitya Jain,nitya-jain-0792@seed.example
+42027BA-MEDIA013,4,CHRIST University,CHRIST-MEDIA,Department of Media Studies,2027,Nitya Rao,nitya-rao-0793@seed.example
+42027BA-MEDIA014,4,CHRIST University,CHRIST-MEDIA,Department of Media Studies,2027,Nitya Singh,nitya-singh-0794@seed.example
+42027BA-MEDIA015,4,CHRIST University,CHRIST-MEDIA,Department of Media Studies,2027,Nitya Chawla,nitya-chawla-0795@seed.example
+42027BA-MEDIA016,4,CHRIST University,CHRIST-MEDIA,Department of Media Studies,2027,Nitya Das,nitya-das-0796@seed.example
+42027BA-MEDIA017,4,CHRIST University,CHRIST-MEDIA,Department of Media Studies,2027,Nitya Mittal,nitya-mittal-0797@seed.example
+42027BA-MEDIA018,4,CHRIST University,CHRIST-MEDIA,Department of Media Studies,2027,Nitya Joshi,nitya-joshi-0798@seed.example
+42027BA-MEDIA019,4,CHRIST University,CHRIST-MEDIA,Department of Media Studies,2027,Nitya Verma,nitya-verma-0799@seed.example
+42027BA-MEDIA020,4,CHRIST University,CHRIST-MEDIA,Department of Media Studies,2027,Nitya Pillai,nitya-pillai-0800@seed.example
+52026BTECH-CSE001,5,Manipal Academy of Higher Education,MAHE-MIT,Manipal Institute of Technology,2026,Om Mehta,om-mehta-0801@seed.example
+52026BTECH-CSE002,5,Manipal Academy of Higher Education,MAHE-MIT,Manipal Institute of Technology,2026,Om Nair,om-nair-0802@seed.example
+52026BTECH-CSE003,5,Manipal Academy of Higher Education,MAHE-MIT,Manipal Institute of Technology,2026,Om Shah,om-shah-0803@seed.example
+52026BTECH-CSE004,5,Manipal Academy of Higher Education,MAHE-MIT,Manipal Institute of Technology,2026,Om Sen,om-sen-0804@seed.example
+52026BTECH-CSE005,5,Manipal Academy of Higher Education,MAHE-MIT,Manipal Institute of Technology,2026,Om Bhat,om-bhat-0805@seed.example
+52026BTECH-CSE006,5,Manipal Academy of Higher Education,MAHE-MIT,Manipal Institute of Technology,2026,Om Roy,om-roy-0806@seed.example
+52026BTECH-CSE007,5,Manipal Academy of Higher Education,MAHE-MIT,Manipal Institute of Technology,2026,Om Thomas,om-thomas-0807@seed.example
+52026BTECH-CSE008,5,Manipal Academy of Higher Education,MAHE-MIT,Manipal Institute of Technology,2026,Om Kapoor,om-kapoor-0808@seed.example
+52026BTECH-CSE009,5,Manipal Academy of Higher Education,MAHE-MIT,Manipal Institute of Technology,2026,Om Malhotra,om-malhotra-0809@seed.example
+52026BTECH-CSE010,5,Manipal Academy of Higher Education,MAHE-MIT,Manipal Institute of Technology,2026,Om Arora,om-arora-0810@seed.example
+52026BTECH-CSE011,5,Manipal Academy of Higher Education,MAHE-MIT,Manipal Institute of Technology,2026,Om Gupta,om-gupta-0811@seed.example
+52026BTECH-CSE012,5,Manipal Academy of Higher Education,MAHE-MIT,Manipal Institute of Technology,2026,Om Jain,om-jain-0812@seed.example
+52026BTECH-CSE013,5,Manipal Academy of Higher Education,MAHE-MIT,Manipal Institute of Technology,2026,Om Rao,om-rao-0813@seed.example
+52026BTECH-CSE014,5,Manipal Academy of Higher Education,MAHE-MIT,Manipal Institute of Technology,2026,Om Singh,om-singh-0814@seed.example
+52026BTECH-CSE015,5,Manipal Academy of Higher Education,MAHE-MIT,Manipal Institute of Technology,2026,Om Chawla,om-chawla-0815@seed.example
+52026BTECH-CSE016,5,Manipal Academy of Higher Education,MAHE-MIT,Manipal Institute of Technology,2026,Om Das,om-das-0816@seed.example
+52026BTECH-CSE017,5,Manipal Academy of Higher Education,MAHE-MIT,Manipal Institute of Technology,2026,Om Mittal,om-mittal-0817@seed.example
+52026BTECH-CSE018,5,Manipal Academy of Higher Education,MAHE-MIT,Manipal Institute of Technology,2026,Om Joshi,om-joshi-0818@seed.example
+52026BTECH-CSE019,5,Manipal Academy of Higher Education,MAHE-MIT,Manipal Institute of Technology,2026,Om Verma,om-verma-0819@seed.example
+52026BTECH-CSE020,5,Manipal Academy of Higher Education,MAHE-MIT,Manipal Institute of Technology,2026,Om Pillai,om-pillai-0820@seed.example
+52027BSC-BIO001,5,Manipal Academy of Higher Education,MAHE-BIO,Manipal School of Life Sciences,2027,Parth Mehta,parth-mehta-0821@seed.example
+52027BSC-BIO002,5,Manipal Academy of Higher Education,MAHE-BIO,Manipal School of Life Sciences,2027,Parth Nair,parth-nair-0822@seed.example
+52027BSC-BIO003,5,Manipal Academy of Higher Education,MAHE-BIO,Manipal School of Life Sciences,2027,Parth Shah,parth-shah-0823@seed.example
+52027BSC-BIO004,5,Manipal Academy of Higher Education,MAHE-BIO,Manipal School of Life Sciences,2027,Parth Sen,parth-sen-0824@seed.example
+52027BSC-BIO005,5,Manipal Academy of Higher Education,MAHE-BIO,Manipal School of Life Sciences,2027,Parth Bhat,parth-bhat-0825@seed.example
+52027BSC-BIO006,5,Manipal Academy of Higher Education,MAHE-BIO,Manipal School of Life Sciences,2027,Parth Roy,parth-roy-0826@seed.example
+52027BSC-BIO007,5,Manipal Academy of Higher Education,MAHE-BIO,Manipal School of Life Sciences,2027,Parth Thomas,parth-thomas-0827@seed.example
+52027BSC-BIO008,5,Manipal Academy of Higher Education,MAHE-BIO,Manipal School of Life Sciences,2027,Parth Kapoor,parth-kapoor-0828@seed.example
+52027BSC-BIO009,5,Manipal Academy of Higher Education,MAHE-BIO,Manipal School of Life Sciences,2027,Parth Malhotra,parth-malhotra-0829@seed.example
+52027BSC-BIO010,5,Manipal Academy of Higher Education,MAHE-BIO,Manipal School of Life Sciences,2027,Parth Arora,parth-arora-0830@seed.example
+52027BSC-BIO011,5,Manipal Academy of Higher Education,MAHE-BIO,Manipal School of Life Sciences,2027,Parth Gupta,parth-gupta-0831@seed.example
+52027BSC-BIO012,5,Manipal Academy of Higher Education,MAHE-BIO,Manipal School of Life Sciences,2027,Parth Jain,parth-jain-0832@seed.example
+52027BSC-BIO013,5,Manipal Academy of Higher Education,MAHE-BIO,Manipal School of Life Sciences,2027,Parth Rao,parth-rao-0833@seed.example
+52027BSC-BIO014,5,Manipal Academy of Higher Education,MAHE-BIO,Manipal School of Life Sciences,2027,Parth Singh,parth-singh-0834@seed.example
+52027BSC-BIO015,5,Manipal Academy of Higher Education,MAHE-BIO,Manipal School of Life Sciences,2027,Parth Chawla,parth-chawla-0835@seed.example
+52027BSC-BIO016,5,Manipal Academy of Higher Education,MAHE-BIO,Manipal School of Life Sciences,2027,Parth Das,parth-das-0836@seed.example
+52027BSC-BIO017,5,Manipal Academy of Higher Education,MAHE-BIO,Manipal School of Life Sciences,2027,Parth Mittal,parth-mittal-0837@seed.example
+52027BSC-BIO018,5,Manipal Academy of Higher Education,MAHE-BIO,Manipal School of Life Sciences,2027,Parth Joshi,parth-joshi-0838@seed.example
+52027BSC-BIO019,5,Manipal Academy of Higher Education,MAHE-BIO,Manipal School of Life Sciences,2027,Parth Verma,parth-verma-0839@seed.example
+52027BSC-BIO020,5,Manipal Academy of Higher Education,MAHE-BIO,Manipal School of Life Sciences,2027,Parth Pillai,parth-pillai-0840@seed.example
+52026BSC-CHEM001,5,Manipal Academy of Higher Education,MAHE-SCI,Department of Sciences,2026,Pranav Mehta,pranav-mehta-0841@seed.example
+52026BSC-CHEM002,5,Manipal Academy of Higher Education,MAHE-SCI,Department of Sciences,2026,Pranav Nair,pranav-nair-0842@seed.example
+52026BSC-CHEM003,5,Manipal Academy of Higher Education,MAHE-SCI,Department of Sciences,2026,Pranav Shah,pranav-shah-0843@seed.example
+52026BSC-CHEM004,5,Manipal Academy of Higher Education,MAHE-SCI,Department of Sciences,2026,Pranav Sen,pranav-sen-0844@seed.example
+52026BSC-CHEM005,5,Manipal Academy of Higher Education,MAHE-SCI,Department of Sciences,2026,Pranav Bhat,pranav-bhat-0845@seed.example
+52026BSC-CHEM006,5,Manipal Academy of Higher Education,MAHE-SCI,Department of Sciences,2026,Pranav Roy,pranav-roy-0846@seed.example
+52026BSC-CHEM007,5,Manipal Academy of Higher Education,MAHE-SCI,Department of Sciences,2026,Pranav Thomas,pranav-thomas-0847@seed.example
+52026BSC-CHEM008,5,Manipal Academy of Higher Education,MAHE-SCI,Department of Sciences,2026,Pranav Kapoor,pranav-kapoor-0848@seed.example
+52026BSC-CHEM009,5,Manipal Academy of Higher Education,MAHE-SCI,Department of Sciences,2026,Pranav Malhotra,pranav-malhotra-0849@seed.example
+52026BSC-CHEM010,5,Manipal Academy of Higher Education,MAHE-SCI,Department of Sciences,2026,Pranav Arora,pranav-arora-0850@seed.example
+52026BSC-CHEM011,5,Manipal Academy of Higher Education,MAHE-SCI,Department of Sciences,2026,Pranav Gupta,pranav-gupta-0851@seed.example
+52026BSC-CHEM012,5,Manipal Academy of Higher Education,MAHE-SCI,Department of Sciences,2026,Pranav Jain,pranav-jain-0852@seed.example
+52026BSC-CHEM013,5,Manipal Academy of Higher Education,MAHE-SCI,Department of Sciences,2026,Pranav Rao,pranav-rao-0853@seed.example
+52026BSC-CHEM014,5,Manipal Academy of Higher Education,MAHE-SCI,Department of Sciences,2026,Pranav Singh,pranav-singh-0854@seed.example
+52026BSC-CHEM015,5,Manipal Academy of Higher Education,MAHE-SCI,Department of Sciences,2026,Pranav Chawla,pranav-chawla-0855@seed.example
+52026BSC-CHEM016,5,Manipal Academy of Higher Education,MAHE-SCI,Department of Sciences,2026,Pranav Das,pranav-das-0856@seed.example
+52026BSC-CHEM017,5,Manipal Academy of Higher Education,MAHE-SCI,Department of Sciences,2026,Pranav Mittal,pranav-mittal-0857@seed.example
+52026BSC-CHEM018,5,Manipal Academy of Higher Education,MAHE-SCI,Department of Sciences,2026,Pranav Joshi,pranav-joshi-0858@seed.example
+52026BSC-CHEM019,5,Manipal Academy of Higher Education,MAHE-SCI,Department of Sciences,2026,Pranav Verma,pranav-verma-0859@seed.example
+52026BSC-CHEM020,5,Manipal Academy of Higher Education,MAHE-SCI,Department of Sciences,2026,Pranav Pillai,pranav-pillai-0860@seed.example
+52027BSC-PHY001,5,Manipal Academy of Higher Education,MAHE-PHY,Department of Atomic and Molecular Physics,2027,Priya Mehta,priya-mehta-0861@seed.example
+52027BSC-PHY002,5,Manipal Academy of Higher Education,MAHE-PHY,Department of Atomic and Molecular Physics,2027,Priya Nair,priya-nair-0862@seed.example
+52027BSC-PHY003,5,Manipal Academy of Higher Education,MAHE-PHY,Department of Atomic and Molecular Physics,2027,Priya Shah,priya-shah-0863@seed.example
+52027BSC-PHY004,5,Manipal Academy of Higher Education,MAHE-PHY,Department of Atomic and Molecular Physics,2027,Priya Sen,priya-sen-0864@seed.example
+52027BSC-PHY005,5,Manipal Academy of Higher Education,MAHE-PHY,Department of Atomic and Molecular Physics,2027,Priya Bhat,priya-bhat-0865@seed.example
+52027BSC-PHY006,5,Manipal Academy of Higher Education,MAHE-PHY,Department of Atomic and Molecular Physics,2027,Priya Roy,priya-roy-0866@seed.example
+52027BSC-PHY007,5,Manipal Academy of Higher Education,MAHE-PHY,Department of Atomic and Molecular Physics,2027,Priya Thomas,priya-thomas-0867@seed.example
+52027BSC-PHY008,5,Manipal Academy of Higher Education,MAHE-PHY,Department of Atomic and Molecular Physics,2027,Priya Kapoor,priya-kapoor-0868@seed.example
+52027BSC-PHY009,5,Manipal Academy of Higher Education,MAHE-PHY,Department of Atomic and Molecular Physics,2027,Priya Malhotra,priya-malhotra-0869@seed.example
+52027BSC-PHY010,5,Manipal Academy of Higher Education,MAHE-PHY,Department of Atomic and Molecular Physics,2027,Priya Arora,priya-arora-0870@seed.example
+52027BSC-PHY011,5,Manipal Academy of Higher Education,MAHE-PHY,Department of Atomic and Molecular Physics,2027,Priya Gupta,priya-gupta-0871@seed.example
+52027BSC-PHY012,5,Manipal Academy of Higher Education,MAHE-PHY,Department of Atomic and Molecular Physics,2027,Priya Jain,priya-jain-0872@seed.example
+52027BSC-PHY013,5,Manipal Academy of Higher Education,MAHE-PHY,Department of Atomic and Molecular Physics,2027,Priya Rao,priya-rao-0873@seed.example
+52027BSC-PHY014,5,Manipal Academy of Higher Education,MAHE-PHY,Department of Atomic and Molecular Physics,2027,Priya Singh,priya-singh-0874@seed.example
+52027BSC-PHY015,5,Manipal Academy of Higher Education,MAHE-PHY,Department of Atomic and Molecular Physics,2027,Priya Chawla,priya-chawla-0875@seed.example
+52027BSC-PHY016,5,Manipal Academy of Higher Education,MAHE-PHY,Department of Atomic and Molecular Physics,2027,Priya Das,priya-das-0876@seed.example
+52027BSC-PHY017,5,Manipal Academy of Higher Education,MAHE-PHY,Department of Atomic and Molecular Physics,2027,Priya Mittal,priya-mittal-0877@seed.example
+52027BSC-PHY018,5,Manipal Academy of Higher Education,MAHE-PHY,Department of Atomic and Molecular Physics,2027,Priya Joshi,priya-joshi-0878@seed.example
+52027BSC-PHY019,5,Manipal Academy of Higher Education,MAHE-PHY,Department of Atomic and Molecular Physics,2027,Priya Verma,priya-verma-0879@seed.example
+52027BSC-PHY020,5,Manipal Academy of Higher Education,MAHE-PHY,Department of Atomic and Molecular Physics,2027,Priya Pillai,priya-pillai-0880@seed.example
+52026BARCH001,5,Manipal Academy of Higher Education,MAHE-ARCH,Manipal School of Architecture and Planning,2026,Raghav Mehta,raghav-mehta-0881@seed.example
+52026BARCH002,5,Manipal Academy of Higher Education,MAHE-ARCH,Manipal School of Architecture and Planning,2026,Raghav Nair,raghav-nair-0882@seed.example
+52026BARCH003,5,Manipal Academy of Higher Education,MAHE-ARCH,Manipal School of Architecture and Planning,2026,Raghav Shah,raghav-shah-0883@seed.example
+52026BARCH004,5,Manipal Academy of Higher Education,MAHE-ARCH,Manipal School of Architecture and Planning,2026,Raghav Sen,raghav-sen-0884@seed.example
+52026BARCH005,5,Manipal Academy of Higher Education,MAHE-ARCH,Manipal School of Architecture and Planning,2026,Raghav Bhat,raghav-bhat-0885@seed.example
+52026BARCH006,5,Manipal Academy of Higher Education,MAHE-ARCH,Manipal School of Architecture and Planning,2026,Raghav Roy,raghav-roy-0886@seed.example
+52026BARCH007,5,Manipal Academy of Higher Education,MAHE-ARCH,Manipal School of Architecture and Planning,2026,Raghav Thomas,raghav-thomas-0887@seed.example
+52026BARCH008,5,Manipal Academy of Higher Education,MAHE-ARCH,Manipal School of Architecture and Planning,2026,Raghav Kapoor,raghav-kapoor-0888@seed.example
+52026BARCH009,5,Manipal Academy of Higher Education,MAHE-ARCH,Manipal School of Architecture and Planning,2026,Raghav Malhotra,raghav-malhotra-0889@seed.example
+52026BARCH010,5,Manipal Academy of Higher Education,MAHE-ARCH,Manipal School of Architecture and Planning,2026,Raghav Arora,raghav-arora-0890@seed.example
+52026BARCH011,5,Manipal Academy of Higher Education,MAHE-ARCH,Manipal School of Architecture and Planning,2026,Raghav Gupta,raghav-gupta-0891@seed.example
+52026BARCH012,5,Manipal Academy of Higher Education,MAHE-ARCH,Manipal School of Architecture and Planning,2026,Raghav Jain,raghav-jain-0892@seed.example
+52026BARCH013,5,Manipal Academy of Higher Education,MAHE-ARCH,Manipal School of Architecture and Planning,2026,Raghav Rao,raghav-rao-0893@seed.example
+52026BARCH014,5,Manipal Academy of Higher Education,MAHE-ARCH,Manipal School of Architecture and Planning,2026,Raghav Singh,raghav-singh-0894@seed.example
+52026BARCH015,5,Manipal Academy of Higher Education,MAHE-ARCH,Manipal School of Architecture and Planning,2026,Raghav Chawla,raghav-chawla-0895@seed.example
+52026BARCH016,5,Manipal Academy of Higher Education,MAHE-ARCH,Manipal School of Architecture and Planning,2026,Raghav Das,raghav-das-0896@seed.example
+52026BARCH017,5,Manipal Academy of Higher Education,MAHE-ARCH,Manipal School of Architecture and Planning,2026,Raghav Mittal,raghav-mittal-0897@seed.example
+52026BARCH018,5,Manipal Academy of Higher Education,MAHE-ARCH,Manipal School of Architecture and Planning,2026,Raghav Joshi,raghav-joshi-0898@seed.example
+52026BARCH019,5,Manipal Academy of Higher Education,MAHE-ARCH,Manipal School of Architecture and Planning,2026,Raghav Verma,raghav-verma-0899@seed.example
+52026BARCH020,5,Manipal Academy of Higher Education,MAHE-ARCH,Manipal School of Architecture and Planning,2026,Raghav Pillai,raghav-pillai-0900@seed.example
+52027B.DES001,5,Manipal Academy of Higher Education,MAHE-DESIGN,Department of Design,2027,Reyansh Mehta,reyansh-mehta-0901@seed.example
+52027B.DES002,5,Manipal Academy of Higher Education,MAHE-DESIGN,Department of Design,2027,Reyansh Nair,reyansh-nair-0902@seed.example
+52027B.DES003,5,Manipal Academy of Higher Education,MAHE-DESIGN,Department of Design,2027,Reyansh Shah,reyansh-shah-0903@seed.example
+52027B.DES004,5,Manipal Academy of Higher Education,MAHE-DESIGN,Department of Design,2027,Reyansh Sen,reyansh-sen-0904@seed.example
+52027B.DES005,5,Manipal Academy of Higher Education,MAHE-DESIGN,Department of Design,2027,Reyansh Bhat,reyansh-bhat-0905@seed.example
+52027B.DES006,5,Manipal Academy of Higher Education,MAHE-DESIGN,Department of Design,2027,Reyansh Roy,reyansh-roy-0906@seed.example
+52027B.DES007,5,Manipal Academy of Higher Education,MAHE-DESIGN,Department of Design,2027,Reyansh Thomas,reyansh-thomas-0907@seed.example
+52027B.DES008,5,Manipal Academy of Higher Education,MAHE-DESIGN,Department of Design,2027,Reyansh Kapoor,reyansh-kapoor-0908@seed.example
+52027B.DES009,5,Manipal Academy of Higher Education,MAHE-DESIGN,Department of Design,2027,Reyansh Malhotra,reyansh-malhotra-0909@seed.example
+52027B.DES010,5,Manipal Academy of Higher Education,MAHE-DESIGN,Department of Design,2027,Reyansh Arora,reyansh-arora-0910@seed.example
+52027B.DES011,5,Manipal Academy of Higher Education,MAHE-DESIGN,Department of Design,2027,Reyansh Gupta,reyansh-gupta-0911@seed.example
+52027B.DES012,5,Manipal Academy of Higher Education,MAHE-DESIGN,Department of Design,2027,Reyansh Jain,reyansh-jain-0912@seed.example
+52027B.DES013,5,Manipal Academy of Higher Education,MAHE-DESIGN,Department of Design,2027,Reyansh Rao,reyansh-rao-0913@seed.example
+52027B.DES014,5,Manipal Academy of Higher Education,MAHE-DESIGN,Department of Design,2027,Reyansh Singh,reyansh-singh-0914@seed.example
+52027B.DES015,5,Manipal Academy of Higher Education,MAHE-DESIGN,Department of Design,2027,Reyansh Chawla,reyansh-chawla-0915@seed.example
+52027B.DES016,5,Manipal Academy of Higher Education,MAHE-DESIGN,Department of Design,2027,Reyansh Das,reyansh-das-0916@seed.example
+52027B.DES017,5,Manipal Academy of Higher Education,MAHE-DESIGN,Department of Design,2027,Reyansh Mittal,reyansh-mittal-0917@seed.example
+52027B.DES018,5,Manipal Academy of Higher Education,MAHE-DESIGN,Department of Design,2027,Reyansh Joshi,reyansh-joshi-0918@seed.example
+52027B.DES019,5,Manipal Academy of Higher Education,MAHE-DESIGN,Department of Design,2027,Reyansh Verma,reyansh-verma-0919@seed.example
+52027B.DES020,5,Manipal Academy of Higher Education,MAHE-DESIGN,Department of Design,2027,Reyansh Pillai,reyansh-pillai-0920@seed.example
+52026MBA001,5,Manipal Academy of Higher Education,MAHE-MGMT,Manipal Institute of Management,2026,Riya Mehta,riya-mehta-0921@seed.example
+52026MBA002,5,Manipal Academy of Higher Education,MAHE-MGMT,Manipal Institute of Management,2026,Riya Nair,riya-nair-0922@seed.example
+52026MBA003,5,Manipal Academy of Higher Education,MAHE-MGMT,Manipal Institute of Management,2026,Riya Shah,riya-shah-0923@seed.example
+52026MBA004,5,Manipal Academy of Higher Education,MAHE-MGMT,Manipal Institute of Management,2026,Riya Sen,riya-sen-0924@seed.example
+52026MBA005,5,Manipal Academy of Higher Education,MAHE-MGMT,Manipal Institute of Management,2026,Riya Bhat,riya-bhat-0925@seed.example
+52026MBA006,5,Manipal Academy of Higher Education,MAHE-MGMT,Manipal Institute of Management,2026,Riya Roy,riya-roy-0926@seed.example
+52026MBA007,5,Manipal Academy of Higher Education,MAHE-MGMT,Manipal Institute of Management,2026,Riya Thomas,riya-thomas-0927@seed.example
+52026MBA008,5,Manipal Academy of Higher Education,MAHE-MGMT,Manipal Institute of Management,2026,Riya Kapoor,riya-kapoor-0928@seed.example
+52026MBA009,5,Manipal Academy of Higher Education,MAHE-MGMT,Manipal Institute of Management,2026,Riya Malhotra,riya-malhotra-0929@seed.example
+52026MBA010,5,Manipal Academy of Higher Education,MAHE-MGMT,Manipal Institute of Management,2026,Riya Arora,riya-arora-0930@seed.example
+52026MBA011,5,Manipal Academy of Higher Education,MAHE-MGMT,Manipal Institute of Management,2026,Riya Gupta,riya-gupta-0931@seed.example
+52026MBA012,5,Manipal Academy of Higher Education,MAHE-MGMT,Manipal Institute of Management,2026,Riya Jain,riya-jain-0932@seed.example
+52026MBA013,5,Manipal Academy of Higher Education,MAHE-MGMT,Manipal Institute of Management,2026,Riya Rao,riya-rao-0933@seed.example
+52026MBA014,5,Manipal Academy of Higher Education,MAHE-MGMT,Manipal Institute of Management,2026,Riya Singh,riya-singh-0934@seed.example
+52026MBA015,5,Manipal Academy of Higher Education,MAHE-MGMT,Manipal Institute of Management,2026,Riya Chawla,riya-chawla-0935@seed.example
+52026MBA016,5,Manipal Academy of Higher Education,MAHE-MGMT,Manipal Institute of Management,2026,Riya Das,riya-das-0936@seed.example
+52026MBA017,5,Manipal Academy of Higher Education,MAHE-MGMT,Manipal Institute of Management,2026,Riya Mittal,riya-mittal-0937@seed.example
+52026MBA018,5,Manipal Academy of Higher Education,MAHE-MGMT,Manipal Institute of Management,2026,Riya Joshi,riya-joshi-0938@seed.example
+52026MBA019,5,Manipal Academy of Higher Education,MAHE-MGMT,Manipal Institute of Management,2026,Riya Verma,riya-verma-0939@seed.example
+52026MBA020,5,Manipal Academy of Higher Education,MAHE-MGMT,Manipal Institute of Management,2026,Riya Pillai,riya-pillai-0940@seed.example
+52027BCom001,5,Manipal Academy of Higher Education,MAHE-COM,Department of Commerce,2027,Rohan Mehta,rohan-mehta-0941@seed.example
+52027BCom002,5,Manipal Academy of Higher Education,MAHE-COM,Department of Commerce,2027,Rohan Nair,rohan-nair-0942@seed.example
+52027BCom003,5,Manipal Academy of Higher Education,MAHE-COM,Department of Commerce,2027,Rohan Shah,rohan-shah-0943@seed.example
+52027BCom004,5,Manipal Academy of Higher Education,MAHE-COM,Department of Commerce,2027,Rohan Sen,rohan-sen-0944@seed.example
+52027BCom005,5,Manipal Academy of Higher Education,MAHE-COM,Department of Commerce,2027,Rohan Bhat,rohan-bhat-0945@seed.example
+52027BCom006,5,Manipal Academy of Higher Education,MAHE-COM,Department of Commerce,2027,Rohan Roy,rohan-roy-0946@seed.example
+52027BCom007,5,Manipal Academy of Higher Education,MAHE-COM,Department of Commerce,2027,Rohan Thomas,rohan-thomas-0947@seed.example
+52027BCom008,5,Manipal Academy of Higher Education,MAHE-COM,Department of Commerce,2027,Rohan Kapoor,rohan-kapoor-0948@seed.example
+52027BCom009,5,Manipal Academy of Higher Education,MAHE-COM,Department of Commerce,2027,Rohan Malhotra,rohan-malhotra-0949@seed.example
+52027BCom010,5,Manipal Academy of Higher Education,MAHE-COM,Department of Commerce,2027,Rohan Arora,rohan-arora-0950@seed.example
+52027BCom011,5,Manipal Academy of Higher Education,MAHE-COM,Department of Commerce,2027,Rohan Gupta,rohan-gupta-0951@seed.example
+52027BCom012,5,Manipal Academy of Higher Education,MAHE-COM,Department of Commerce,2027,Rohan Jain,rohan-jain-0952@seed.example
+52027BCom013,5,Manipal Academy of Higher Education,MAHE-COM,Department of Commerce,2027,Rohan Rao,rohan-rao-0953@seed.example
+52027BCom014,5,Manipal Academy of Higher Education,MAHE-COM,Department of Commerce,2027,Rohan Singh,rohan-singh-0954@seed.example
+52027BCom015,5,Manipal Academy of Higher Education,MAHE-COM,Department of Commerce,2027,Rohan Chawla,rohan-chawla-0955@seed.example
+52027BCom016,5,Manipal Academy of Higher Education,MAHE-COM,Department of Commerce,2027,Rohan Das,rohan-das-0956@seed.example
+52027BCom017,5,Manipal Academy of Higher Education,MAHE-COM,Department of Commerce,2027,Rohan Mittal,rohan-mittal-0957@seed.example
+52027BCom018,5,Manipal Academy of Higher Education,MAHE-COM,Department of Commerce,2027,Rohan Joshi,rohan-joshi-0958@seed.example
+52027BCom019,5,Manipal Academy of Higher Education,MAHE-COM,Department of Commerce,2027,Rohan Verma,rohan-verma-0959@seed.example
+52027BCom020,5,Manipal Academy of Higher Education,MAHE-COM,Department of Commerce,2027,Rohan Pillai,rohan-pillai-0960@seed.example
+52026BA-LA001,5,Manipal Academy of Higher Education,MAHE-LA,Department of Liberal Arts Humanities and Social Sciences,2026,Saanvi Mehta,saanvi-mehta-0961@seed.example
+52026BA-LA002,5,Manipal Academy of Higher Education,MAHE-LA,Department of Liberal Arts Humanities and Social Sciences,2026,Saanvi Nair,saanvi-nair-0962@seed.example
+52026BA-LA003,5,Manipal Academy of Higher Education,MAHE-LA,Department of Liberal Arts Humanities and Social Sciences,2026,Saanvi Shah,saanvi-shah-0963@seed.example
+52026BA-LA004,5,Manipal Academy of Higher Education,MAHE-LA,Department of Liberal Arts Humanities and Social Sciences,2026,Saanvi Sen,saanvi-sen-0964@seed.example
+52026BA-LA005,5,Manipal Academy of Higher Education,MAHE-LA,Department of Liberal Arts Humanities and Social Sciences,2026,Saanvi Bhat,saanvi-bhat-0965@seed.example
+52026BA-LA006,5,Manipal Academy of Higher Education,MAHE-LA,Department of Liberal Arts Humanities and Social Sciences,2026,Saanvi Roy,saanvi-roy-0966@seed.example
+52026BA-LA007,5,Manipal Academy of Higher Education,MAHE-LA,Department of Liberal Arts Humanities and Social Sciences,2026,Saanvi Thomas,saanvi-thomas-0967@seed.example
+52026BA-LA008,5,Manipal Academy of Higher Education,MAHE-LA,Department of Liberal Arts Humanities and Social Sciences,2026,Saanvi Kapoor,saanvi-kapoor-0968@seed.example
+52026BA-LA009,5,Manipal Academy of Higher Education,MAHE-LA,Department of Liberal Arts Humanities and Social Sciences,2026,Saanvi Malhotra,saanvi-malhotra-0969@seed.example
+52026BA-LA010,5,Manipal Academy of Higher Education,MAHE-LA,Department of Liberal Arts Humanities and Social Sciences,2026,Saanvi Arora,saanvi-arora-0970@seed.example
+52026BA-LA011,5,Manipal Academy of Higher Education,MAHE-LA,Department of Liberal Arts Humanities and Social Sciences,2026,Saanvi Gupta,saanvi-gupta-0971@seed.example
+52026BA-LA012,5,Manipal Academy of Higher Education,MAHE-LA,Department of Liberal Arts Humanities and Social Sciences,2026,Saanvi Jain,saanvi-jain-0972@seed.example
+52026BA-LA013,5,Manipal Academy of Higher Education,MAHE-LA,Department of Liberal Arts Humanities and Social Sciences,2026,Saanvi Rao,saanvi-rao-0973@seed.example
+52026BA-LA014,5,Manipal Academy of Higher Education,MAHE-LA,Department of Liberal Arts Humanities and Social Sciences,2026,Saanvi Singh,saanvi-singh-0974@seed.example
+52026BA-LA015,5,Manipal Academy of Higher Education,MAHE-LA,Department of Liberal Arts Humanities and Social Sciences,2026,Saanvi Chawla,saanvi-chawla-0975@seed.example
+52026BA-LA016,5,Manipal Academy of Higher Education,MAHE-LA,Department of Liberal Arts Humanities and Social Sciences,2026,Saanvi Das,saanvi-das-0976@seed.example
+52026BA-LA017,5,Manipal Academy of Higher Education,MAHE-LA,Department of Liberal Arts Humanities and Social Sciences,2026,Saanvi Mittal,saanvi-mittal-0977@seed.example
+52026BA-LA018,5,Manipal Academy of Higher Education,MAHE-LA,Department of Liberal Arts Humanities and Social Sciences,2026,Saanvi Joshi,saanvi-joshi-0978@seed.example
+52026BA-LA019,5,Manipal Academy of Higher Education,MAHE-LA,Department of Liberal Arts Humanities and Social Sciences,2026,Saanvi Verma,saanvi-verma-0979@seed.example
+52026BA-LA020,5,Manipal Academy of Higher Education,MAHE-LA,Department of Liberal Arts Humanities and Social Sciences,2026,Saanvi Pillai,saanvi-pillai-0980@seed.example
+52027BHM001,5,Manipal Academy of Higher Education,MAHE-HOTEL,Welcomgroup Graduate School of Hotel Administration,2027,Samaira Mehta,samaira-mehta-0981@seed.example
+52027BHM002,5,Manipal Academy of Higher Education,MAHE-HOTEL,Welcomgroup Graduate School of Hotel Administration,2027,Samaira Nair,samaira-nair-0982@seed.example
+52027BHM003,5,Manipal Academy of Higher Education,MAHE-HOTEL,Welcomgroup Graduate School of Hotel Administration,2027,Samaira Shah,samaira-shah-0983@seed.example
+52027BHM004,5,Manipal Academy of Higher Education,MAHE-HOTEL,Welcomgroup Graduate School of Hotel Administration,2027,Samaira Sen,samaira-sen-0984@seed.example
+52027BHM005,5,Manipal Academy of Higher Education,MAHE-HOTEL,Welcomgroup Graduate School of Hotel Administration,2027,Samaira Bhat,samaira-bhat-0985@seed.example
+52027BHM006,5,Manipal Academy of Higher Education,MAHE-HOTEL,Welcomgroup Graduate School of Hotel Administration,2027,Samaira Roy,samaira-roy-0986@seed.example
+52027BHM007,5,Manipal Academy of Higher Education,MAHE-HOTEL,Welcomgroup Graduate School of Hotel Administration,2027,Samaira Thomas,samaira-thomas-0987@seed.example
+52027BHM008,5,Manipal Academy of Higher Education,MAHE-HOTEL,Welcomgroup Graduate School of Hotel Administration,2027,Samaira Kapoor,samaira-kapoor-0988@seed.example
+52027BHM009,5,Manipal Academy of Higher Education,MAHE-HOTEL,Welcomgroup Graduate School of Hotel Administration,2027,Samaira Malhotra,samaira-malhotra-0989@seed.example
+52027BHM010,5,Manipal Academy of Higher Education,MAHE-HOTEL,Welcomgroup Graduate School of Hotel Administration,2027,Samaira Arora,samaira-arora-0990@seed.example
+52027BHM011,5,Manipal Academy of Higher Education,MAHE-HOTEL,Welcomgroup Graduate School of Hotel Administration,2027,Samaira Gupta,samaira-gupta-0991@seed.example
+52027BHM012,5,Manipal Academy of Higher Education,MAHE-HOTEL,Welcomgroup Graduate School of Hotel Administration,2027,Samaira Jain,samaira-jain-0992@seed.example
+52027BHM013,5,Manipal Academy of Higher Education,MAHE-HOTEL,Welcomgroup Graduate School of Hotel Administration,2027,Samaira Rao,samaira-rao-0993@seed.example
+52027BHM014,5,Manipal Academy of Higher Education,MAHE-HOTEL,Welcomgroup Graduate School of Hotel Administration,2027,Samaira Singh,samaira-singh-0994@seed.example
+52027BHM015,5,Manipal Academy of Higher Education,MAHE-HOTEL,Welcomgroup Graduate School of Hotel Administration,2027,Samaira Chawla,samaira-chawla-0995@seed.example
+52027BHM016,5,Manipal Academy of Higher Education,MAHE-HOTEL,Welcomgroup Graduate School of Hotel Administration,2027,Samaira Das,samaira-das-0996@seed.example
+52027BHM017,5,Manipal Academy of Higher Education,MAHE-HOTEL,Welcomgroup Graduate School of Hotel Administration,2027,Samaira Mittal,samaira-mittal-0997@seed.example
+52027BHM018,5,Manipal Academy of Higher Education,MAHE-HOTEL,Welcomgroup Graduate School of Hotel Administration,2027,Samaira Joshi,samaira-joshi-0998@seed.example
+52027BHM019,5,Manipal Academy of Higher Education,MAHE-HOTEL,Welcomgroup Graduate School of Hotel Administration,2027,Samaira Verma,samaira-verma-0999@seed.example
+52027BHM020,5,Manipal Academy of Higher Education,MAHE-HOTEL,Welcomgroup Graduate School of Hotel Administration,2027,Samaira Pillai,samaira-pillai-1000@seed.example

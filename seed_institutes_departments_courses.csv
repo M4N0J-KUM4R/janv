@@ -1,0 +1,51 @@
+institute_id,institute_name,department_id,department_name
+1,IIT Bombay,IITB-AERO,Aerospace Engineering
+1,IIT Bombay,IITB-BIO,Biosciences and Bioengineering
+1,IIT Bombay,IITB-CHE,Chemical Engineering
+1,IIT Bombay,IITB-CIV,Civil Engineering
+1,IIT Bombay,IITB-CSE,Computer Science and Engineering
+1,IIT Bombay,IITB-EE,Electrical Engineering
+1,IIT Bombay,IITB-ES,Energy Science and Engineering
+1,IIT Bombay,IITB-ME,Mechanical Engineering
+1,IIT Bombay,IITB-MSM,Metallurgical Engineering and Materials Science
+1,IIT Bombay,IITB-MATH,Mathematics
+2,IIT Delhi,IITD-AM,Applied Mechanics
+2,IIT Delhi,IITD-BB,Biochemical Engineering and Biotechnology
+2,IIT Delhi,IITD-CH,Chemical Engineering
+2,IIT Delhi,IITD-CE,Civil and Environmental Engineering
+2,IIT Delhi,IITD-CS,Computer Science and Engineering
+2,IIT Delhi,IITD-EE,Electrical Engineering
+2,IIT Delhi,IITD-ES,Energy Science and Engineering
+2,IIT Delhi,IITD-MGMT,Management Studies
+2,IIT Delhi,IITD-MATH,Mathematics
+2,IIT Delhi,IITD-ME,Mechanical Engineering
+3,Vellore Institute of Technology,VIT-BIO,School of Bio Sciences and Technology
+3,Vellore Institute of Technology,VIT-CHEM,School of Chemical Engineering
+3,Vellore Institute of Technology,VIT-CIV,School of Civil Engineering
+3,Vellore Institute of Technology,VIT-CS,School of Computer Science and Engineering
+3,Vellore Institute of Technology,VIT-EC,School of Electronics Engineering
+3,Vellore Institute of Technology,VIT-EE,School of Electrical Engineering
+3,Vellore Institute of Technology,VIT-MECH,School of Mechanical Engineering
+3,Vellore Institute of Technology,VIT-MGMT,VIT Business School
+3,Vellore Institute of Technology,VIT-SCI,School of Advanced Sciences
+3,Vellore Institute of Technology,VIT-HS,School of Social Sciences and Languages
+4,CHRIST University,CHRIST-ARCH,School of Architecture
+4,CHRIST University,CHRIST-ARTS,School of Arts and Humanities
+4,CHRIST University,CHRIST-BUS,School of Business and Management
+4,CHRIST University,CHRIST-COM,School of Commerce Finance and Accountancy
+4,CHRIST University,CHRIST-EDU,School of Education
+4,CHRIST University,CHRIST-ENG,School of Engineering and Technology
+4,CHRIST University,CHRIST-LAW,School of Law
+4,CHRIST University,CHRIST-SCI,School of Sciences
+4,CHRIST University,CHRIST-SOC,School of Social Sciences
+4,CHRIST University,CHRIST-MEDIA,Department of Media Studies
+5,Manipal Academy of Higher Education,MAHE-MIT,Manipal Institute of Technology
+5,Manipal Academy of Higher Education,MAHE-BIO,Manipal School of Life Sciences
+5,Manipal Academy of Higher Education,MAHE-SCI,Department of Sciences
+5,Manipal Academy of Higher Education,MAHE-PHY,Department of Atomic and Molecular Physics
+5,Manipal Academy of Higher Education,MAHE-ARCH,Manipal School of Architecture and Planning
+5,Manipal Academy of Higher Education,MAHE-DESIGN,Department of Design
+5,Manipal Academy of Higher Education,MAHE-MGMT,Manipal Institute of Management
+5,Manipal Academy of Higher Education,MAHE-COM,Department of Commerce
+5,Manipal Academy of Higher Education,MAHE-LA,Department of Liberal Arts Humanities and Social Sciences
+5,Manipal Academy of Higher Education,MAHE-HOTEL,Welcomgroup Graduate School of Hotel Administration

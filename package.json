@@ -1,0 +1,17 @@
+{
+  "devDependencies": {
+    "@playwright/test": "^1.63.0"
+  },
+  "scripts": {
+    "claude:status": "bash tools/claude-loop.sh status",
+    "claude:scan": "bash tools/claude-loop.sh scan",
+    "claude:smart": "bash tools/claude-loop.sh smart",
+    "claude:frontend": "bash tools/claude-loop.sh frontend",
+    "claude:frontend:e2e": "bash tools/claude-loop.sh frontend-e2e",
+    "claude:backend": "bash tools/claude-loop.sh backend",
+    "claude:all": "bash tools/claude-loop.sh all",
+    "claude:proxy": "bash tools/start-llm-proxy.sh",
+    "claude:nvidia": "bash tools/claude-via-nvidia.sh",
+    "claude:worktree": "bash tools/claude-worktree.sh"
+  }
+}

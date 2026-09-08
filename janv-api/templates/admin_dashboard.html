@@ -1,0 +1,306 @@
+<div class="min-h-screen w-full flex bg-[#141314] text-white">
+    <!-- Left Sidebar Navigation: surface-container-low (L1) with no borders -->
+    <aside class="w-64 bg-[#1c1b1c] flex flex-col justify-between p-8 shrink-0 relative z-20">
+        <div class="space-y-12">
+            <!-- Sidebar Header / Logo -->
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 bg-[#fd551d] flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-red-500/10">
+                    <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+                    </svg>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xs font-black tracking-widest text-white uppercase font-mono leading-none">SENTINEL</span>
+                    <span class="text-[8px] text-gray-500 font-bold tracking-widest uppercase mt-1">Access Control</span>
+                </div>
+            </div>
+
+            <!-- Sidebar Navigation Links -->
+            <nav class="space-y-2">
+                <a href="#admin-dashboard" class="flex items-center gap-3 px-4 py-3 text-xs font-bold uppercase tracking-widest font-mono bg-[#fd551d] text-white transition">
+                    📊 Dashboard
+                </a>
+                <a href="#faculty-acl" class="flex items-center gap-3 px-4 py-3 text-xs font-bold uppercase tracking-widest font-mono text-gray-400 hover:text-white hover:bg-[#262426] transition">
+                    👥 User Management
+                </a>
+                <a href="#add-users-panel" class="flex items-center gap-3 px-4 py-3 text-xs font-bold uppercase tracking-widest font-mono text-gray-400 hover:text-white hover:bg-[#262426] transition">
+                    📥 CSV Imports
+                </a>
+                <a href="/compiler" class="flex items-center gap-3 px-4 py-3 text-xs font-bold uppercase tracking-widest font-mono text-gray-400 hover:text-white hover:bg-[#262426] transition">
+                    💻 Compiler IDE
+                </a>
+                <a href="/" class="flex items-center gap-3 px-4 py-3 text-xs font-bold uppercase tracking-widest font-mono text-gray-400 hover:text-white hover:bg-[#262426] transition">
+                    ↩ Student Portal
+                </a>
+            </nav>
+        </div>
+
+        <!-- Sidebar Footer Action (Logout) -->
+        <div class="space-y-6 border-t border-[#333033] pt-6">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-[#fd551d]/10 border border-[#fd551d]/20 flex items-center justify-center font-bold text-[#fd551d] text-sm">
+                    SA
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xs font-bold text-white">{{ user.full_name }}</span>
+                    <span class="text-[10px] text-gray-500 font-mono">{{ user.email }}</span>
+                </div>
+            </div>
+            <button hx-post="/auth/logout" hx-target="body" 
+                class="w-full bg-[#333033] hover:bg-[#423d42] text-white py-3 text-[10px] font-bold uppercase tracking-widest font-mono transition">
+                Sign Out
+            </button>
+        </div>
+    </aside>
+
+    <!-- Right Pane: Top Header + Content -->
+    <div class="flex-1 min-w-0 flex flex-col relative z-10 bg-[#141314]">
+        <!-- Top Bar: Glassmorphic Overlay -->
+        <header class="bg-[#141314]/80 backdrop-blur-[20px] px-8 py-4 flex justify-between items-center sticky top-0 z-40">
+            <!-- Search bar -->
+            <div class="relative w-80">
+                <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">🔍</span>
+                <input type="text" placeholder="SEARCH SYSTEM ENTITIES..." 
+                    class="w-full bg-[#1c1b1c] border-b-2 border-gray-800 focus:border-[#fd551d] pl-9 pr-4 py-2 text-xs text-gray-300 focus:outline-none font-mono font-medium">
+            </div>
+
+            <!-- Topbar right items -->
+            <div class="flex items-center gap-6">
+                <!-- Status Badge -->
+                <div class="flex items-center gap-2">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full bg-emerald-400 opacity-75"></span>
+                        <span class="relative inline-flex h-2 w-2 bg-emerald-500"></span>
+                    </span>
+                    <span class="text-[9px] font-bold text-gray-400 font-mono tracking-widest uppercase">STATUS: ONLINE</span>
+                </div>
+                
+                <button class="text-gray-400 hover:text-white transition">🔔</button>
+                <button class="text-gray-400 hover:text-white transition">⚙️</button>
+            </div>
+        </header>
+
+        <!-- Page body content wrapper -->
+        <main class="flex-1 p-10 space-y-10 overflow-y-auto max-w-7xl w-full mx-auto">
+            
+            <!-- System Overview header -->
+            <div class="space-y-2">
+                <h1 class="text-4xl font-black text-white uppercase tracking-tighter font-sans">SYSTEM OVERVIEW</h1>
+                <p class="text-[9px] text-[#fd551d] font-bold font-mono tracking-widest uppercase">NODE_STATUS: OPTIMAL // ENCRYPTION: ACTIVE</p>
+            </div>
+
+            {% if error.is_some() %}
+            <div class="bg-red-950/30 border-l-4 border-red-600 text-red-300 px-4 py-3 text-xs font-mono font-bold uppercase tracking-wider">
+                {{ error.as_ref().unwrap() }}
+            </div>
+            {% endif %}
+
+            {% if success.is_some() %}
+            <div class="bg-green-950/30 border-l-4 border-green-600 text-green-300 px-4 py-3 text-xs font-mono font-bold uppercase tracking-wider">
+                {{ success.as_ref().unwrap() }}
+            </div>
+            {% endif %}
+
+            <!-- Statistics widgets: surface-container (L2) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-[#262426] p-6 relative overflow-hidden flex flex-col justify-between h-36">
+                    <span class="text-[9px] font-bold text-gray-400 uppercase tracking-widest font-mono">TOTAL USERS</span>
+                    <div class="flex items-baseline gap-2">
+                        <span class="text-4xl font-extrabold text-white tracking-tight font-mono">{{ total_students + total_faculty }}</span>
+                        <span class="text-[10px] text-emerald-400 font-bold font-mono">+4.2% Growth</span>
+                    </div>
+                </div>
+                <div class="bg-[#262426] p-6 relative overflow-hidden flex flex-col justify-between h-36">
+                    <span class="text-[9px] font-bold text-gray-400 uppercase tracking-widest font-mono">COLLEGES</span>
+                    <div class="flex items-baseline gap-2">
+                        <span class="text-4xl font-extrabold text-white tracking-tight font-mono">{{ total_colleges }}</span>
+                        <span class="text-[9px] text-gray-400 font-bold tracking-widest uppercase font-mono">FEDERATED NODES</span>
+                    </div>
+                </div>
+                <div class="bg-[#262426] p-6 relative overflow-hidden flex flex-col justify-between h-36">
+                    <span class="text-[9px] font-bold text-gray-400 uppercase tracking-widest font-mono">ACTIVE ADMINS</span>
+                    <div class="flex items-baseline gap-2">
+                        <span class="text-4xl font-extrabold text-white tracking-tight font-mono">42</span>
+                        <span class="text-[9px] text-[#fd551d] font-bold tracking-widest uppercase font-mono">SECURITY AUTHORITY</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Two-pane layouts -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                
+                <!-- Left Column: Forms and alerts -->
+                <div class="space-y-8 lg:col-span-1" id="add-users-panel">
+                    
+                    <!-- Alert Box -->
+                    <div class="bg-[#fd551d]/5 border-l-4 border-[#fd551d] p-6 space-y-4">
+                        <div class="flex items-start gap-3">
+                            <span class="text-2xl text-[#fd551d]">⚠️</span>
+                            <div>
+                                <h4 class="text-xs font-black uppercase tracking-widest text-[#fd551d] font-mono leading-none">SECURITY WARNING</h4>
+                                <p class="text-[11px] text-gray-400 leading-relaxed mt-2 font-mono uppercase tracking-wider">
+                                    System detected multiple failed faculty registration sessions. Verify college domains before bulk CSV imports.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Add Faculty Form -->
+                    <div class="bg-[#262426] p-6 space-y-6">
+                        <h3 class="text-xs font-black text-white uppercase tracking-widest font-mono border-b border-[#333033] pb-3">Add New Faculty</h3>
+                        <form hx-post="/admin/faculty" hx-target="body" class="space-y-4">
+                            <div class="space-y-1.5">
+                                <label class="block text-[9px] font-bold text-gray-400 uppercase tracking-widest font-mono">Full Name</label>
+                                <input type="text" name="full_name" required placeholder="Dr. Alice Smith"
+                                    class="w-full bg-[#1c1b1c] border-b-2 border-gray-800 focus:border-[#fd551d] px-3.5 py-2.5 text-xs text-gray-200 focus:outline-none transition font-semibold">
+                            </div>
+                            <div class="space-y-1.5">
+                                <label class="block text-[9px] font-bold text-gray-400 uppercase tracking-widest font-mono">Email Address</label>
+                                <input type="email" name="email" required placeholder="alice@college.edu"
+                                    class="w-full bg-[#1c1b1c] border-b-2 border-gray-800 focus:border-[#fd551d] px-3.5 py-2.5 text-xs text-gray-200 focus:outline-none transition font-semibold">
+                            </div>
+                            <div class="space-y-1.5">
+                                <label class="block text-[9px] font-bold text-gray-400 uppercase tracking-widest font-mono">Password</label>
+                                <input type="password" name="password" required placeholder="••••••••"
+                                    class="w-full bg-[#1c1b1c] border-b-2 border-gray-800 focus:border-[#fd551d] px-3.5 py-2.5 text-xs text-gray-200 focus:outline-none transition font-mono">
+                            </div>
+                            <div class="space-y-1.5">
+                                <label class="block text-[9px] font-bold text-gray-400 uppercase tracking-widest font-mono">Institution / College</label>
+                                <select name="institution_id" required 
+                                    class="w-full bg-[#1c1b1c] border-b-2 border-gray-800 focus:border-[#fd551d] px-3.5 py-2.5 text-xs text-gray-200 focus:outline-none transition font-semibold">
+                                    <option value="">Select College</option>
+                                    {% for inst in institutions %}
+                                    <option value="{{ inst.id }}">{{ inst.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="space-y-1.5">
+                                <label class="block text-[9px] font-bold text-gray-400 uppercase tracking-widest font-mono">Department</label>
+                                <input type="text" name="department" required placeholder="e.g. CSE" 
+                                    class="w-full bg-[#1c1b1c] border-b-2 border-gray-800 focus:border-[#fd551d] px-3.5 py-2.5 text-xs text-gray-200 focus:outline-none transition font-semibold">
+                            </div>
+                            <button type="submit" 
+                                class="w-full bg-[#fd551d] hover:bg-[#c53000] text-white font-extrabold py-3.5 text-xs tracking-widest uppercase transition mt-2 shadow-lg shadow-red-500/10">
+                                Add Faculty member
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- CSV Student Ingestion -->
+                    <div class="bg-[#262426] p-6 space-y-6">
+                        <h3 class="text-xs font-black text-white uppercase tracking-widest font-mono border-b border-[#333033] pb-3">Ingest Student CSV</h3>
+                        <form action="/admin/students/import" method="POST" enctype="multipart/form-data" class="space-y-4">
+                            <div class="border-2 border-dashed border-[#333033] p-6 bg-[#141314]/50 text-center space-y-3">
+                                <span class="text-3xl text-gray-500">📤</span>
+                                <div class="text-[9px] text-gray-400 font-bold uppercase tracking-widest font-mono">Drop student_data.csv here</div>
+                                <input type="file" name="csv_file" accept=".csv" required 
+                                    class="block w-full text-xs text-gray-400 file:mr-4 file:py-1.5 file:px-3.5 file:bg-[#1c1b1c] file:text-[#fd551d] file:font-semibold file:border-0 file:text-[9px] file:transition hover:file:bg-[#262426]">
+                            </div>
+                            <button type="submit" 
+                                class="w-full bg-[#333033] hover:bg-[#423d42] text-white font-bold py-3.5 text-xs tracking-widest uppercase transition">
+                                Execute Batch Process
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Right Column: User Management ACL List -->
+                <div class="lg:col-span-2 space-y-6" id="faculty-acl">
+                    <div class="bg-[#262426] p-6 space-y-6">
+                        
+                        <!-- Search & filter bar -->
+                        <div class="flex flex-col md:flex-row gap-4 items-end border-b border-[#333033] pb-6">
+                            
+                            <div class="flex-grow">
+                                <label class="block text-[9px] font-bold text-gray-400 uppercase tracking-widest font-mono mb-2">College Node</label>
+                                <select name="institution_id" hx-get="/admin" hx-target="body" 
+                                    class="w-full bg-[#1c1b1c] border-b-2 border-gray-800 focus:border-[#fd551d] px-3 py-2.5 text-xs text-gray-200 focus:outline-none transition font-semibold">
+                                    <option value="">All Colleges</option>
+                                    {% for inst in institutions %}
+                                    <option value="{{ inst.id }}" 
+                                        {% if selected_institution_id.is_some() && selected_institution_id.unwrap() == inst.id %}selected{% endif %}>
+                                        {{ inst.name }}
+                                    </option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-[9px] font-bold text-gray-400 uppercase tracking-widest font-mono mb-2">Branch</label>
+                                <input type="text" name="branch" placeholder="CSE" 
+                                    hx-get="/admin" hx-target="body" hx-trigger="keyup changed delay:500ms"
+                                    value="{% if selected_branch.is_some() %}{{ selected_branch.as_ref().unwrap() }}{% endif %}"
+                                    class="bg-[#1c1b1c] border-b-2 border-gray-800 focus:border-[#fd551d] px-3 py-2 text-xs text-gray-200 focus:outline-none w-24 transition font-semibold">
+                            </div>
+
+                            <div>
+                                <label class="block text-[9px] font-bold text-gray-400 uppercase tracking-widest font-mono mb-2">Batch</label>
+                                <input type="text" name="batch" placeholder="2026" 
+                                    hx-get="/admin" hx-target="body" hx-trigger="keyup changed delay:500ms"
+                                    value="{% if selected_batch.is_some() %}{{ selected_batch.as_ref().unwrap() }}{% endif %}"
+                                    class="bg-[#1c1b1c] border-b-2 border-gray-800 focus:border-[#fd551d] px-3 py-2 text-xs text-gray-200 focus:outline-none w-20 transition font-semibold">
+                            </div>
+                        </div>
+
+                        <!-- Users ACL List Table -->
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left border-collapse text-xs">
+                                <thead>
+                                    <tr class="border-b border-[#333033] text-gray-500 uppercase tracking-widest text-[9px] font-bold">
+                                        <th class="pb-4">Identity</th>
+                                        <th class="pb-4">System Role</th>
+                                        <th class="pb-4">Branch</th>
+                                        <th class="pb-4">Batch</th>
+                                        <th class="pb-4 text-right">Access status</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-[#333033] text-gray-300 font-medium">
+                                    {% if users.is_empty() %}
+                                    <tr>
+                                        <td colspan="5" class="py-8 text-center text-gray-500 font-mono">
+                                            No nodes found matching active filters.
+                                        </td>
+                                    </tr>
+                                    {% else %}
+                                        {% for u in users %}
+                                        <tr class="hover:bg-[#333033]/20 transition">
+                                            <td class="py-4">
+                                                <div class="font-bold text-white text-sm">{{ u.full_name }}</div>
+                                                <div class="text-[10px] text-gray-500 font-mono mt-0.5">{{ u.email }}</div>
+                                            </td>
+                                            <td class="py-4">
+                                                {% let r_str = format!("{:?}", u.role) %}
+                                                {% if r_str == "Faculty" %}
+                                                    <span class="text-cyan-400 border border-cyan-400/20 bg-[#141314] px-2.5 py-0.5 text-[9px] font-bold uppercase tracking-wider font-mono">Faculty</span>
+                                                {% else if r_str == "Student" %}
+                                                    <span class="text-[#fd551d] border border-[#fd551d]/20 bg-[#141314] px-2.5 py-0.5 text-[9px] font-bold uppercase tracking-wider font-mono">Student</span>
+                                                {% else %}
+                                                    <span class="text-yellow-400 border border-yellow-400/20 bg-[#141314] px-2.5 py-0.5 text-[9px] font-bold uppercase tracking-wider font-mono">Super Admin</span>
+                                                {% endif %}
+                                            </td>
+                                            <td class="py-4 font-mono text-[10px]">
+                                                {% if u.branch.is_some() %}{{ u.branch.as_ref().unwrap() }}{% else %}-{% endif %}
+                                            </td>
+                                            <td class="py-4 font-mono text-[10px]">
+                                                {% if u.batch.is_some() %}{{ u.batch.as_ref().unwrap() }}{% else %}-{% endif %}
+                                            </td>
+                                            <td class="py-4 text-right">
+                                                {% if u.is_active %}
+                                                    <span class="text-emerald-400 font-bold font-mono">ACTIVE</span>
+                                                {% else %}
+                                                    <span class="text-rose-500 font-bold font-mono">INACTIVE</span>
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    {% endif %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+</div>

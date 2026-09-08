@@ -1,0 +1,14 @@
+filename,applied_at
+001_create_institutions.sql,2026-09-06 10:56:31.410076+00
+002_create_users.sql,2026-09-06 10:56:31.410076+00
+003_create_courses.sql,2026-09-06 10:56:31.410076+00
+004_create_question_banks.sql,2026-09-06 10:56:31.410076+00
+005_create_assessments.sql,2026-09-06 10:56:31.410076+00
+006_create_coding_problems.sql,2026-09-06 10:56:31.410076+00
+007_create_audit_log.sql,2026-09-06 10:56:31.410076+00
+008_add_batch_and_class_to_users.sql,2026-09-06 10:56:31.410076+00
+009_create_templates_and_leaderboard.sql,2026-09-06 10:56:31.410076+00
+010_add_assessment_details.sql,2026-09-06 10:56:31.410076+00
+011_create_assessment_sections_full.sql,2026-09-06 10:56:31.410076+00
+012_add_certificates_and_normalized_tables.sql,2026-09-06 10:56:31.410076+00
+013_add_proctoring_and_reports.sql,2026-09-06 10:56:31.410076+00

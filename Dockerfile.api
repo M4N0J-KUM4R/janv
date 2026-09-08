@@ -1,0 +1,32 @@
+# ── Step 1: Cargo Build ──────────────────────────────────────
+FROM --platform=linux/amd64 rust:latest as builder
+
+WORKDIR /usr/src/janv
+
+RUN apt-get update && apt-get install -y pkg-config libssl-dev && rm -rf /var/lib/apt/lists/*
+
+COPY Cargo.toml Cargo.lock ./
+COPY janv-common ./janv-common
+COPY janv-executor ./janv-executor
+COPY janv-api ./janv-api
+COPY migrations ./migrations
+
+RUN cargo build --release --package janv-api -j 1
+
+# ── Step 2: Runtime Image ────────────────────────────────────
+FROM --platform=linux/amd64 debian:bookworm-slim
+
+RUN apt-get update && apt-get install -y ca-certificates libssl3 postgresql-client && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+COPY --from=builder /usr/src/janv/target/release/janv-api /app/janv-api
+COPY --from=builder /usr/src/janv/migrations /app/migrations
+
+ENV HOST=0.0.0.0
+ENV PORT=8080
+ENV RUST_LOG=janv_api=info,tower_http=info
+
+EXPOSE 8080
+
+CMD ["/app/janv-api"]

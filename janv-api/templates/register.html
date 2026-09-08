@@ -1,0 +1,88 @@
+<div class="min-h-screen w-full flex flex-col md:flex-row bg-[#141314]">
+    <!-- Left Pane: Brand Info -->
+    <div class="w-full md:w-[45%] bg-[#1c1b1c] flex flex-col justify-between p-12 md:p-20 relative overflow-hidden">
+        <!-- Shield Background Glow -->
+        <div class="absolute top-[20%] right-[-10%] w-[400px] h-[400px] bg-[#fd551d]/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+        <!-- Logo block -->
+        <div class="flex items-center gap-3 relative z-10">
+            <div class="w-10 h-10 bg-[#fd551d] flex items-center justify-center text-white font-bold text-lg">
+                <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+                </svg>
+            </div>
+            <span class="text-white font-black tracking-widest text-xs font-mono">SENTINEL KINETIC</span>
+        </div>
+
+        <!-- Text copy -->
+        <div class="my-auto py-12 md:py-0 relative z-10 space-y-6">
+            <h1 class="text-4xl md:text-5xl font-black text-white leading-[1.05] tracking-tight">
+                ACCESS<br>INFRASTRUCTURE<br>FOR THE BOLD.
+            </h1>
+            <p class="text-xs text-gray-400 max-w-sm leading-relaxed font-mono uppercase tracking-wider">
+                High-performance security architecture for teams that move fast.
+            </p>
+        </div>
+
+        <div class="text-[9px] text-gray-500 font-mono tracking-widest uppercase">
+            SECURE ACCESS SYSTEM // JANV CORE
+        </div>
+    </div>
+
+    <!-- Right Pane: Register Form -->
+    <div class="flex-1 bg-white flex flex-col justify-between p-12 md:p-20 text-gray-900">
+        <div></div>
+
+        <div class="max-w-md w-full mx-auto space-y-10">
+            <div class="space-y-3">
+                <h2 class="text-4xl font-black tracking-tighter text-gray-950 uppercase">CREATE ACCOUNT</h2>
+                <p class="text-xs text-gray-500 font-mono uppercase tracking-wider">Sign up to get started on the placement preparation platform.</p>
+            </div>
+
+            {% if error.is_some() %}
+            <div class="bg-red-50 border-l-4 border-red-600 text-red-700 px-4 py-3 text-xs font-mono font-bold uppercase tracking-wider">
+                {{ error.as_ref().unwrap() }}
+            </div>
+            {% endif %}
+
+            <!-- Form -->
+            <form hx-post="/register" hx-target="body" hx-swap="outerHTML" class="space-y-6">
+                <!-- Name field -->
+                <div class="space-y-1.5">
+                    <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-widest font-mono">Full Name</label>
+                    <input type="text" name="full_name" required 
+                        placeholder="John Doe"
+                        class="w-full bg-[#f4f4f5] border-b-2 border-gray-200 focus:border-[#fd551d] px-4 py-3 text-sm text-gray-900 focus:outline-none transition font-semibold">
+                </div>
+
+                <!-- Email field -->
+                <div class="space-y-1.5">
+                    <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-widest font-mono">Email Address</label>
+                    <input type="email" name="email" required 
+                        placeholder="john@college.edu"
+                        class="w-full bg-[#f4f4f5] border-b-2 border-gray-200 focus:border-[#fd551d] px-4 py-3 text-sm text-gray-900 focus:outline-none transition font-semibold">
+                </div>
+
+                <!-- Password field -->
+                <div class="space-y-1.5">
+                    <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-widest font-mono">Password</label>
+                    <input type="password" name="password" required 
+                        placeholder="Min 8 characters"
+                        class="w-full bg-[#f4f4f5] border-b-2 border-gray-200 focus:border-[#fd551d] px-4 py-3 text-sm text-gray-900 focus:outline-none transition font-mono">
+                </div>
+
+                <!-- Submit button -->
+                <button type="submit" 
+                    class="w-full bg-[#fd551d] hover:bg-[#c53000] text-white font-extrabold py-4 transition duration-200 text-[10px] tracking-widest uppercase flex items-center justify-center gap-2 mt-2">
+                    Create Account
+                </button>
+            </form>
+        </div>
+
+        <!-- Footer -->
+        <div class="flex justify-between items-center text-[9px] font-bold text-gray-400 font-mono tracking-widest uppercase max-w-md w-full mx-auto border-t border-gray-100 pt-8 mt-12">
+            <span>© 2026 SENTINEL KINETIC</span>
+            <a href="/login" class="hover:text-gray-950 transition font-bold text-[#fd551d]">LOGIN HERE</a>
+        </div>
+    </div>
+</div>

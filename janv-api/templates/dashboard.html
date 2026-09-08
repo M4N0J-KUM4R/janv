@@ -1,0 +1,108 @@
+<div class="space-y-10">
+    <!-- Welcome Header -->
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-[#262426] pb-6">
+        <div class="space-y-1">
+            <h1 class="text-4xl font-black text-white uppercase tracking-tight font-sans">
+                WELCOME BACK, {{ user.full_name }}
+            </h1>
+            <p class="text-xs text-gray-400 font-mono uppercase tracking-wider">Identity node profile status and active operations.</p>
+        </div>
+        <div class="bg-[#fd551d]/10 border border-[#fd551d]/20 px-4 py-2 text-[#fd551d] font-bold text-xs tracking-widest uppercase font-mono">
+            {{ user.role }} NODE
+        </div>
+    </div>
+
+    <!-- Quick Stats Metrics: surface-container (L2) -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div class="bg-[#262426] p-6 space-y-1">
+            <span class="text-[9px] font-bold text-gray-400 uppercase tracking-widest font-mono">Practice Level</span>
+            <div class="text-2xl font-extrabold text-white font-mono">BEGINNER</div>
+        </div>
+        <div class="bg-[#262426] p-6 space-y-1">
+            <span class="text-[9px] font-bold text-gray-400 uppercase tracking-widest font-mono">Daily Streak</span>
+            <div class="text-2xl font-extrabold text-[#fd551d] font-mono">🔥 5 DAYS</div>
+        </div>
+        <div class="bg-[#262426] p-6 space-y-1">
+            <span class="text-[9px] font-bold text-gray-400 uppercase tracking-widest font-mono">Solved Problems</span>
+            <div class="text-2xl font-extrabold text-white font-mono">0 / 0</div>
+        </div>
+        <div class="bg-[#262426] p-6 space-y-1">
+            <span class="text-[9px] font-bold text-gray-400 uppercase tracking-widest font-mono">Average Score</span>
+            <div class="text-2xl font-extrabold text-gray-400 font-mono">N/A</div>
+        </div>
+    </div>
+
+    <!-- Action Cards -->
+    <div class="space-y-6">
+        <h3 class="text-xs font-black text-white uppercase tracking-widest font-mono">Active Operation Consoles</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Compiler -->
+            <a href="/compiler" class="bg-[#262426] p-8 hover:bg-[#333033] block group transition">
+                <div class="w-12 h-12 bg-white/5 border border-white/10 flex items-center justify-center text-xl mb-6 group-hover:bg-[#fd551d] group-hover:text-white transition duration-300">
+                    💻
+                </div>
+                <h4 class="text-sm font-black text-white uppercase tracking-wider group-hover:text-[#fd551d] transition font-sans">Online Compiler</h4>
+                <p class="text-xs text-gray-400 mt-3 leading-relaxed">
+                    Write, compile, and execute code sandboxes inside remote environments.
+                </p>
+            </a>
+
+            <!-- Practice -->
+            <a href="/practice" class="bg-[#262426] p-8 hover:bg-[#333033] block group transition">
+                <div class="w-12 h-12 bg-white/5 border border-white/10 flex items-center justify-center text-xl mb-6 group-hover:bg-[#fd551d] group-hover:text-white transition duration-300">
+                    🚀
+                </div>
+                <h4 class="text-sm font-black text-white uppercase tracking-wider group-hover:text-[#fd551d] transition font-sans">Coding Practice</h4>
+                <p class="text-xs text-gray-400 mt-3 leading-relaxed">
+                    Practice algorithmic and logic structures with placement assessments.
+                </p>
+            </a>
+
+            <!-- Assessments -->
+            <a href="/assessments" class="bg-[#262426] p-8 hover:bg-[#333033] block group transition">
+                <div class="w-12 h-12 bg-white/5 border border-white/10 flex items-center justify-center text-xl mb-6 group-hover:bg-[#fd551d] group-hover:text-white transition duration-300">
+                    ✍️
+                </div>
+                <h4 class="text-sm font-black text-white uppercase tracking-wider group-hover:text-[#fd551d] transition font-sans">Mock Tests</h4>
+                <p class="text-xs text-gray-400 mt-3 leading-relaxed">
+                    Test and submit mock exams under timed placement guidelines.
+                </p>
+            </a>
+        </div>
+    </div>
+
+    <!-- Details Box: recessed look (zebra alternating rows) -->
+    <div class="bg-[#262426] p-8">
+        <h3 class="text-xs font-black text-white uppercase tracking-widest font-mono mb-6">Identity Registry Details</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4 text-xs font-mono">
+            <div class="flex justify-between bg-[#1c1b1c] p-3">
+                <span class="text-gray-400 uppercase tracking-wider">Email Address</span>
+                <span class="text-white font-bold">{{ user.email }}</span>
+            </div>
+            <div class="flex justify-between bg-[#1c1b1c] p-3">
+                <span class="text-gray-400 uppercase tracking-wider">Access Status</span>
+                <span class="text-emerald-400 font-bold uppercase">Active</span>
+            </div>
+            <div class="flex justify-between bg-[#1c1b1c] p-3">
+                <span class="text-gray-400 uppercase tracking-wider">Branch / Stream</span>
+                <span class="text-white font-bold uppercase">
+                    {% if user.branch.is_some() %}
+                        {{ user.branch.as_ref().unwrap() }}
+                    {% else %}
+                        General
+                    {% endif %}
+                </span>
+            </div>
+            <div class="flex justify-between bg-[#1c1b1c] p-3">
+                <span class="text-gray-400 uppercase tracking-wider">Batch Graduation</span>
+                <span class="text-white font-bold">
+                    {% if user.batch.is_some() %}
+                        {{ user.batch.as_ref().unwrap() }}
+                    {% else %}
+                        -
+                    {% endif %}
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

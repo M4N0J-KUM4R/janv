@@ -1,0 +1,36 @@
+[package]
+name = "janv-executor"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+janv-common = { path = "../janv-common" }
+
+# Docker API
+bollard = "0.18"
+
+# Async
+tokio.workspace = true
+
+# Queue
+redis = { version = "0.27", features = ["tokio-comp", "json"] }
+
+# Serialization
+serde.workspace = true
+serde_json.workspace = true
+
+# IDs & Time
+uuid.workspace = true
+chrono.workspace = true
+
+# Logging
+tracing.workspace = true
+tracing-subscriber.workspace = true
+
+# Error handling
+thiserror.workspace = true
+anyhow.workspace = true
+
+# File handling
+tar = "0.4"
+futures-util = "0.3"

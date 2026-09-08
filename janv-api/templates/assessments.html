@@ -1,0 +1,46 @@
+<div class="space-y-6">
+    <div class="space-y-1">
+        <h1 class="text-4xl font-black text-white uppercase tracking-tight font-sans">Timed Assessments</h1>
+        <p class="text-xs text-gray-400 font-mono uppercase tracking-wider">Timed evaluations under system constraints.</p>
+    </div>
+
+    <!-- Assessments Grid -->
+    <div class="bg-[#262426] border border-white/5 overflow-hidden">
+        <table class="w-full text-left border-collapse">
+            <thead>
+                <tr class="bg-[#1c1b1c] text-[9px] font-bold text-gray-400 uppercase tracking-widest font-mono">
+                    <th class="px-6 py-4.5">Mock Test Title</th>
+                    <th class="px-6 py-4.5">Duration</th>
+                    <th class="px-6 py-4.5">Passing Score</th>
+                    <th class="px-6 py-4.5 text-right">Actions</th>
+                </tr>
+            </thead>
+            <tbody class="text-xs text-gray-200">
+                {% if assessments.is_empty() %}
+                <tr class="bg-[#141314]">
+                    <td colspan="4" class="px-6 py-12 text-center text-gray-500 font-mono uppercase tracking-wider">
+                        No active assessments scheduled.
+                    </td>
+                </tr>
+                {% else %}
+                    {% for exam in assessments %}
+                    <tr class="{% if loop.index0 % 2 == 0 %}bg-[#141314]{% else %}bg-[#1c1b1c]{% endif %} hover:bg-[#333033]/50 transition">
+                        <td class="px-6 py-5 font-black text-white text-sm font-sans uppercase">
+                            {{ exam.title }}
+                            <div class="text-[9px] text-gray-400 font-normal font-mono mt-1">ID: {{ exam.id }}</div>
+                        </td>
+                        <td class="px-6 py-5 font-mono text-gray-300 font-bold uppercase">{{ exam.duration_mins }} MINS</td>
+                        <td class="px-6 py-5 font-mono text-gray-300 font-bold uppercase">{{ exam.total_marks }} MARKS</td>
+                        <td class="px-6 py-5 text-right">
+                            <a href="/assessments/{{ exam.id }}" 
+                                class="bg-[#fd551d] hover:bg-[#c53000] text-white px-5 py-2.5 font-bold text-[10px] tracking-widest uppercase font-mono transition">
+                                Start Mock Test
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>

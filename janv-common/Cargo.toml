@@ -1,0 +1,22 @@
+[package]
+name = "janv-common"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true
+uuid.workspace = true
+chrono.workspace = true
+thiserror.workspace = true
+validator.workspace = true
+regex = "1"
+
+# Optional backend dependencies
+sqlx = { workspace = true, optional = true }
+axum = { version = "0.8", features = ["json"], optional = true }
+
+[features]
+default = ["backend"]
+backend = ["dep:sqlx", "dep:axum"]
+

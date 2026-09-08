@@ -1,0 +1,55 @@
+<div class="space-y-6">
+    <div class="space-y-1">
+        <h1 class="text-4xl font-black text-white uppercase tracking-tight font-sans">Coding Challenges</h1>
+        <p class="text-xs text-gray-400 font-mono uppercase tracking-wider">Hone algorithmic structures and data pipelines.</p>
+    </div>
+
+    <!-- Problems List Grid: Divider Ban (use spacing & tonal shifts) -->
+    <div class="bg-[#262426] border border-white/5 overflow-hidden">
+        <table class="w-full text-left border-collapse">
+            <thead>
+                <tr class="bg-[#1c1b1c] text-[9px] font-bold text-gray-400 uppercase tracking-widest font-mono">
+                    <th class="px-6 py-4.5">Challenge Title</th>
+                    <th class="px-6 py-4.5">Difficulty</th>
+                    <th class="px-6 py-4.5">Time limit</th>
+                    <th class="px-6 py-4.5">Memory Cap</th>
+                    <th class="px-6 py-4.5 text-right">Actions</th>
+                </tr>
+            </thead>
+            <tbody class="text-xs text-gray-200">
+                {% if problems.is_empty() %}
+                <tr class="bg-[#141314]">
+                    <td colspan="5" class="px-6 py-12 text-center text-gray-500 font-mono uppercase tracking-wider">
+                        No active challenges currently loaded.
+                    </td>
+                </tr>
+                {% else %}
+                    {% for problem in problems %}
+                    <!-- Alternating tonal shifts -->
+                    <tr class="{% if loop.index0 % 2 == 0 %}bg-[#141314]{% else %}bg-[#1c1b1c]{% endif %} hover:bg-[#333033]/50 transition">
+                        <td class="px-6 py-5 font-black text-white text-sm font-sans uppercase">{{ problem.title }}</td>
+                        <td class="px-6 py-5">
+                            {% let diff_str = format!("{:?}", problem.difficulty) %}
+                            {% if diff_str == "Easy" %}
+                                <span class="bg-emerald-500/10 text-emerald-400 text-[9px] px-2.5 py-1 font-bold font-mono border border-emerald-500/20">EASY</span>
+                            {% else if diff_str == "Medium" %}
+                                <span class="bg-amber-500/10 text-amber-400 text-[9px] px-2.5 py-1 font-bold font-mono border border-amber-500/20">MEDIUM</span>
+                            {% else %}
+                                <span class="bg-rose-500/10 text-rose-400 text-[9px] px-2.5 py-1 font-bold font-mono border border-rose-500/20">HARD</span>
+                            {% endif %}
+                        </td>
+                        <td class="px-6 py-5 font-mono text-gray-300 font-bold uppercase">{{ problem.time_limit_ms }} MS</td>
+                        <td class="px-6 py-5 font-mono text-gray-300 font-bold uppercase">{{ problem.memory_limit_kb / 1024 }} MB</td>
+                        <td class="px-6 py-5 text-right">
+                            <a href="/practice/{{ problem.id }}" 
+                                class="bg-[#fd551d] hover:bg-[#c53000] text-white px-5 py-2.5 font-bold text-[10px] tracking-widest uppercase font-mono transition">
+                                Solve Challenge
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>

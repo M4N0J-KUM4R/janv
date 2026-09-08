@@ -1,0 +1,62 @@
+[package]
+name = "janv-api"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+janv-common = { path = "../janv-common" }
+janv-executor = { path = "../janv-executor" }
+
+# Web framework
+axum = { version = "0.8", features = ["json", "multipart", "ws"] }
+axum-extra = { version = "0.10", features = ["typed-header", "cookie"] }
+tower = { version = "0.5", features = ["full"] }
+tower-http = { version = "0.6", features = ["cors", "trace", "limit", "timeout"] }
+
+# Async
+tokio.workspace = true
+
+# Database
+sqlx.workspace = true
+
+# Serialization
+serde.workspace = true
+serde_json.workspace = true
+
+# Auth
+jsonwebtoken = "9"
+argon2 = "0.5"
+rand = "0.9"
+
+# Cache / Queue
+redis = { version = "0.27", features = ["tokio-comp", "json"] }
+
+# IDs & Time
+uuid.workspace = true
+chrono.workspace = true
+
+# Logging
+tracing.workspace = true
+tracing-subscriber.workspace = true
+
+# Error handling
+thiserror.workspace = true
+anyhow.workspace = true
+
+# Validation
+validator.workspace = true
+
+# Config
+dotenvy = "0.15"
+
+# CSV import
+csv = "1"
+
+# Templates & UI
+askama = { version = "0.12" }
+
+[dev-dependencies]
+http = "1"
+http-body-util = "0.1"
+bytes = "1"
+

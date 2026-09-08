@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} - JANV Platform</title>
+    <!-- Google Fonts: Inter & Space Mono as modern Aktiv Grotesk/Geist Mono fallbacks -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- HTMX via CDN -->
+    <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Inter"', 'system-ui', '-apple-system', 'sans-serif'],
+                        mono: ['"Space Mono"', 'monospace'],
+                    },
+                    colors: {
+                        surface: {
+                            DEFAULT: '#141314', // L0
+                            low: '#1c1b1c', // L1
+                            card: '#262426', // L2
+                            high: '#333033', // L3
+                            highest: '#423d42',
+                        },
+                        brand: {
+                            orange: '#fd551d',
+                            darkorange: '#c53000',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #141314;
+            color: #ffffff;
+        }
+        /* Custom Scrollbars */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #141314;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #262426;
+            border-radius: 0px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #333033;
+        }
+        /* 0px radius design rules override */
+        * {
+            border-radius: 0px !important;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col font-sans relative overflow-x-hidden bg-[#141314]">
+    {% if title == "Login" || title == "Register" || title == "Admin Console" %}
+        {{ content|safe }}
+    {% else %}
+        <!-- Navbar: Glassmorphic Overlay -->
+        <nav class="bg-[#141314]/80 backdrop-blur-[20px] border-b border-white/10 px-8 py-4 flex justify-between items-center sticky top-0 z-50">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 bg-gradient-to-r from-brand-orange to-brand-darkorange flex items-center justify-center font-bold text-white text-base">J</div>
+                <a href="/" class="text-base font-black tracking-widest text-white uppercase font-mono">JANV CORE</a>
+            </div>
+            
+            <div class="flex items-center gap-8">
+                <div class="flex items-center gap-6">
+                    {% if user.is_some() %}
+                        {% let u = user.as_ref().unwrap() %}
+                        {% let role_str = format!("{:?}", u.role) %}
+                        {% if role_str == "SuperAdmin" %}
+                            <a href="/admin#admin-dashboard" class="text-xs font-mono font-bold uppercase tracking-wider text-gray-300 hover:text-brand-orange transition">User Management</a>
+                            <a href="/admin#faculty-acl" class="text-xs font-mono font-bold uppercase tracking-wider text-gray-300 hover:text-brand-orange transition">Faculty ACL</a>
+                            <a href="/admin#add-users-panel" class="text-xs font-mono font-bold uppercase tracking-wider text-gray-300 hover:text-brand-orange transition">+ Add Users</a>
+                        {% else %}
+                            <a href="/compiler" class="text-xs font-mono font-bold uppercase tracking-wider text-gray-300 hover:text-brand-orange transition">Compiler</a>
+                            <a href="/practice" class="text-xs font-mono font-bold uppercase tracking-wider text-gray-300 hover:text-brand-orange transition">Practice</a>
+                            <a href="/assessments" class="text-xs font-mono font-bold uppercase tracking-wider text-gray-300 hover:text-brand-orange transition">Mock Tests</a>
+                        {% endif %}
+                    {% else %}
+                        <a href="/compiler" class="text-xs font-mono font-bold uppercase tracking-wider text-gray-300 hover:text-brand-orange transition">Compiler</a>
+                        <a href="/practice" class="text-xs font-mono font-bold uppercase tracking-wider text-gray-300 hover:text-brand-orange transition">Practice</a>
+                        <a href="/assessments" class="text-xs font-mono font-bold uppercase tracking-wider text-gray-300 hover:text-brand-orange transition">Mock Tests</a>
+                    {% endif %}
+                </div>
+
+                {% if user.is_some() %}
+                    {% let u = user.as_ref().unwrap() %}
+                    {% let role_str = format!("{:?}", u.role) %}
+                    <div class="flex items-center gap-4 border-l border-white/10 pl-6">
+                        {% if role_str == "SuperAdmin" %}
+                            <a href="/admin" class="text-[10px] font-bold text-brand-orange border border-brand-orange/20 bg-brand-orange/5 px-3 py-1.5 hover:bg-brand-orange hover:text-white transition uppercase font-mono tracking-wider">Admin Console</a>
+                        {% endif %}
+                        <div class="flex flex-col text-right">
+                            <span class="text-xs font-bold text-gray-200">{{ u.full_name }}</span>
+                            <span class="text-[9px] text-gray-400 font-mono font-bold uppercase tracking-wider">{{ role_str }}</span>
+                        </div>
+                        <button hx-post="/auth/logout" hx-target="body" 
+                            class="bg-[#1c1b1c] hover:bg-red-950/20 hover:text-red-400 border border-white/10 text-gray-300 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest font-mono transition">
+                            Sign Out
+                        </button>
+                    </div>
+                {% else %}
+                    <a href="/login" class="bg-gradient-to-r from-brand-orange to-brand-darkorange text-white px-5 py-2 font-bold text-xs uppercase tracking-widest transition">
+                        Login
+                    </a>
+                {% endif %}
+            </div>
+        </nav>
+
+        <!-- Main Container -->
+        <div class="flex flex-1 relative z-10 bg-[#141314]">
+            <!-- Content Area -->
+            <main class="flex-1 px-8 py-12 max-w-7xl mx-auto w-full">
+                {{ content|safe }}
+            </main>
+        </div>
+    {% endif %}
+</body>
+</html>

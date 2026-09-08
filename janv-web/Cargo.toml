@@ -1,0 +1,39 @@
+[package]
+name = "janv-web"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+janv-common = { path = "../janv-common", default-features = false }
+
+# Leptos
+leptos = { version = "0.7" }
+leptos_router = { version = "0.7" }
+
+# HTTP client
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+reqwest = { version = "0.12", features = ["json"] }
+
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+reqwest = { version = "0.12", default-features = false, features = ["json"] }
+
+# Serialization
+serde.workspace = true
+serde_json.workspace = true
+
+# IDs & Time
+uuid = { version = "1", features = ["v4", "js"] }
+chrono.workspace = true
+
+# Browser Web API Bindings
+web-sys = { version = "0.3.103", features = [
+    "Window",
+    "Storage",
+    "Location",
+    "SubmitEvent",
+    "HtmlFormElement",
+    "Event"
+] }
+console_error_panic_hook = "0.1"
+wasm-bindgen-futures = "0.4"
+getrandom = { version = "0.2", features = ["js"] }
