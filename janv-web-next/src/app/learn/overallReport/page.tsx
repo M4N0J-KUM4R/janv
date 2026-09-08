@@ -8,7 +8,6 @@ import type { FacultyDashboardStats } from '@/lib/types';
 interface StudentReportRow {
   sNo: number;
   name: string;
-  rollNo: string;
   email: string;
   batchBranch: string;
   started: string;
@@ -114,7 +113,6 @@ export default function ViewReportsPage() {
         const rows: StudentReportRow[] = res.data.map((item: any, idx: number) => ({
           sNo: (page - 1) * perPage + idx + 1,
           name: item.name || item.fullName || 'Student',
-          rollNo: item.rollNo || item.collegeRollNo || item.roll_number || item.email?.split('@')[0] || '-',
           email: item.email || '-',
           batchBranch: item.batchBranch || `${item.batch || batch} | ${item.branch || branch}`,
           started: typeof item.started === 'number' ? `${item.started} Started` : (item.started || '0 Started'),
@@ -418,7 +416,6 @@ export default function ViewReportsPage() {
                 <tr style={{ borderBottom: '1px solid rgb(240, 240, 240)', color: 'rgb(114, 114, 114)', fontWeight: 600, fontSize: '12px', letterSpacing: '0.05em' }}>
                   <th style={{ padding: '16px 20px', width: '60px' }}>S.NO</th>
                   <th style={{ padding: '16px 20px' }}>STUDENT NAME</th>
-                  <th style={{ padding: '16px 20px' }}>COLLEGE ROLL NO</th>
                   <th style={{ padding: '16px 20px' }}>EMAIL</th>
                   <th style={{ padding: '16px 20px' }}>BATCH/BRANCH</th>
                   <th style={{ padding: '16px 20px' }}>STARTED</th>
@@ -429,13 +426,13 @@ export default function ViewReportsPage() {
               <tbody>
                 {loading ? (
                   <tr>
-                    <td colSpan={8} style={{ padding: '40px 20px', textAlign: 'center', color: 'rgb(114, 114, 114)' }}>
+                    <td colSpan={7} style={{ padding: '40px 20px', textAlign: 'center', color: 'rgb(114, 114, 114)' }}>
                       Loading report data...
                     </td>
                   </tr>
                 ) : students.length === 0 ? (
                   <tr>
-                    <td colSpan={8} style={{ padding: '48px 20px', textAlign: 'center', color: 'rgb(114, 114, 114)' }}>
+                    <td colSpan={7} style={{ padding: '48px 20px', textAlign: 'center', color: 'rgb(114, 114, 114)' }}>
                       No student records found for the selected criteria.
                     </td>
                   </tr>
@@ -465,7 +462,6 @@ export default function ViewReportsPage() {
                           <span>{s.name}</span>
                         </div>
                       </td>
-                      <td style={{ padding: '16px 20px', color: 'rgb(35, 39, 46)' }}>{s.rollNo}</td>
                       <td style={{ padding: '16px 20px', color: 'rgb(35, 39, 46)' }}>{s.email}</td>
                       <td style={{ padding: '16px 20px', color: 'rgb(35, 39, 46)' }}>{s.batchBranch}</td>
                       <td style={{ padding: '16px 20px', color: 'rgb(35, 39, 46)' }}>{s.started}</td>

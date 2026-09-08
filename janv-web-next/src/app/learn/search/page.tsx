@@ -6,7 +6,6 @@ import { admin } from '@/lib/api';
 
 interface StudentMatch {
   name: string;
-  rollNo: string;
   email: string;
   batchBranch: string;
   started: string;
@@ -37,7 +36,6 @@ export default function SearchStudentPage() {
       const res = await admin.searchStudents(trimmed);
       const mapped: StudentMatch[] = (res.data || []).map((u) => ({
         name: u.full_name || '',
-        rollNo: (u as any).rollNo || (u as any).roll_number || u.email?.split('@')[0] || '-',
         email: u.email || '',
         batchBranch: [u.batch, (u as any).branch || u.department].filter(Boolean).join(' | ') || '-',
         started: '0 Started',
@@ -134,7 +132,6 @@ export default function SearchStudentPage() {
           <thead>
             <tr style={{ borderBottom: '1px solid rgb(240, 240, 240)', color: 'rgb(114, 114, 114)', fontWeight: 600, fontSize: '12px', letterSpacing: '0.05em' }}>
               <th style={{ padding: '16px 20px' }}>STUDENT NAME</th>
-              <th style={{ padding: '16px 20px' }}>COLLEGE ROLL NO</th>
               <th style={{ padding: '16px 20px' }}>EMAIL</th>
               <th style={{ padding: '16px 20px' }}>BATCH/BRANCH</th>
               <th style={{ padding: '16px 20px' }}>STARTED</th>
@@ -145,7 +142,7 @@ export default function SearchStudentPage() {
             {!hasSearched ? (
               <tr>
                 <td
-                  colSpan={6}
+                  colSpan={5}
                   style={{
                     padding: '80px 20px',
                     textAlign: 'center',
@@ -160,7 +157,7 @@ export default function SearchStudentPage() {
             ) : loading ? (
               <tr>
                 <td
-                  colSpan={6}
+                  colSpan={5}
                   style={{
                     padding: '80px 20px',
                     textAlign: 'center',
@@ -175,7 +172,7 @@ export default function SearchStudentPage() {
             ) : results.length === 0 ? (
               <tr>
                 <td
-                  colSpan={6}
+                  colSpan={5}
                   style={{
                     padding: '80px 20px',
                     textAlign: 'center',
@@ -212,7 +209,6 @@ export default function SearchStudentPage() {
                       <span>{s.name}</span>
                     </div>
                   </td>
-                  <td style={{ padding: '16px 20px', color: 'rgb(35, 39, 46)' }}>{s.rollNo}</td>
                   <td style={{ padding: '16px 20px', color: 'rgb(35, 39, 46)' }}>{s.email}</td>
                   <td style={{ padding: '16px 20px', color: 'rgb(35, 39, 46)' }}>{s.batchBranch}</td>
                   <td style={{ padding: '16px 20px', color: 'rgb(35, 39, 46)' }}>{s.started}</td>
