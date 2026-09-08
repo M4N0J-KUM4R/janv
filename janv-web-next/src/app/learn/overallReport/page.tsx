@@ -19,8 +19,16 @@ interface StudentReportRow {
 export default function ViewReportsPage() {
   const [topBatch, setTopBatch] = useState('All');
   const [batch, setBatch] = useState('2026');
-  const [branch, setBranch] = useState('B.Tech CSE');
+  const [branch, setBranch] = useState('');
   const [course, setCourse] = useState('All Courses');
+  const [availableBatches, setAvailableBatches] = useState<string[]>(['2026', '2027', '2028']);
+  const [availableBranches, setAvailableBranches] = useState<string[]>([
+    'B.E. CSE',
+    'B.Sc. Biochem',
+    'BBA',
+    'M.Sc. Maths',
+    'M.Tech. DS',
+  ]);
   const [isSearched, setIsSearched] = useState(true);
   const [loading, setLoading] = useState(false);
   const [statsLoading, setStatsLoading] = useState(true);
@@ -30,7 +38,7 @@ export default function ViewReportsPage() {
   const [page, setPage] = useState(1);
   const [perPage, setPerPage] = useState(10);
 
-  // Load dashboard stats
+  // Load dashboard stats and dynamic filters
   useEffect(() => {
     let mounted = true;
     analytics
@@ -46,6 +54,45 @@ export default function ViewReportsPage() {
       .finally(() => {
         if (mounted) setStatsLoading(false);
       });
+
+    // Load dynamic batches from database
+    analytics
+      .batches()
+      .then((res) => {
+        if (mounted && res?.batches?.length) {
+          setAvailableBatches(res.batches.map(String));
+        }
+      })
+      .catch(() => {
+        fetch('/api/v2/batches')
+          .then((r) => r.json())
+          .then((res) => {
+            if (mounted && res?.batches?.length) {
+              setAvailableBatches(res.batches.map(String));
+            }
+          })
+          .catch(() => {});
+      });
+
+    // Load dynamic branches from database
+    analytics
+      .branches()
+      .then((res) => {
+        if (mounted && res?.branches?.length) {
+          setAvailableBranches(res.branches);
+        }
+      })
+      .catch(() => {
+        fetch('/api/v2/branches')
+          .then((r) => r.json())
+          .then((res) => {
+            if (mounted && res?.branches?.length) {
+              setAvailableBranches(res.branches);
+            }
+          })
+          .catch(() => {});
+      });
+
     return () => {
       mounted = false;
     };
@@ -67,7 +114,7 @@ export default function ViewReportsPage() {
         const rows: StudentReportRow[] = res.data.map((item: any, idx: number) => ({
           sNo: (page - 1) * perPage + idx + 1,
           name: item.name || item.fullName || 'Student',
-          rollNo: item.rollNo || item.collegeRollNo || item.roll_number || '-',
+          rollNo: item.rollNo || item.collegeRollNo || item.roll_number || item.email?.split('@')[0] || '-',
           email: item.email || '-',
           batchBranch: item.batchBranch || `${item.batch || batch} | ${item.branch || branch}`,
           started: typeof item.started === 'number' ? `${item.started} Started` : (item.started || '0 Started'),
@@ -111,7 +158,12 @@ export default function ViewReportsPage() {
           <div style={{ position: 'relative', display: 'inline-block' }}>
             <select
               value={topBatch}
-              onChange={(e) => setTopBatch(e.target.value)}
+              onChange={(e) => {
+                const val = e.target.value;
+                setTopBatch(val);
+                setBatch(val === 'All' ? '' : val);
+                setPage(1);
+              }}
               style={{
                 appearance: 'none',
                 backgroundColor: 'white',
@@ -124,9 +176,12 @@ export default function ViewReportsPage() {
                 outline: 'none',
               }}
             >
-              <option value="All">All</option>
-              <option value="2026">2026</option>
-              <option value="2027">2027</option>
+              <option value="All">All Batches</option>
+              {availableBatches.map((b) => (
+                <option key={b} value={b}>
+                  {b}
+                </option>
+              ))}
             </select>
             <svg
               viewBox="0 0 24 24"
@@ -254,9 +309,12 @@ export default function ViewReportsPage() {
                 outline: 'none',
               }}
             >
-              <option value="">Batch</option>
-              <option value="2026">2026</option>
-              <option value="2027">2027</option>
+              <option value="">All Batches</option>
+              {availableBatches.map((b) => (
+                <option key={b} value={b}>
+                  {b}
+                </option>
+              ))}
             </select>
             <svg viewBox="0 0 24 24" style={{ position: 'absolute', right: '12px', top: '13px', width: '18px', height: '18px', fill: '#727272', pointerEvents: 'none' }}>
               <path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z" />
@@ -285,10 +343,12 @@ export default function ViewReportsPage() {
                 outline: 'none',
               }}
             >
-              <option value="">Branch</option>
-              <option value="B.Tech CSE">B.Tech CSE</option>
-              <option value="B.Tech ECE">B.Tech ECE</option>
-              <option value="B.Tech ME">B.Tech ME</option>
+              <option value="">All Branches</option>
+              {availableBranches.map((br) => (
+                <option key={br} value={br}>
+                  {br}
+                </option>
+              ))}
             </select>
             <svg viewBox="0 0 24 24" style={{ position: 'absolute', right: '12px', top: '13px', width: '18px', height: '18px', fill: '#727272', pointerEvents: 'none' }}>
               <path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z" />

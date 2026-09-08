@@ -3,6 +3,11 @@ import { Pool } from 'pg';
 const connectionString =
   process.env.DATABASE_URL || 'postgres://postgres@localhost:5432/janv_db';
 
+const isSsl =
+  connectionString.includes('rds.amazonaws.com') ||
+  connectionString.includes('sslmode=') ||
+  connectionString.includes('ssl=true');
+
 declare global {
   // eslint-disable-next-line no-var
   var __pgPool: Pool | undefined;
@@ -12,9 +17,10 @@ const pool =
   global.__pgPool ||
   new Pool({
     connectionString,
+    ssl: isSsl ? { rejectUnauthorized: false } : undefined,
     max: 10,
     idleTimeoutMillis: 30000,
-    connectionTimeoutMillis: 5000,
+    connectionTimeoutMillis: 10000,
   });
 
 if (process.env.NODE_ENV !== 'production') {

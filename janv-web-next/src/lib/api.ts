@@ -281,6 +281,9 @@ export const templates = {
 export const questionBanks = {
   list: () => request<QuestionBank[]>('/assessments/banks'),
 
+  listQuestions: (bankId: string) =>
+    request<Question[]>(`/assessments/banks/${bankId}/questions`),
+
   create: (data: { title: string; subject?: string }) =>
     request<QuestionBank>('/assessments/banks', { method: 'POST', body: JSON.stringify(data) }),
 
@@ -317,14 +320,28 @@ export const analytics = {
   studentStreak: () => request('/analytics/student/streak'),
 
   faqs: () => request<Faq[]>('/analytics/faqs'),
+
+  batches: () => request<{ batches: number[] }>('/analytics/filters/batches'),
+
+  branches: () => request<{ branches: string[] }>('/analytics/filters/branches'),
 };
 
 // ── Admin ───────────────────────────────────────────────────
 
 export const admin = {
-  searchStudents: (query: string) => {
-    const params = new URLSearchParams({ search: query });
-    return request<{ data: User[] }>(`/admin/users?${params}`);
+  searchStudents: (queryOrParams: string | { search?: string; batch?: string; branch?: string; page?: number; per_page?: number }) => {
+    let params: URLSearchParams;
+    if (typeof queryOrParams === 'string') {
+      params = new URLSearchParams({ search: queryOrParams });
+    } else {
+      params = new URLSearchParams();
+      if (queryOrParams.search) params.set('search', queryOrParams.search);
+      if (queryOrParams.batch) params.set('batch', queryOrParams.batch);
+      if (queryOrParams.branch) params.set('branch', queryOrParams.branch);
+      if (queryOrParams.page) params.set('page', String(queryOrParams.page));
+      if (queryOrParams.per_page) params.set('per_page', String(queryOrParams.per_page));
+    }
+    return request<{ data: User[]; total: number }>(`/admin/users?${params}`);
   },
 
   getDashboard: () =>

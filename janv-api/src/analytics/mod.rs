@@ -1,7 +1,8 @@
 use crate::auth::middleware::AuthUser;
 use crate::db::AppState;
-use axum::{Json, Router, extract::State, response::IntoResponse, routing::get};
+use axum::{Json, Router, extract::{Query, State}, response::IntoResponse, routing::get};
 use janv_common::{dto::*, errors::AppError, models::*};
+use serde::Deserialize;
 
 pub fn router() -> Router<AppState> {
     Router::new()
@@ -9,6 +10,9 @@ pub fn router() -> Router<AppState> {
         .route("/student/progress", get(student_progress))
         .route("/student/streak", get(student_streak))
         .route("/faqs", get(list_faqs))
+        .route("/reports/overall", get(reports_overall))
+        .route("/filters/batches", get(filter_batches))
+        .route("/filters/branches", get(filter_branches))
 }
 
 pub async fn dashboard_stats(
@@ -144,6 +148,149 @@ pub async fn list_faqs(State(state): State<AppState>) -> Result<impl IntoRespons
     .await?;
 
     Ok(Json(faqs))
+}
+
+// ── Report Query ────────────────────────────────────────────
+
+#[derive(Debug, Deserialize)]
+pub struct ReportQuery {
+    pub page: Option<u32>,
+    pub per_page: Option<u32>,
+    pub batch: Option<String>,
+    pub branch: Option<String>,
+    pub course: Option<String>,
+}
+
+pub async fn reports_overall(
+    State(state): State<AppState>,
+    _user: AuthUser,
+    Query(q): Query<ReportQuery>,
+) -> Result<impl IntoResponse, AppError> {
+    let page = q.page.unwrap_or(1).max(1);
+    let per_page = q.per_page.unwrap_or(10).min(100);
+    let offset = ((page - 1) * per_page) as i64;
+    let limit = per_page as i64;
+
+    // Build dynamic WHERE clause for students only
+    let mut conditions = vec!["role = 'student'".to_string()];
+    let mut params: Vec<String> = Vec::new();
+
+    if let Some(ref batch) = q.batch {
+        if !batch.is_empty() && batch != "All" {
+            params.push(batch.clone());
+            conditions.push(format!("batch::text = ${}", params.len()));
+        }
+    }
+    if let Some(ref branch) = q.branch {
+        if !branch.is_empty() && branch != "All" {
+            params.push(branch.clone());
+            conditions.push(format!("branch = ${}", params.len()));
+        }
+    }
+
+    let where_clause = conditions.join(" AND ");
+
+    // Count query
+    let count_sql = format!("SELECT COUNT(*) as cnt FROM users WHERE {}", where_clause);
+    // Data query
+    let data_sql = format!(
+        "SELECT u.email, u.full_name, u.batch, u.branch, u.institution_id, u.created_at, \
+         COALESCE(i.name, '') as institution_name \
+         FROM users u LEFT JOIN institutions i ON u.institution_id = i.id \
+         WHERE {} ORDER BY u.full_name ASC LIMIT ${} OFFSET ${}",
+        // Prefix conditions with u.
+        conditions.iter().map(|c| {
+            if c.starts_with("role") || c.starts_with("batch") || c.starts_with("branch") {
+                format!("u.{}", c)
+            } else {
+                c.clone()
+            }
+        }).collect::<Vec<_>>().join(" AND "),
+        params.len() + 1,
+        params.len() + 2
+    );
+
+    // Execute count
+    let count_row: (i64,) = {
+        let mut q = sqlx::query_as(&count_sql);
+        for p in &params {
+            q = q.bind(p);
+        }
+        q.fetch_one(&state.db).await?
+    };
+    let total = count_row.0;
+
+    // Execute data query
+    #[derive(sqlx::FromRow, serde::Serialize)]
+    struct StudentRow {
+        email: String,
+        full_name: String,
+        batch: Option<i32>,
+        branch: Option<String>,
+        institution_id: Option<i32>,
+        created_at: chrono::DateTime<chrono::Utc>,
+        institution_name: String,
+    }
+
+    let rows: Vec<StudentRow> = {
+        let mut q = sqlx::query_as(&data_sql);
+        for p in &params {
+            q = q.bind(p);
+        }
+        q = q.bind(limit).bind(offset);
+        q.fetch_all(&state.db).await?
+    };
+
+    // Map to response
+    let data: Vec<serde_json::Value> = rows.iter().enumerate().map(|(i, r)| {
+        serde_json::json!({
+            "name": r.full_name,
+            "email": r.email,
+            "rollNo": format!("{}", r.email.split('@').next().unwrap_or("")),
+            "batch": r.batch,
+            "branch": r.branch.clone().unwrap_or_default(),
+            "batchBranch": format!("{} | {}", r.batch.map(|b| b.to_string()).unwrap_or_default(), r.branch.clone().unwrap_or_default()),
+            "institution": r.institution_name,
+            "started": "0 Started",
+            "completed": "0 Completed",
+            "progress": 0
+        })
+    }).collect();
+
+    Ok(Json(serde_json::json!({
+        "data": data,
+        "total": total,
+        "page": page,
+        "per_page": per_page,
+    })))
+}
+
+pub async fn filter_batches(
+    State(state): State<AppState>,
+    _user: AuthUser,
+) -> Result<impl IntoResponse, AppError> {
+    let rows: Vec<(Option<i32>,)> = sqlx::query_as(
+        "SELECT DISTINCT batch FROM users WHERE batch IS NOT NULL ORDER BY batch ASC"
+    )
+    .fetch_all(&state.db)
+    .await?;
+
+    let batches: Vec<i32> = rows.into_iter().filter_map(|(b,)| b).collect();
+    Ok(Json(serde_json::json!({ "batches": batches })))
+}
+
+pub async fn filter_branches(
+    State(state): State<AppState>,
+    _user: AuthUser,
+) -> Result<impl IntoResponse, AppError> {
+    let rows: Vec<(Option<String>,)> = sqlx::query_as(
+        "SELECT DISTINCT branch FROM users WHERE branch IS NOT NULL AND branch != '' ORDER BY branch ASC"
+    )
+    .fetch_all(&state.db)
+    .await?;
+
+    let branches: Vec<String> = rows.into_iter().filter_map(|(b,)| b).collect();
+    Ok(Json(serde_json::json!({ "branches": branches })))
 }
 
 /// Escapes a string to RFC 4180 compliant CSV field format

@@ -1,7 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Breadcrumb from '@/components/layout/Breadcrumb';
+import { analytics } from '@/lib/api';
 
 interface DownloadItem {
   id: string;
@@ -15,10 +16,61 @@ interface DownloadItem {
 
 export default function DownloadReportsPage() {
   const [batch, setBatch] = useState('2026');
-  const [branch, setBranch] = useState('B.Tech CSE');
+  const [branch, setBranch] = useState('');
   const [course, setCourse] = useState('All Courses');
+  const [availableBatches, setAvailableBatches] = useState<string[]>(['2026', '2027', '2028']);
+  const [availableBranches, setAvailableBranches] = useState<string[]>([
+    'B.E. CSE',
+    'B.Sc. Biochem',
+    'BBA',
+    'M.Sc. Maths',
+    'M.Tech. DS',
+  ]);
   const [isProcessing, setIsProcessing] = useState(false);
   const [downloads, setDownloads] = useState<DownloadItem[]>([]);
+
+  useEffect(() => {
+    let mounted = true;
+    analytics
+      .batches()
+      .then((res) => {
+        if (mounted && res?.batches?.length) {
+          setAvailableBatches(res.batches.map(String));
+        }
+      })
+      .catch(() => {
+        fetch('/api/v2/batches')
+          .then((r) => r.json())
+          .then((res) => {
+            if (mounted && res?.batches?.length) {
+              setAvailableBatches(res.batches.map(String));
+            }
+          })
+          .catch(() => {});
+      });
+
+    analytics
+      .branches()
+      .then((res) => {
+        if (mounted && res?.branches?.length) {
+          setAvailableBranches(res.branches);
+        }
+      })
+      .catch(() => {
+        fetch('/api/v2/branches')
+          .then((r) => r.json())
+          .then((res) => {
+            if (mounted && res?.branches?.length) {
+              setAvailableBranches(res.branches);
+            }
+          })
+          .catch(() => {});
+      });
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
 
   const handleDownload = () => {
     if (!batch) return;
@@ -115,8 +167,11 @@ export default function DownloadReportsPage() {
                 }}
               >
                 <option value="">Select Batch</option>
-                <option value="2026">2026</option>
-                <option value="2027">2027</option>
+                {availableBatches.map((b) => (
+                  <option key={b} value={b}>
+                    {b}
+                  </option>
+                ))}
               </select>
               <svg viewBox="0 0 24 24" style={{ position: 'absolute', right: '12px', top: '13px', width: '18px', height: '18px', fill: '#727272', pointerEvents: 'none' }}>
                 <path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z" />
@@ -145,9 +200,12 @@ export default function DownloadReportsPage() {
                   outline: 'none',
                 }}
               >
-                <option value="">Select Branch</option>
-                <option value="B.Tech CSE">B.Tech CSE</option>
-                <option value="B.Tech ECE">B.Tech ECE</option>
+                <option value="">All Branches</option>
+                {availableBranches.map((br) => (
+                  <option key={br} value={br}>
+                    {br}
+                  </option>
+                ))}
               </select>
               <svg viewBox="0 0 24 24" style={{ position: 'absolute', right: '12px', top: '13px', width: '18px', height: '18px', fill: '#727272', pointerEvents: 'none' }}>
                 <path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z" />

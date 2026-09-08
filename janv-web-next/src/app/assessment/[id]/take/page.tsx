@@ -15,6 +15,7 @@ export default function TakeAssessmentPage() {
   const [answers, setAnswers] = useState<Record<string, number | number[]>>({});
   const [remainingSecs, setRemainingSecs] = useState<number>(1800);
   const [loading, setLoading] = useState(true);
+  const [submitting, setSubmitting] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 

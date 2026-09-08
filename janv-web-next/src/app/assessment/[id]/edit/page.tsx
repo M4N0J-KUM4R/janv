@@ -56,19 +56,20 @@ export default function EditTestPage() {
     ]).then(async ([res, bankList]) => {
       if (res) {
         setTest(res.assessment);
-        if (res.questions && res.questions.length > 0) {
-          setAvailableQuestions(res.questions);
-          setSelectedQuestionIds(res.questions.map((q: Question) => q.id));
+        if (res.questions && (res.questions as Question[]).length > 0) {
+          const qs = res.questions as Question[];
+          setAvailableQuestions(qs);
+          setSelectedQuestionIds(qs.map((q: Question) => q.id));
         }
       }
       setBanks(bankList || []);
       if (bankList && bankList.length > 0) {
         try {
-          const bankQuestions = await questionBanks.listQuestions(bankList[0].id);
+          const bankQuestions = (await questionBanks.listQuestions(bankList[0].id)) as Question[];
           if (bankQuestions && bankQuestions.length > 0) {
             setAvailableQuestions((prev) => {
-              const ids = new Set(prev.map((q) => q.id));
-              const newQs = bankQuestions.filter((q) => !ids.has(q.id));
+              const ids = new Set(prev.map((q: Question) => q.id));
+              const newQs = bankQuestions.filter((q: Question) => !ids.has(q.id));
               return [...prev, ...newQs];
             });
           }

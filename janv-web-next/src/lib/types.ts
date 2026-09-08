@@ -15,6 +15,7 @@ export interface User {
   avatar_url?: string;
   is_active: boolean;
   department?: string;
+  branch?: string;
   institution_id?: string;
   batch?: string;
   class?: string;

@@ -37,9 +37,9 @@ export default function SearchStudentPage() {
       const res = await admin.searchStudents(trimmed);
       const mapped: StudentMatch[] = (res.data || []).map((u) => ({
         name: u.full_name || '',
-        rollNo: u.batch || u.id || '',
+        rollNo: (u as any).rollNo || (u as any).roll_number || u.email?.split('@')[0] || '-',
         email: u.email || '',
-        batchBranch: [u.batch, u.department].filter(Boolean).join(' | ') || '-',
+        batchBranch: [u.batch, (u as any).branch || u.department].filter(Boolean).join(' | ') || '-',
         started: '0 Started',
         completed: '0 Completed',
       }));
