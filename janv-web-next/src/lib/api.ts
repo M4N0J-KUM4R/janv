@@ -329,15 +329,16 @@ export const analytics = {
 // ── Admin ───────────────────────────────────────────────────
 
 export const admin = {
-  searchStudents: (queryOrParams: string | { search?: string; batch?: string; branch?: string; page?: number; per_page?: number }) => {
+  searchStudents: (queryOrParams: string | { search?: string; batch?: string; branch?: string; page?: number; per_page?: number; role?: string }) => {
     let params: URLSearchParams;
     if (typeof queryOrParams === 'string') {
-      params = new URLSearchParams({ search: queryOrParams, role: 'student' });
+      params = new URLSearchParams({ search: queryOrParams });
     } else {
-      params = new URLSearchParams({ role: 'student' });
+      params = new URLSearchParams();
       if (queryOrParams.search) params.set('search', queryOrParams.search);
       if (queryOrParams.batch) params.set('batch', queryOrParams.batch);
       if (queryOrParams.branch) params.set('branch', queryOrParams.branch);
+      if (queryOrParams.role) params.set('role', queryOrParams.role);
       if (queryOrParams.page) params.set('page', String(queryOrParams.page));
       if (queryOrParams.per_page) params.set('per_page', String(queryOrParams.per_page));
     }
