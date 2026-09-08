@@ -108,7 +108,7 @@ pub async fn seed_super_admin(pool: &PgPool, config: &AppConfig) -> Result<()> {
     sqlx::query(
         r#"
         INSERT INTO institutions (id, name, is_active, created_at)
-        VALUES (1, 'PrepInsta Institute of Technology', true, NOW())
+        VALUES (1, 'D.G. Vaishnav College', true, NOW())
         ON CONFLICT (id) DO UPDATE SET name = EXCLUDED.name
         "#
     )

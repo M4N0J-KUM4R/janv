@@ -19,17 +19,27 @@ pub async fn dashboard_stats(
     State(state): State<AppState>,
     user: AuthUser,
 ) -> Result<impl IntoResponse, AppError> {
-    let total_students: (i64,) =
-        sqlx::query_as("SELECT COUNT(*) FROM users WHERE role = 'student'")
-            .fetch_one(&state.db)
-            .await?;
+    let total_students: (i64,) = match user.institution_id {
+        Some(inst_id) => {
+            sqlx::query_as("SELECT COUNT(*) FROM users WHERE role = 'student' AND institution_id = $1")
+                .bind(inst_id)
+                .fetch_one(&state.db)
+                .await?
+        }
+        None => {
+            sqlx::query_as("SELECT COUNT(*) FROM users WHERE role = 'student'")
+                .fetch_one(&state.db)
+                .await?
+        }
+    };
 
     let total_assessments: (i64,) = match user.role {
         UserRole::Faculty => {
             sqlx::query_as("SELECT COUNT(*) FROM assessments WHERE faculty_id = $1")
                 .bind(&user.email)
                 .fetch_one(&state.db)
-                .await?
+                .await
+                .unwrap_or((0,))
         }
         _ => {
             sqlx::query_as("SELECT COUNT(*) FROM assessments")
@@ -38,17 +48,37 @@ pub async fn dashboard_stats(
         }
     };
 
-    let (total_attempts, avg_score, passed): (i64, Option<f64>, i64) = sqlx::query_as(
-        r#"
-        SELECT 
-            COUNT(*) FILTER (WHERE status != 'in_progress'),
-            AVG(percentage) FILTER (WHERE status != 'in_progress' AND percentage IS NOT NULL),
-            COUNT(*) FILTER (WHERE is_passed = true)
-        FROM attempts
-        "#,
-    )
-    .fetch_one(&state.db)
-    .await?;
+    let (total_attempts, avg_score, passed): (i64, Option<f64>, i64) = match user.institution_id {
+        Some(inst_id) => {
+            sqlx::query_as(
+                r#"
+                SELECT 
+                    COUNT(*) FILTER (WHERE a.status != 'in_progress'),
+                    AVG(a.percentage) FILTER (WHERE a.status != 'in_progress' AND a.percentage IS NOT NULL),
+                    COUNT(*) FILTER (WHERE a.is_passed = true)
+                FROM attempts a
+                JOIN users u ON a.student_id = u.email
+                WHERE u.institution_id = $1
+                "#,
+            )
+            .bind(inst_id)
+            .fetch_one(&state.db)
+            .await?
+        }
+        None => {
+            sqlx::query_as(
+                r#"
+                SELECT 
+                    COUNT(*) FILTER (WHERE status != 'in_progress'),
+                    AVG(percentage) FILTER (WHERE status != 'in_progress' AND percentage IS NOT NULL),
+                    COUNT(*) FILTER (WHERE is_passed = true)
+                FROM attempts
+                "#,
+            )
+            .fetch_one(&state.db)
+            .await?
+        }
+    };
 
     let pass_rate = if total_attempts > 0 {
         (passed as f64 / total_attempts as f64) * 100.0
@@ -163,7 +193,7 @@ pub struct ReportQuery {
 
 pub async fn reports_overall(
     State(state): State<AppState>,
-    _user: AuthUser,
+    user: AuthUser,
     Query(q): Query<ReportQuery>,
 ) -> Result<impl IntoResponse, AppError> {
     let page = q.page.unwrap_or(1).max(1);
@@ -175,14 +205,20 @@ pub async fn reports_overall(
     let mut conditions = vec!["role = 'student'".to_string()];
     let mut params: Vec<String> = Vec::new();
 
+    // Institution scoping: filter to user's institution if they belong to one
+    if let Some(inst_id) = user.institution_id {
+        params.push(inst_id.to_string());
+        conditions.push(format!("institution_id::text = ${}", params.len()));
+    }
+
     if let Some(ref batch) = q.batch {
-        if !batch.is_empty() && batch != "All" {
+        if !batch.is_empty() && batch != "All" && batch != "All Batches" {
             params.push(batch.clone());
             conditions.push(format!("batch::text = ${}", params.len()));
         }
     }
     if let Some(ref branch) = q.branch {
-        if !branch.is_empty() && branch != "All" {
+        if !branch.is_empty() && branch != "All" && branch != "All Branches" {
             params.push(branch.clone());
             conditions.push(format!("branch = ${}", params.len()));
         }
@@ -200,7 +236,7 @@ pub async fn reports_overall(
          WHERE {} ORDER BY u.full_name ASC LIMIT ${} OFFSET ${}",
         // Prefix conditions with u.
         conditions.iter().map(|c| {
-            if c.starts_with("role") || c.starts_with("batch") || c.starts_with("branch") {
+            if c.starts_with("role") || c.starts_with("batch") || c.starts_with("branch") || c.starts_with("institution_id") {
                 format!("u.{}", c)
             } else {
                 c.clone()
@@ -267,13 +303,25 @@ pub async fn reports_overall(
 
 pub async fn filter_batches(
     State(state): State<AppState>,
-    _user: AuthUser,
+    user: AuthUser,
 ) -> Result<impl IntoResponse, AppError> {
-    let rows: Vec<(Option<i32>,)> = sqlx::query_as(
-        "SELECT DISTINCT batch FROM users WHERE batch IS NOT NULL ORDER BY batch ASC"
-    )
-    .fetch_all(&state.db)
-    .await?;
+    let rows: Vec<(Option<i32>,)> = match user.institution_id {
+        Some(inst_id) => {
+            sqlx::query_as(
+                "SELECT DISTINCT batch FROM users WHERE institution_id = $1 AND batch IS NOT NULL ORDER BY batch ASC"
+            )
+            .bind(inst_id)
+            .fetch_all(&state.db)
+            .await?
+        }
+        None => {
+            sqlx::query_as(
+                "SELECT DISTINCT batch FROM users WHERE batch IS NOT NULL ORDER BY batch ASC"
+            )
+            .fetch_all(&state.db)
+            .await?
+        }
+    };
 
     let batches: Vec<i32> = rows.into_iter().filter_map(|(b,)| b).collect();
     Ok(Json(serde_json::json!({ "batches": batches })))
@@ -281,13 +329,25 @@ pub async fn filter_batches(
 
 pub async fn filter_branches(
     State(state): State<AppState>,
-    _user: AuthUser,
+    user: AuthUser,
 ) -> Result<impl IntoResponse, AppError> {
-    let rows: Vec<(Option<String>,)> = sqlx::query_as(
-        "SELECT DISTINCT branch FROM users WHERE branch IS NOT NULL AND branch != '' ORDER BY branch ASC"
-    )
-    .fetch_all(&state.db)
-    .await?;
+    let rows: Vec<(Option<String>,)> = match user.institution_id {
+        Some(inst_id) => {
+            sqlx::query_as(
+                "SELECT DISTINCT branch FROM users WHERE institution_id = $1 AND branch IS NOT NULL AND branch != '' AND LENGTH(branch) > 1 ORDER BY branch ASC"
+            )
+            .bind(inst_id)
+            .fetch_all(&state.db)
+            .await?
+        }
+        None => {
+            sqlx::query_as(
+                "SELECT DISTINCT branch FROM users WHERE branch IS NOT NULL AND branch != '' AND LENGTH(branch) > 1 ORDER BY branch ASC"
+            )
+            .fetch_all(&state.db)
+            .await?
+        }
+    };
 
     let branches: Vec<String> = rows.into_iter().filter_map(|(b,)| b).collect();
     Ok(Json(serde_json::json!({ "branches": branches })))

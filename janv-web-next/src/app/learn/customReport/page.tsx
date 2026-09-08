@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Breadcrumb from '@/components/layout/Breadcrumb';
-import { analytics } from '@/lib/api';
+import { analytics, reports } from '@/lib/api';
 
 interface DownloadItem {
   id: string;
@@ -113,17 +113,55 @@ export default function DownloadReportsPage() {
     }, 400);
   };
 
-  const handleFileDownload = (item: DownloadItem) => {
-    const csvContent = `Batch,Branch,Course,Generated At,Status\n${item.batch},"${item.branch}","${item.course}","${item.dateTime}",COMPLETED\n`;
-    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.setAttribute('download', `report_${item.batch}_${item.branch.replace(/[^a-zA-Z0-9]/g, '_')}.csv`);
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
+  const handleFileDownload = async (item: DownloadItem) => {
+    try {
+      const res = await reports.overall({
+        page: 1,
+        per_page: 1000,
+        batch: item.batch && item.batch !== 'All' && item.batch !== 'All Batches' ? item.batch : undefined,
+        branch: item.branch && item.branch !== 'All Branches' ? item.branch : undefined,
+        course: item.course && item.course !== 'All Courses' ? item.course : undefined,
+      });
+
+      let csvContent = 'S.NO,STUDENT NAME,EMAIL,BATCH,BRANCH,STARTED,COMPLETED,ALL COURSES PROGRESS\n';
+      const data = (res?.data || []) as any[];
+      if (data.length > 0) {
+        data.forEach((s, idx) => {
+          const name = `"${(s.student_name || s.name || s.full_name || '').replace(/"/g, '""')}"`;
+          const email = `"${(s.email || '').replace(/"/g, '""')}"`;
+          const batchVal = s.batch || item.batch;
+          const branchVal = `"${(s.branch || item.branch).replace(/"/g, '""')}"`;
+          const started = s.started ?? 0;
+          const completed = s.completed ?? 0;
+          const progress = `${Math.round(s.progress_percentage ?? s.progress ?? 0)}%`;
+          csvContent += `${idx + 1},${name},${email},${batchVal},${branchVal},${started},${completed},${progress}\n`;
+        });
+      } else {
+        csvContent += `\n# No students found for Batch: ${item.batch}, Branch: ${item.branch}, Course: ${item.course}\n`;
+      }
+
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', `report_${item.batch}_${item.branch.replace(/[^a-zA-Z0-9]/g, '_')}.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    } catch (e) {
+      console.error('Failed to generate full CSV:', e);
+      const csvContent = `Batch,Branch,Course,Generated At,Status\n${item.batch},"${item.branch}","${item.course}","${item.dateTime}",COMPLETED\n`;
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', `report_${item.batch}_${item.branch.replace(/[^a-zA-Z0-9]/g, '_')}.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    }
   };
 
   return (

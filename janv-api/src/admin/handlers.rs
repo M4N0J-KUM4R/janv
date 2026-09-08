@@ -9,7 +9,7 @@ use uuid::Uuid;
 
 pub async fn list_users(
     State(state): State<AppState>,
-    _user: AuthUser,
+    user: AuthUser,
     Query(query): Query<UserListQuery>,
 ) -> Result<impl IntoResponse, AppError> {
     let limit = query.limit.or(query.per_page).unwrap_or(10) as i64;
@@ -18,6 +18,12 @@ pub async fn list_users(
 
     let mut conditions: Vec<String> = Vec::new();
     let mut params: Vec<String> = Vec::new();
+
+    // Institution filter: if user belongs to an institution (e.g. Faculty), scope to their institution
+    if let Some(inst_id) = user.institution_id {
+        params.push(inst_id.to_string());
+        conditions.push(format!("institution_id::text = ${}", params.len()));
+    }
 
     // Search filter (email, full_name, branch, batch)
     if let Some(ref search) = query.search {
