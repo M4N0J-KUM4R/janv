@@ -26,8 +26,8 @@ export default function AdminLoginPage() {
       const loggedUser = await login(email, password, rememberMe);
       const role = (loggedUser?.role || '').toLowerCase();
       if (role === 'student') {
-        logout();
-        setError('Access denied: Student accounts are not permitted on the Institutions Admin portal. Only faculty members can sign in.');
+        // Redirect student to the Student Portal (backend on port 8080 or student home)
+        window.location.href = 'http://localhost:8080/';
         return;
       }
       router.push('/learn/dashboard');

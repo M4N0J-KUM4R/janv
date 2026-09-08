@@ -28,16 +28,20 @@ export function useSidebar() {
 export default function AppShell({ children }: { children: ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
-  const { loading, isAuthenticated } = useAuth();
+  const { loading, isAuthenticated, user } = useAuth();
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const isPublicRoute = PUBLIC_ROUTES.some((r) => pathname.startsWith(r));
 
   useEffect(() => {
-    if (!isPublicRoute && !loading && !isAuthenticated) {
-      router.push('/adminLogin');
+    if (!isPublicRoute && !loading) {
+      if (!isAuthenticated) {
+        router.push('/adminLogin');
+      } else if (user?.role?.toLowerCase() === 'student') {
+        window.location.href = 'http://localhost:8080/';
+      }
     }
-  }, [isPublicRoute, loading, isAuthenticated, router]);
+  }, [isPublicRoute, loading, isAuthenticated, user, router]);
 
   // On public routes, render children without shell
   if (isPublicRoute) {
