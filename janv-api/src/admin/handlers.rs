@@ -32,7 +32,7 @@ pub async fn list_users(
     // Role filter
     if let Some(ref role) = query.role {
         params.push(role.to_string());
-        conditions.push(format!("role = ${}", params.len()));
+        conditions.push(format!("role::text = ${}", params.len()));
     }
 
     // Department / branch filter
