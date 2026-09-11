@@ -7,6 +7,7 @@ pub enum Language {
     Cpp,
     Java,
     Python,
+    Rust,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -58,6 +59,15 @@ pub fn get_language_config(lang: &Language) -> LanguageConfig {
             run_cmd: "python3 /tmp/solution.py".to_string(),
             version: "Python 3.12".to_string(),
         },
+        Language::Rust => LanguageConfig {
+            name: "rust".to_string(),
+            display_name: "Rust".to_string(),
+            file_extension: "rs".to_string(),
+            docker_image: "janv-sandbox-rust:latest".to_string(),
+            compile_cmd: Some("rustc /tmp/solution.rs -o /tmp/solution".to_string()),
+            run_cmd: "/tmp/solution".to_string(),
+            version: "Rust (Alpine)".to_string(),
+        },
     }
 }
 
@@ -67,6 +77,7 @@ pub fn list_languages() -> Vec<LanguageConfig> {
         get_language_config(&Language::Cpp),
         get_language_config(&Language::Java),
         get_language_config(&Language::Python),
+        get_language_config(&Language::Rust),
     ]
 }
 
@@ -76,6 +87,7 @@ pub fn parse_language(s: &str) -> Result<Language> {
         "cpp" | "c++" => Ok(Language::Cpp),
         "java" => Ok(Language::Java),
         "python" | "py" | "python3" => Ok(Language::Python),
+        "rust" | "rs" => Ok(Language::Rust),
         _ => Err(anyhow!("Unsupported language: {}", s)),
     }
 }

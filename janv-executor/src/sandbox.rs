@@ -10,6 +10,10 @@ use futures_util::StreamExt;
 use std::time::{Duration, Instant};
 use tokio::time::timeout;
 
+fn parse_memory_peak_kb(value: &str) -> Option<u64> {
+    value.trim().parse::<u64>().ok().map(|bytes| bytes / 1024)
+}
+
 pub struct Sandbox {
     docker: Option<Docker>,
     limits: ExecutionLimits,
@@ -66,12 +70,14 @@ impl Sandbox {
                 .await?;
 
             if exit_code != 0 {
+                let execution_time_ms = start_time.elapsed().as_millis() as u64;
+                let memory_used_kb = self.read_memory_peak_kb(docker, &container_id).await;
                 return Ok(ExecutionOutput {
                     stdout: "".to_string(),
                     stderr: truncate_output(&stderr, self.limits.max_output_bytes),
                     exit_code,
-                    execution_time_ms: start_time.elapsed().as_millis() as u64,
-                    memory_used_kb: 0,
+                    execution_time_ms,
+                    memory_used_kb,
                     status: ExecutionStatus::CompilationError,
                 });
             }
@@ -86,6 +92,7 @@ impl Sandbox {
         .await;
 
         let execution_time_ms = start_time.elapsed().as_millis() as u64;
+        let memory_used_kb = self.read_memory_peak_kb(docker, &container_id).await;
 
         match run_result {
             Ok(Ok((stdout, stderr, exit_code))) => {
@@ -100,7 +107,7 @@ impl Sandbox {
                     stderr: truncate_output(&stderr, self.limits.max_output_bytes),
                     exit_code,
                     execution_time_ms,
-                    memory_used_kb: 0, // In a real system, we'd query cgroups here
+                    memory_used_kb,
                     status,
                 })
             }
@@ -110,10 +117,45 @@ impl Sandbox {
                 stderr: "Time Limit Exceeded".to_string(),
                 exit_code: -1,
                 execution_time_ms,
-                memory_used_kb: 0,
+                memory_used_kb,
                 status: ExecutionStatus::TimeLimitExceeded,
             }),
         }
+    }
+
+    // This is the container's lifetime peak, including compilation and helper processes.
+    // Missing cgroup metrics must not replace the original execution result with an error.
+    async fn read_memory_peak_kb(&self, docker: &Docker, container_id: &str) -> u64 {
+        for path in [
+            "/sys/fs/cgroup/memory.peak",
+            "/sys/fs/cgroup/memory/memory.max_usage_in_bytes",
+        ] {
+            let cmd = ["cat", path];
+            match timeout(
+                Duration::from_secs(1),
+                self.exec_in_container(docker, container_id, &cmd, None),
+            )
+            .await
+            {
+                Ok(Ok((stdout, _, 0))) => {
+                    if let Some(kb) = parse_memory_peak_kb(&stdout) {
+                        return kb;
+                    }
+                    tracing::debug!(%container_id, %path, "Invalid cgroup peak memory value");
+                }
+                Ok(Ok((_, _, exit_code))) => {
+                    tracing::debug!(%container_id, %path, exit_code, "Cgroup peak memory unavailable");
+                }
+                Ok(Err(error)) => {
+                    tracing::debug!(%container_id, %path, %error, "Failed to read cgroup peak memory");
+                }
+                Err(_) => {
+                    tracing::debug!(%container_id, %path, "Cgroup peak memory read timed out");
+                }
+            }
+        }
+        tracing::warn!(%container_id, "Peak memory unavailable; reporting 0 KiB");
+        0
     }
 
     async fn create_container(&self, docker: &Docker, lang_config: &LanguageConfig) -> Result<String> {
@@ -282,5 +324,25 @@ impl Drop for ContainerCleanupGuard {
                 )
                 .await;
         });
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::parse_memory_peak_kb;
+
+    #[test]
+    fn parses_peak_bytes_as_kibibytes() {
+        assert_eq!(parse_memory_peak_kb("1048576\n"), Some(1024));
+        assert_eq!(parse_memory_peak_kb(" 2049 \n"), Some(2));
+        assert_eq!(parse_memory_peak_kb("0"), Some(0));
+        assert_eq!(parse_memory_peak_kb(&u64::MAX.to_string()), Some(u64::MAX / 1024));
+    }
+
+    #[test]
+    fn rejects_unavailable_and_invalid_peak_values() {
+        for value in ["", "max", "-1", "not a number", "18446744073709551616"] {
+            assert_eq!(parse_memory_peak_kb(value), None);
+        }
     }
 }

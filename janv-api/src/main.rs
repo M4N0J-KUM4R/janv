@@ -77,6 +77,8 @@ async fn main() -> anyhow::Result<()> {
         .route("/refresh", post(auth::handlers::refresh_token))
         .route("/me", get(auth::handlers::me));
 
+    let scheduler_pool = state.db.clone();
+
     let app = Router::new()
         // HTML Views / HTMX routes
         .route("/", get(pages::dashboard_page))
@@ -109,7 +111,11 @@ async fn main() -> anyhow::Result<()> {
     let listener = tokio::net::TcpListener::bind(&addr).await?;
     tracing::info!("🚀 Janv API server listening on {}", addr);
 
-    axum::serve(listener, app).await?;
+    let scheduler = assessment::scheduler::spawn(scheduler_pool);
+    let server_result = axum::serve(listener, app).await;
+    scheduler.abort();
+    let _ = scheduler.await;
+    server_result?;
 
     Ok(())
 }
