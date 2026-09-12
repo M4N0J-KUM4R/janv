@@ -21,7 +21,10 @@ export async function GET(req: NextRequest) {
         a.shuffle_questions,
         a.show_results,
         a.num_sections,
-        a.tab_switches_allowed,
+        a.tab_switch_limit,
+        a.tab_switch_limit as tab_switches_allowed,
+        a.proctoring_enabled,
+        a.proctoring_enabled as is_proctoring,
         a.status,
         a.created_at,
         COALESCE(json_agg(
@@ -126,9 +129,9 @@ export async function POST(req: NextRequest) {
         is_published,
         shuffle_questions,
         show_results,
-        is_proctoring,
+        proctoring_enabled,
         num_sections,
-        tab_switches_allowed,
+        tab_switch_limit,
         batch_visibility,
         status,
         created_at

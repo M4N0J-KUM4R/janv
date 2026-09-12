@@ -8,7 +8,7 @@ pub struct Course {
     pub id: Uuid,
     pub title: String,
     pub description: Option<String>,
-    pub faculty_id: String,
+    pub faculty_id: Option<String>,
     pub institution_id: Option<i32>,
     pub is_published: bool,
     pub created_at: DateTime<Utc>,

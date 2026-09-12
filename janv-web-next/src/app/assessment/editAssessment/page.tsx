@@ -37,7 +37,7 @@ function EditAssessmentContent() {
             setTestCode(item.test_code || '');
             setDescription(item.description || '');
             setInstructions(item.instructions || '');
-            setTabSwitchesAllowed(item.tab_switches_allowed ?? 10);
+            setTabSwitchesAllowed(item.tab_switch_limit ?? item.tab_switches_allowed ?? 10);
             setShuffleQuestions(Boolean(item.shuffle_questions));
             setShowResults(Boolean(item.show_results));
             setIsProctoring(Boolean(item.is_proctoring));
@@ -71,6 +71,7 @@ function EditAssessmentContent() {
         title: title.trim(),
         description: description.trim() || undefined,
         instructions: instructions.trim() || undefined,
+        tab_switch_limit: Number(tabSwitchesAllowed) || 10,
         tab_switches_allowed: Number(tabSwitchesAllowed) || 10,
         shuffle_questions: shuffleQuestions,
         show_results: showResults,

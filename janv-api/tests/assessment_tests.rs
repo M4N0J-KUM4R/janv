@@ -20,14 +20,12 @@ fn test_create_assessment_validation() {
         end_time: None,
         test_code: Some("EXAM2026".to_string()),
         num_sections: Some(2),
-        tab_switches_allowed: Some(5),
         tab_switch_limit: Some(5),
         institution_visibility: None,
         batch_visibility: None,
         sections: Some(vec![
             CreateSectionRequest {
                 title: "Section 1: Aptitude".to_string(),
-                description: None,
                 instructions: None,
                 section_type: Some("1".to_string()),
                 duration_mins: Some(30),
@@ -37,7 +35,6 @@ fn test_create_assessment_validation() {
             },
             CreateSectionRequest {
                 title: "Section 2: Coding".to_string(),
-                description: None,
                 instructions: None,
                 section_type: Some("2".to_string()),
                 duration_mins: Some(30),
@@ -76,7 +73,6 @@ fn test_create_assessment_validation() {
 fn test_section_validation() {
     let valid_sec = CreateSectionRequest {
         title: "Core Java".to_string(),
-        description: None,
         instructions: None,
         section_type: Some("1".to_string()),
         duration_mins: Some(45),

@@ -100,12 +100,12 @@ CREATE TABLE assessments (
     end_time TIMESTAMPTZ,
     test_code VARCHAR(20) UNIQUE,
     num_sections INTEGER NOT NULL DEFAULT 1,
-    tab_switches_allowed INTEGER NOT NULL DEFAULT 10,
+    tab_switch_limit INTEGER NOT NULL DEFAULT 0,
     institution_id INTEGER REFERENCES institutions(id),
     institution_visibility INTEGER[],
     batch_visibility TEXT[],
     instructions TEXT,
-    is_proctoring BOOLEAN NOT NULL DEFAULT false,
+    proctoring_enabled BOOLEAN NOT NULL DEFAULT false,
     test_type VARCHAR(100) DEFAULT 'General Assessment',
     status assessment_status NOT NULL DEFAULT 'draft', -- ENUM: draft, scheduled, ongoing, completed, cancelled
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
@@ -119,7 +119,6 @@ CREATE TABLE assessment_sections (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     assessment_id UUID NOT NULL REFERENCES assessments(id) ON DELETE CASCADE,
     title VARCHAR(255) NOT NULL,
-    description TEXT,
     section_type VARCHAR(100) DEFAULT 'Aptitude',
     duration_mins INTEGER,
     instructions TEXT,

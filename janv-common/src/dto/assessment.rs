@@ -9,7 +9,7 @@ use crate::models::{Difficulty, QuestionType};
 pub struct CreateSectionRequest {
     #[validate(length(min = 1))]
     pub title: String,
-    pub description: Option<String>,
+    #[serde(alias = "description")]
     pub instructions: Option<String>,
     pub section_type: Option<String>,
     #[validate(range(min = 1))]
@@ -41,7 +41,7 @@ pub struct CreateAssessmentRequest {
     pub end_time: Option<DateTime<Utc>>,
     pub test_code: Option<String>,
     pub num_sections: Option<i32>,
-    pub tab_switches_allowed: Option<i32>,
+    #[serde(alias = "tab_switches_allowed")]
     pub tab_switch_limit: Option<i32>,
     pub institution_visibility: Option<Vec<i32>>,
     pub batch_visibility: Option<Vec<i32>>,
@@ -52,6 +52,7 @@ pub struct CreateAssessmentRequest {
 pub struct UpdateAssessmentRequest {
     pub title: Option<String>,
     pub description: Option<String>,
+    pub instructions: Option<String>,
     pub duration_mins: Option<i32>,
     pub total_marks: Option<i32>,
     pub pass_percentage: Option<f64>,
@@ -60,6 +61,8 @@ pub struct UpdateAssessmentRequest {
     pub show_results: Option<bool>,
     pub start_time: Option<DateTime<Utc>>,
     pub end_time: Option<DateTime<Utc>>,
+    #[serde(alias = "tab_switches_allowed")]
+    pub tab_switch_limit: Option<i32>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, Validate)]

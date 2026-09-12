@@ -147,7 +147,7 @@ pub async fn delete_template(
             .await?
             .ok_or(AppError::NotFound("Template not found".to_string()))?;
 
-    if template.faculty_id != user.email && user.role != UserRole::SuperAdmin {
+    if template.faculty_id.as_deref() != Some(&user.email) && user.role != UserRole::SuperAdmin {
         return Err(AppError::Forbidden(
             "Only the creator can delete".to_string(),
         ));

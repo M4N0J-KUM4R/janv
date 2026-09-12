@@ -6,7 +6,7 @@ use uuid::Uuid;
 #[cfg_attr(feature = "backend", derive(sqlx::FromRow))]
 pub struct AuditLog {
     pub id: Uuid,
-    pub user_id: Option<Uuid>,
+    pub user_id: Option<String>,
     pub action: String,
     pub entity_type: String,
     pub entity_id: Option<Uuid>,

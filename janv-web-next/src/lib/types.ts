@@ -49,7 +49,9 @@ export interface Assessment {
   test_code?: string;
   status?: string;
   num_sections?: number;
+  tab_switch_limit?: number;
   tab_switches_allowed?: number;
+  proctoring_enabled?: boolean;
   is_proctoring?: boolean;
   instructions?: string;
   institution_visibility?: string[];

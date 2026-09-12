@@ -663,7 +663,7 @@ pub async fn seed_two_institutions(pool: &PgPool) -> TwoInstitutionFixtures {
         sqlx::query(
             "INSERT INTO assessments (id, title, course_id, faculty_id, duration_mins, total_marks, pass_percentage,
              is_published, shuffle_questions, show_results, test_code, num_sections,
-             tab_switches_allowed, status, institution_id, start_time, end_time, created_at)
+             tab_switch_limit, status, institution_id, start_time, end_time, created_at)
              VALUES ($1,$2,$3,$4,60,100,40.0,true,false,true,$5,1,3,'completed'::assessment_status,$6,$7,$8,$9)",
         )
         .bind(aid).bind(title).bind(cid).bind(fac_email).bind(code).bind(inst).bind(start_t).bind(end_t).bind(now)

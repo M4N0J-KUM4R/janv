@@ -31,7 +31,7 @@ pub struct CodingProblem {
     pub constraints: Option<String>,
     pub time_limit_ms: i32,
     pub memory_limit_kb: i32,
-    pub faculty_id: String,
+    pub faculty_id: Option<String>,
     pub is_published: bool,
     pub created_at: DateTime<Utc>,
 }
