@@ -83,7 +83,7 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
 
     const title = body.testName || body.title || 'Untitled Assessment';
-    const testCode = body.testCode || `SVET${Math.floor(10000 + Math.random() * 90000)}`;
+    const testCode = body.testCode || null;
     const description = body.testDesc || body.description || '';
     const instructions = body.testInstruct || body.instructions || '';
     const testType = body.testType || 'General Assessment';
@@ -136,7 +136,7 @@ export async function POST(req: NextRequest) {
       RETURNING id, title, test_code, created_at
     `;
 
-    const assessmentRows = await query<{ id: string }>(insertAssessmentSql, [
+    const assessmentRows = await query<{ id: string; title: string; test_code: string }>(insertAssessmentSql, [
       title,
       testCode,
       description,
@@ -156,6 +156,7 @@ export async function POST(req: NextRequest) {
 
     const createdAssessment = assessmentRows[0];
     const assessmentId = createdAssessment?.id;
+    const finalTestCode = createdAssessment?.test_code || testCode;
 
     // Insert sections
     if (sections.length > 0) {
@@ -203,13 +204,13 @@ export async function POST(req: NextRequest) {
       res: [
         {
           assessmentId,
-          testCode,
+          testCode: finalTestCode,
           testName: title,
         },
       ],
       data: {
         id: assessmentId,
-        testCode,
+        testCode: finalTestCode,
         title,
       },
     });
