@@ -38,7 +38,8 @@ export default function AppShell({ children }: { children: ReactNode }) {
       if (!isAuthenticated) {
         router.push('/adminLogin');
       } else if (user?.role?.toLowerCase() === 'student') {
-        window.location.href = 'http://localhost:8080/';
+        const studentUrl = process.env.NEXT_PUBLIC_STUDENT_APP_URL || '/';
+        window.location.href = studentUrl;
       }
     }
   }, [isPublicRoute, loading, isAuthenticated, user, router]);

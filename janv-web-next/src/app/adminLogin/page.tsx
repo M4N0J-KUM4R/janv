@@ -26,8 +26,9 @@ export default function AdminLoginPage() {
       const loggedUser = await login(email, password, rememberMe);
       const role = (loggedUser?.role || '').toLowerCase();
       if (role === 'student') {
-        // Redirect student to the Student Portal (backend on port 8080 or student home)
-        window.location.href = 'http://localhost:8080/';
+        // Redirect student to the Student Portal (backend URL or student home)
+        const studentUrl = process.env.NEXT_PUBLIC_STUDENT_APP_URL || '/';
+        window.location.href = studentUrl;
         return;
       }
       router.push('/learn/dashboard');

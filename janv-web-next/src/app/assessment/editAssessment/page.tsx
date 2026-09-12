@@ -72,7 +72,6 @@ function EditAssessmentContent() {
         description: description.trim() || undefined,
         instructions: instructions.trim() || undefined,
         tab_switch_limit: Number(tabSwitchesAllowed) || 10,
-        tab_switches_allowed: Number(tabSwitchesAllowed) || 10,
         shuffle_questions: shuffleQuestions,
         show_results: showResults,
         is_proctoring: isProctoring,

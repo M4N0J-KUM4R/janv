@@ -1,6 +1,6 @@
 // ── Enums ──────────────────────────────────────────────────
 
-export type UserRole = 'SuperAdmin' | 'Faculty' | 'Student' | 'super_admin' | 'faculty' | 'student';
+export type UserRole = 'SuperAdmin' | 'Faculty' | 'Student' | 'super_admin' | 'faculty' | 'student' | 'admin';
 export type QuestionType = 'Mcq' | 'MultiSelect' | 'TrueFalse' | 'Coding' | 'mcq' | 'multi_select' | 'true_false' | 'coding';
 export type Difficulty = 'Easy' | 'Medium' | 'Hard' | 'easy' | 'medium' | 'hard';
 export type AttemptStatus = 'InProgress' | 'Submitted' | 'Graded' | 'in_progress' | 'submitted' | 'graded';
@@ -36,8 +36,8 @@ export interface Assessment {
   id: string;
   title: string;
   description?: string;
-  course_id: string;
-  faculty_id: string;
+  course_id?: string;
+  faculty_id?: string;
   duration_mins: number;
   total_marks: number;
   pass_percentage: number;
@@ -47,16 +47,37 @@ export interface Assessment {
   start_time?: string;
   end_time?: string;
   test_code?: string;
-  status?: string;
+  status?: string | AssessmentStatus;
   num_sections?: number;
   tab_switch_limit?: number;
   tab_switches_allowed?: number;
   proctoring_enabled?: boolean;
+  webcam_enabled?: boolean;
+  screen_share_enabled?: boolean;
+  audio_enabled?: boolean;
+  is_hackathon?: boolean;
+  is_subscriber_only?: boolean;
+  is_in_library?: boolean;
+  proctoring_service?: string;
   is_proctoring?: boolean;
   instructions?: string;
-  institution_visibility?: string[];
+  institution_visibility?: (number | string)[];
   batch_visibility?: string[];
   question_count?: number;
+  created_at: string;
+}
+
+export interface AssessmentSection {
+  id: string;
+  assessment_id: string;
+  title: string;
+  section_type: string;
+  instructions?: string;
+  default_marks: number;
+  penalty_marks: number;
+  display_questions?: number;
+  sort_order: number;
+  duration_mins?: number;
   created_at: string;
 }
 
@@ -88,7 +109,7 @@ export interface QuestionBank {
   id: string;
   title: string;
   subject?: string;
-  faculty_id: string;
+  faculty_id?: string;
   created_at: string;
 }
 
@@ -117,7 +138,7 @@ export interface AssessmentTemplate {
   shuffle_questions: boolean;
   show_results: boolean;
   question_config?: Record<string, unknown>;
-  faculty_id: string;
+  faculty_id?: string;
   is_public: boolean;
   created_at: string;
 }
