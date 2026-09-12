@@ -17,7 +17,7 @@ export default function PassCodePage() {
 
   // If faculty or admin is viewing this page, load current active passcode for reference
   useEffect(() => {
-    if (user?.role === 'faculty' || user?.role === 'admin' || user?.role === 'super_admin') {
+    if (user?.role === 'faculty' || user?.role === 'super_admin') {
       assessments
         .getCurrentPasscode()
         .then((res) => {

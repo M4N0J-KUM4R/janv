@@ -1,9 +1,9 @@
 // ── Enums ──────────────────────────────────────────────────
 
-export type UserRole = 'SuperAdmin' | 'Faculty' | 'Student' | 'super_admin' | 'faculty' | 'student' | 'admin';
-export type QuestionType = 'Mcq' | 'MultiSelect' | 'TrueFalse' | 'Coding' | 'mcq' | 'multi_select' | 'true_false' | 'coding';
-export type Difficulty = 'Easy' | 'Medium' | 'Hard' | 'easy' | 'medium' | 'hard';
-export type AttemptStatus = 'InProgress' | 'Submitted' | 'Graded' | 'in_progress' | 'submitted' | 'graded';
+export type UserRole = 'super_admin' | 'faculty' | 'student';
+export type QuestionType = 'mcq' | 'multi_select' | 'true_false' | 'coding';
+export type Difficulty = 'easy' | 'medium' | 'hard';
+export type AttemptStatus = 'in_progress' | 'submitted' | 'graded';
 
 // ── Core Models ────────────────────────────────────────────
 

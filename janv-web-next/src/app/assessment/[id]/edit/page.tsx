@@ -25,8 +25,8 @@ export default function EditTestPage() {
   // Modal State for custom question
   const [showAddModal, setShowAddModal] = useState(false);
   const [newQuestionText, setNewQuestionText] = useState('');
-  const [newQuestionType, setNewQuestionType] = useState<QuestionType>('Mcq');
-  const [newDifficulty, setNewDifficulty] = useState<Difficulty>('Easy');
+  const [newQuestionType, setNewQuestionType] = useState<QuestionType>('mcq');
+  const [newDifficulty, setNewDifficulty] = useState<Difficulty>('easy');
   const [newExplanation, setNewExplanation] = useState('');
 
   const handleAddCustomQuestion = () => {
@@ -298,10 +298,10 @@ export default function EditTestPage() {
                     value={newQuestionType}
                     onChange={(e) => setNewQuestionType(e.target.value as QuestionType)}
                   >
-                    <option value="Mcq">Multiple Choice (MCQ)</option>
-                    <option value="MultiSelect">Multi Select</option>
-                    <option value="TrueFalse">True / False</option>
-                    <option value="Coding">Coding Challenge</option>
+                    <option value="mcq">Multiple Choice (MCQ)</option>
+                    <option value="multi_select">Multi Select</option>
+                    <option value="true_false">True / False</option>
+                    <option value="coding">Coding Challenge</option>
                   </select>
                 </div>
 
@@ -312,9 +312,9 @@ export default function EditTestPage() {
                     value={newDifficulty}
                     onChange={(e) => setNewDifficulty(e.target.value as Difficulty)}
                   >
-                    <option value="Easy">Easy</option>
-                    <option value="Medium">Medium</option>
-                    <option value="Hard">Hard</option>
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
                   </select>
                 </div>
               </div>
