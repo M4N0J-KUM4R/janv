@@ -132,8 +132,11 @@ export const assessments = {
     }),
 
   // Attempts
-  start: (id: string) =>
-    request<AttemptStartResponse>(`/assessments/${id}/start`, { method: 'POST' }),
+  start: (id: string, passcode?: string) =>
+    request<AttemptStartResponse>(`/assessments/${id}/start`, {
+      method: 'POST',
+      body: passcode ? JSON.stringify({ passcode }) : undefined,
+    }),
 
   submitAttempt: (attemptId: string, answers: Record<string, unknown>) =>
     request<AttemptSubmitResponse>(`/assessments/attempts/${attemptId}/submit`, {

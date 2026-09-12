@@ -104,7 +104,9 @@ pub async fn save_as_template(
     user: AuthUser,
     Path(id): Path<Uuid>,
 ) -> Result<impl IntoResponse, AppError> {
-    let assessment = sqlx::query_as::<_, Assessment>("SELECT * FROM assessments WHERE id = $1")
+    let assessment = sqlx::query_as::<_, Assessment>(&format!(
+        "SELECT {ASSESSMENT_COLUMNS} FROM assessments WHERE id = $1"
+    ))
         .bind(id)
         .fetch_optional(&state.db)
         .await?

@@ -29,7 +29,9 @@ pub async fn check_timer(
         })));
     }
 
-    let assessment = sqlx::query_as::<_, Assessment>("SELECT * FROM assessments WHERE id = $1")
+    let assessment = sqlx::query_as::<_, Assessment>(&format!(
+        "SELECT {ASSESSMENT_COLUMNS} FROM assessments WHERE id = $1"
+    ))
         .bind(attempt.assessment_id)
         .fetch_one(&state.db)
         .await?;

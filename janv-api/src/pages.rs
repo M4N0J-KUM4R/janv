@@ -15,7 +15,9 @@ use axum::{
 use chrono::Utc;
 use janv_common::dto::auth::{LoginRequest, RegisterRequest};
 use janv_common::errors::AppError;
-use janv_common::models::{Assessment, CodingProblem, Institution, User, UserResponse, UserRole};
+use janv_common::models::{
+    ASSESSMENT_COLUMNS, Assessment, CodingProblem, Institution, User, UserResponse, UserRole,
+};
 use uuid::Uuid;
 use validator::Validate;
 
@@ -107,9 +109,7 @@ pub async fn login_post(
         .into_response();
     }
 
-    if verify_password(&body.password, &user.password_hash).is_err()
-        || !verify_password(&body.password, &user.password_hash).unwrap_or(false)
-    {
+    if !verify_password(&body.password, &user.password_hash).unwrap_or(false) {
         return HtmlTemplate(LayoutTemplate {
             title: "Login",
             content: LoginTemplate {
@@ -350,11 +350,12 @@ pub async fn assessments_page(
 
     let user_profile = get_user_profile(&state.db, auth_user.id).await;
 
-    let assessments =
-        sqlx::query_as::<_, Assessment>("SELECT * FROM assessments WHERE is_published = true")
-            .fetch_all(&state.db)
-            .await
-            .unwrap_or_default();
+    let assessments = sqlx::query_as::<_, Assessment>(&format!(
+        "SELECT {ASSESSMENT_COLUMNS} FROM assessments WHERE is_published = true"
+    ))
+    .fetch_all(&state.db)
+    .await
+    .unwrap_or_default();
 
     HtmlTemplate(LayoutTemplate {
         title: "Mock Assessments",

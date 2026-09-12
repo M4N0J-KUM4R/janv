@@ -171,7 +171,9 @@ pub async fn set_passcode(
     Json(req): Json<SetPasscodeRequest>,
 ) -> Result<impl IntoResponse, AppError> {
     // Verify ownership
-    let assessment = sqlx::query_as::<_, Assessment>("SELECT * FROM assessments WHERE id = $1")
+    let assessment = sqlx::query_as::<_, Assessment>(&format!(
+        "SELECT {ASSESSMENT_COLUMNS} FROM assessments WHERE id = $1"
+    ))
         .bind(assessment_id)
         .fetch_optional(&state.db)
         .await?
@@ -231,6 +233,17 @@ pub async fn verify_passcode(
         .await?;
 
         if let Some((assess_id, title)) = assessment {
+            // Cache verification in Redis for 15 minutes
+            let redis_key = format!("passcode_verified:{}:{}", assess_id, _user.email);
+            if let Ok(mut con) = state.redis.get_multiplexed_async_connection().await {
+                let _: Result<(), _> = redis::cmd("SETEX")
+                    .arg(&redis_key)
+                    .arg(900)
+                    .arg("1")
+                    .query_async(&mut con)
+                    .await;
+            }
+
             return Ok(Json(serde_json::json!({
                 "valid": true,
                 "assessment_id": assess_id,
@@ -257,6 +270,17 @@ pub async fn verify_passcode(
             .fetch_optional(&state.db)
             .await?;
 
+        // Cache verification in Redis for 15 minutes
+        let redis_key = format!("passcode_verified:{}:{}", pc.assessment_id, _user.email);
+        if let Ok(mut con) = state.redis.get_multiplexed_async_connection().await {
+            let _: Result<(), _> = redis::cmd("SETEX")
+                .arg(&redis_key)
+                .arg(900)
+                .arg("1")
+                .query_async(&mut con)
+                .await;
+        }
+
         return Ok(Json(serde_json::json!({
             "valid": true,
             "assessment_id": pc.assessment_id,
@@ -278,7 +302,9 @@ pub async fn remove_passcode(
     user: AuthUser,
     Path(assessment_id): Path<Uuid>,
 ) -> Result<impl IntoResponse, AppError> {
-    let assessment = sqlx::query_as::<_, Assessment>("SELECT * FROM assessments WHERE id = $1")
+    let assessment = sqlx::query_as::<_, Assessment>(&format!(
+        "SELECT {ASSESSMENT_COLUMNS} FROM assessments WHERE id = $1"
+    ))
         .bind(assessment_id)
         .fetch_optional(&state.db)
         .await?

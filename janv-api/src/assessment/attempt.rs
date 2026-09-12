@@ -8,13 +8,27 @@ use chrono::Utc;
 use janv_common::{dto::*, errors::AppError, models::*};
 use uuid::Uuid;
 
+#[derive(Debug, Clone, serde::Deserialize, Default)]
+pub struct StartAttemptRequest {
+    pub passcode: Option<String>,
+}
+
 pub async fn start_attempt(
     State(state): State<AppState>,
     user: AuthUser,
     Path(id): Path<Uuid>,
+    body: axum::body::Bytes,
 ) -> Result<impl IntoResponse, AppError> {
+    let req: Option<StartAttemptRequest> = if body.is_empty() {
+        None
+    } else {
+        serde_json::from_slice(&body).ok()
+    };
+
     // Verify assessment exists and is published
-    let assessment = sqlx::query_as::<_, Assessment>("SELECT * FROM assessments WHERE id = $1")
+    let assessment = sqlx::query_as::<_, Assessment>(&format!(
+        "SELECT {ASSESSMENT_COLUMNS} FROM assessments WHERE id = $1"
+    ))
         .bind(id)
         .fetch_optional(&state.db)
         .await?
@@ -42,14 +56,53 @@ pub async fn start_attempt(
     }
 
     // Check passcode requirement
-    let has_passcode = sqlx::query_scalar::<_, bool>(
-        "SELECT EXISTS(SELECT 1 FROM assessment_passcodes WHERE assessment_id = $1 AND is_active = true)"
+    let active_passcode: Option<String> = sqlx::query_scalar(
+        "SELECT passcode FROM assessment_passcodes WHERE assessment_id = $1 AND is_active = true LIMIT 1"
     )
     .bind(id)
-    .fetch_one(&state.db)
+    .fetch_optional(&state.db)
     .await?;
 
-    // Note: passcode verification happens via the passcode endpoint before starting
+    if let Some(expected) = active_passcode {
+        let mut verified = false;
+
+        // Check if user has a verified session flag in Redis (set when verify_passcode succeeds)
+        let redis_key = format!("passcode_verified:{}:{}", id, user.email);
+        if let Ok(mut con) = state.redis.get_multiplexed_async_connection().await {
+            let flag: Result<bool, _> = redis::cmd("EXISTS").arg(&redis_key).query_async(&mut con).await;
+            if let Ok(true) = flag {
+                verified = true;
+            }
+        }
+
+        // Check if passcode was supplied directly in start_attempt request
+        if !verified {
+            if let Some(p) = req.as_ref().and_then(|r| r.passcode.as_deref()) {
+                let clean_p = p.replace(['-', ' '], "").to_uppercase();
+                let clean_expected = expected.replace(['-', ' '], "").to_uppercase();
+                if clean_p == clean_expected {
+                    verified = true;
+                    // Cache the verification in Redis for 15 minutes
+                    if let Ok(mut con) = state.redis.get_multiplexed_async_connection().await {
+                        let _: Result<(), _> = redis::cmd("SETEX")
+                            .arg(&redis_key)
+                            .arg(900)
+                            .arg("1")
+                            .query_async(&mut con)
+                            .await;
+                    }
+                } else {
+                    return Err(AppError::BadRequest("Invalid assessment passcode".to_string()));
+                }
+            }
+        }
+
+        if !verified {
+            return Err(AppError::BadRequest(
+                "Passcode is required to start this assessment".to_string(),
+            ));
+        }
+    }
 
     // Prevent duplicate in-progress attempts
     let existing = sqlx::query_as::<_, Attempt>(
@@ -147,7 +200,9 @@ pub async fn submit_attempt(
     }
 
     // Check time limit
-    let assessment = sqlx::query_as::<_, Assessment>("SELECT * FROM assessments WHERE id = $1")
+    let assessment = sqlx::query_as::<_, Assessment>(&format!(
+        "SELECT {ASSESSMENT_COLUMNS} FROM assessments WHERE id = $1"
+    ))
         .bind(attempt.assessment_id)
         .fetch_one(&state.db)
         .await?;
@@ -235,7 +290,9 @@ pub async fn submit_attempt(
     .fetch_one(&state.db)
     .await?;
 
-    // Upsert leaderboard entry
+    // Wrap leaderboard upsert + rank recomputation in one atomic transaction
+    let mut tx = state.db.begin().await?;
+
     sqlx::query(
         "INSERT INTO leaderboard_entries (id, assessment_id, student_id, rank, score, total_marks, percentage, time_taken_secs, completed_at)
          VALUES ($1, $2, $3, 0, $4, $5, $6, $7, NOW())
@@ -252,7 +309,7 @@ pub async fn submit_attempt(
     .bind(assessment.total_marks)
     .bind(percentage)
     .bind(time_taken_secs)
-    .execute(&state.db)
+    .execute(&mut *tx)
     .await?;
 
     // Update ranks
@@ -265,8 +322,10 @@ pub async fn submit_attempt(
          WHERE le.id = sub.id",
     )
     .bind(attempt.assessment_id)
-    .execute(&state.db)
+    .execute(&mut *tx)
     .await?;
+
+    tx.commit().await?;
 
     Ok(Json(serde_json::json!({
         "attempt": updated,
@@ -298,7 +357,9 @@ pub async fn get_attempt_result(
         ));
     }
 
-    let assessment = sqlx::query_as::<_, Assessment>("SELECT * FROM assessments WHERE id = $1")
+    let assessment = sqlx::query_as::<_, Assessment>(&format!(
+        "SELECT {ASSESSMENT_COLUMNS} FROM assessments WHERE id = $1"
+    ))
         .bind(attempt.assessment_id)
         .fetch_one(&state.db)
         .await?;
