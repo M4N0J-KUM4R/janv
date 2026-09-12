@@ -1,4 +1,4 @@
--- Migration 024: Cleanup unused tables and redundant columns
+-- Migration 025: Cleanup unused tables and redundant columns
 --
 -- 1. Unify assessments proctoring and tab switch columns:
 --    - Copy tab_switches_allowed to tab_switch_limit if tab_switch_limit is 0

@@ -1,4 +1,4 @@
--- Migration 018: Simplify branches table
+-- Migration 019: Simplify branches table
 -- - Drop department_code column (always NULL, added in migration 016 for seed CSV but never used)
 -- - Change id from UUID to SERIAL (auto-increment integer: 1, 2, 3...)
 -- - Change all child references: users.branch (stores UUID as TEXT) to INTEGER

@@ -1,4 +1,4 @@
--- Migration 019: Simplify batches table
+-- Migration 020: Simplify batches table
 -- - Change id from UUID to SERIAL (auto-increment integer: 1, 2, 3...)
 -- - Update assessment_batch_visibility.batch_id (composite PK, FK) from UUID to INTEGER
 -- - Update users.batch (stores UUID as TEXT, not FK) to INTEGER

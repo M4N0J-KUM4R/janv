@@ -1,13 +1,16 @@
--- Migration 021: Denormalize users.branch to TEXT and drop branches + batches tables
+-- Migration 022: Denormalize users.branch to TEXT and drop branches + batches tables
 -- - users.branch: TEXT (stores actual branch name e.g. "Aerospace Engineering")
---   Already done by migration 018 (INTEGER FK → TEXT backfilled from branches.name)
+--   Converted from INTEGER to TEXT and backfilled from branches.name
 -- - users.batch: INTEGER (stores year e.g. 2026, 2027)
---   Already done by migration 019 (UUID → INTEGER via TEXT intermediary)
+--   Already done by migration 020 (UUID → INTEGER via TEXT intermediary)
 -- - Drop: assessment_batch_visibility, batches, branches tables
 --
 -- Idempotent: handles partial application where branches may already be dropped
 
 BEGIN;
+
+-- Ensure users.branch is TEXT before backfilling with branch names
+ALTER TABLE users ALTER COLUMN branch TYPE TEXT USING branch::text;
 
 -- Step 1: Backfill users.branch with actual branch names (only if branches table exists in this schema)
 -- The branches table may have been dropped by a partial previous run of this migration.

@@ -1,4 +1,4 @@
--- Migration 022: Use email as users primary key, drop UUID id and roll_number
+-- Migration 023: Use email as users primary key, drop UUID id and roll_number
 --
 -- Before: users(id UUID PK, email, ..., roll_number)
 -- After:  users(email VARCHAR PK, password_hash, ..., batch INT, branch TEXT)

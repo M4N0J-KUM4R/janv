@@ -1,4 +1,4 @@
--- Migration 020: Drop vestigial user columns
+-- Migration 021: Drop vestigial user columns
 -- Drop avatar_url, class, department from users table
 -- All confirmed always NULL in current data
 
