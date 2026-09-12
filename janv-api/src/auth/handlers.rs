@@ -108,7 +108,7 @@ pub async fn register(
     .bind(&body.email)
     .bind(password_hash)
     .bind(&body.full_name)
-    .bind(UserRole::Student)
+    .bind(body.role)
     .bind(true)
     .bind(now)
     .bind(now)

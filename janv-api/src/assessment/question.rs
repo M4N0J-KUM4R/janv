@@ -171,7 +171,7 @@ pub async fn delete_question(
 
 pub async fn add_questions_to_assessment(
     State(state): State<AppState>,
-    Extension(_user): Extension<AuthUser>,
+    _user: AuthUser,
     Path(assessment_id): Path<Uuid>,
     Json(req): Json<AddQuestionsRequest>,
 ) -> Result<impl IntoResponse, AppError> {

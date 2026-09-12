@@ -110,7 +110,7 @@ pub async fn enroll_student(
 
 pub async fn list_enrolled_students(
     State(state): State<AppState>,
-    Extension(_user): Extension<AuthUser>,
+    _user: AuthUser,
     Path(id): Path<Uuid>,
 ) -> Result<impl IntoResponse, AppError> {
     let students = sqlx::query_as::<_, User>(
