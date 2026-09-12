@@ -14,6 +14,7 @@ fn parse_memory_peak_kb(value: &str) -> Option<u64> {
     value.trim().parse::<u64>().ok().map(|bytes| bytes / 1024)
 }
 
+#[derive(Debug)]
 pub struct Sandbox {
     docker: Option<Docker>,
     limits: ExecutionLimits,
@@ -21,11 +22,42 @@ pub struct Sandbox {
 
 impl Sandbox {
     pub async fn new(limits: ExecutionLimits) -> Result<Self> {
-        let docker = Docker::connect_with_local_defaults().ok();
+        let require_docker = std::env::var("REQUIRE_DOCKER")
+            .map(|v| v.eq_ignore_ascii_case("true") || v == "1")
+            .unwrap_or(false);
+
+        let docker = match Docker::connect_with_local_defaults() {
+            Ok(client) => match timeout(Duration::from_secs(2), client.ping()).await {
+                Ok(Ok(_)) => Some(client),
+                Ok(Err(e)) => {
+                    tracing::warn!("Docker ping failed: {}", e);
+                    None
+                }
+                Err(_) => {
+                    tracing::warn!("Docker ping timed out after 2 seconds");
+                    None
+                }
+            },
+            Err(e) => {
+                tracing::warn!("Docker connection failed: {}", e);
+                None
+            }
+        };
+
         if docker.is_none() {
-            tracing::warn!("Docker is not running locally. Code execution features will be mocked/disabled.");
+            if require_docker {
+                return Err(anyhow!(
+                    "REQUIRE_DOCKER is set to true, but Docker daemon is offline or unreachable"
+                ));
+            }
+            tracing::warn!("Docker is not running locally. Code execution will report RuntimeError for missing Docker environment.");
         }
+
         Ok(Self { docker, limits })
+    }
+
+    pub fn with_docker(docker: Option<Docker>, limits: ExecutionLimits) -> Self {
+        Self { docker, limits }
     }
 
     pub async fn execute(
@@ -36,12 +68,12 @@ impl Sandbox {
     ) -> Result<ExecutionOutput> {
         let Some(docker) = &self.docker else {
             return Ok(ExecutionOutput {
-                stdout: "Code execution is currently running in local evaluation mode (Docker daemon offline).".to_string(),
-                stderr: String::new(),
-                exit_code: 0,
-                execution_time_ms: 10,
+                stdout: String::new(),
+                stderr: "Execution failed: Docker sandbox daemon is offline or unavailable. Code cannot be executed in this environment.".to_string(),
+                exit_code: 1,
+                execution_time_ms: 0,
                 memory_used_kb: 0,
-                status: ExecutionStatus::Success,
+                status: ExecutionStatus::RuntimeError,
             });
         };
         let lang_config = get_language_config(language);
