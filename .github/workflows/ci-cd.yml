@@ -148,6 +148,7 @@ jobs:
       - name: Package Application Archive
         run: |
           ARCHIVE_NAME="janv-aws-deploy.tar.gz"
+          [ -f Cargo.lock ] || cargo generate-lockfile || touch Cargo.lock
           tar -czf "$ARCHIVE_NAME" \
             --exclude='target' \
             --exclude='.git' \
