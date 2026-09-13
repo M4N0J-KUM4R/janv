@@ -145,42 +145,31 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H ${{ secrets.EC2_HOST || '65.2.45.73' }} >> ~/.ssh/known_hosts
 
-      - name: Package Application Archive
-        run: |
-          ARCHIVE_NAME="janv-aws-deploy.tar.gz"
-          [ -f Cargo.lock ] || cargo generate-lockfile || touch Cargo.lock
-          tar -czf "$ARCHIVE_NAME" \
-            --exclude='target' \
-            --exclude='.git' \
-            --exclude='janv-web-next/.next' \
-            --exclude='janv-web-next/node_modules' \
-            --exclude='.env' \
-            --exclude='*.pem' \
-            --exclude='terraform/.terraform' \
-            --exclude='terraform/*.tfstate*' \
-            Cargo.toml Cargo.lock Dockerfile.api Dockerfile.web docker-compose.prod.yml docker migrations janv-api janv-common janv-executor janv-web-next
-          echo "Archive created: $ARCHIVE_NAME"
-
-      - name: Transfer Project Files to EC2
-        run: |
-          EC2_IP="${{ secrets.EC2_HOST || '65.2.45.73' }}"
-          scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa janv-aws-deploy.tar.gz ubuntu@"$EC2_IP":/home/ubuntu/
-
-      - name: Deploy & Restart Services on EC2
+      - name: Deploy via Git Pull & Restart Services on EC2
         run: |
           EC2_IP="${{ secrets.EC2_HOST || '65.2.45.73' }}"
           BRANCH_NAME="${GITHUB_REF_NAME}"
           
           ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ubuntu@"$EC2_IP" bash -c "'
             set -e
-            echo \"Deploying branch: $BRANCH_NAME to environment...\"
-            mkdir -p /home/ubuntu/app
-            tar -xzf /home/ubuntu/janv-aws-deploy.tar.gz -C /home/ubuntu/app
-            rm /home/ubuntu/janv-aws-deploy.tar.gz
+            echo \"🚀 Deploying branch: $BRANCH_NAME to EC2 via git pull...\"
+            
+            TARGET_DIR=\"/home/ubuntu/janv\"
+            if [ ! -d \"\$TARGET_DIR/.git\" ]; then
+              if [ -d \"/home/ubuntu/app/.git\" ]; then
+                TARGET_DIR=\"/home/ubuntu/app\"
+              else
+                rm -rf \"\$TARGET_DIR\"
+                git clone https://github.com/M4N0J-KUM4R/janv.git \"\$TARGET_DIR\"
+              fi
+            fi
 
-            cd /home/ubuntu/app
+            cd \"\$TARGET_DIR\"
+            git fetch --all --prune
+            git checkout -B \"$BRANCH_NAME\" \"origin/$BRANCH_NAME\" || git pull https://github.com/M4N0J-KUM4R/janv.git \"$BRANCH_NAME\"
+            git reset --hard \"origin/$BRANCH_NAME\" || true
 
-            # Rebuild and start updated containers
+            echo \"🔄 Rebuilding & restarting Docker containers...\"
             docker compose -f docker-compose.prod.yml down --remove-orphans || true
             docker compose -f docker-compose.prod.yml up -d --build
           '"
