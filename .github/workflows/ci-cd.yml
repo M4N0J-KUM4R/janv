@@ -1,0 +1,143 @@
+name: Janv CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+      - staging
+      - dev
+  pull_request:
+    branches:
+      - main
+      - staging
+      - dev
+  workflow_dispatch:
+
+env:
+  AWS_REGION: ${{ secrets.AWS_REGION || 'ap-south-1' }}
+  CARGO_TERM_COLOR: always
+
+jobs:
+  # ── 1. Quality & Test Gate ────────────────────────────────────
+  test-and-lint:
+    name: 🧪 Lint & Test (Rust + Next.js)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Rust Toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy, rustfmt
+
+      - name: Rust Cache
+        uses: Swatinem/rust-cache@v2
+
+      - name: Run Backend Workspace Checks
+        run: cargo check --workspace
+
+      - name: Run Backend Tests
+        run: cargo test --workspace
+
+      - name: Set up Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: janv-web-next/package-lock.json
+
+      - name: Install Frontend Dependencies
+        working-directory: ./janv-web-next
+        run: npm ci
+
+      - name: Run Frontend Lint
+        working-directory: ./janv-web-next
+        run: npm run lint
+
+  # ── 2. AWS Continuous Deployment ──────────────────────────────
+  deploy:
+    name: 🚀 Deploy to AWS (EC2 + RDS)
+    needs: test-and-lint
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/staging' || github.ref == 'refs/heads/dev')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Verify AWS Caller Identity via AWS CLI
+        run: |
+          echo "Verifying AWS credentials..."
+          aws sts get-caller-identity
+
+      - name: Set up SSH Key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.EC2_HOST || '65.2.45.73' }} >> ~/.ssh/known_hosts
+
+      - name: Package Application Archive
+        run: |
+          ARCHIVE_NAME="janv-aws-deploy.tar.gz"
+          tar -czf "$ARCHIVE_NAME" \
+            --exclude='target' \
+            --exclude='.git' \
+            --exclude='janv-web-next/.next' \
+            --exclude='janv-web-next/node_modules' \
+            --exclude='.env' \
+            --exclude='*.pem' \
+            --exclude='terraform/.terraform' \
+            --exclude='terraform/*.tfstate*' \
+            Cargo.toml Cargo.lock Dockerfile.api Dockerfile.web docker-compose.prod.yml docker migrations janv-api janv-common janv-executor janv-web-next
+          echo "Archive created: $ARCHIVE_NAME"
+
+      - name: Transfer Project Files to EC2
+        run: |
+          EC2_IP="${{ secrets.EC2_HOST || '65.2.45.73' }}"
+          scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa janv-aws-deploy.tar.gz ubuntu@"$EC2_IP":/home/ubuntu/
+
+      - name: Deploy & Restart Services on EC2
+        run: |
+          EC2_IP="${{ secrets.EC2_HOST || '65.2.45.73' }}"
+          BRANCH_NAME="${GITHUB_REF_NAME}"
+          
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ubuntu@"$EC2_IP" bash -c "'
+            set -e
+            echo \"Deploying branch: $BRANCH_NAME to environment...\"
+            mkdir -p /home/ubuntu/app
+            tar -xzf /home/ubuntu/janv-aws-deploy.tar.gz -C /home/ubuntu/app
+            rm /home/ubuntu/janv-aws-deploy.tar.gz
+
+            cd /home/ubuntu/app
+
+            # Rebuild and start updated containers
+            docker compose -f docker-compose.prod.yml down --remove-orphans || true
+            docker compose -f docker-compose.prod.yml up -d --build
+          '"
+
+      - name: Run Live Health Checks
+        run: |
+          EC2_IP="${{ secrets.EC2_HOST || '65.2.45.73' }}"
+          echo "Waiting for services to warm up..."
+          sleep 15
+          
+          for i in {1..20}; do
+            STATUS=$(curl -s -o /dev/null -w "%{http_code}" "http://${EC2_IP}/api/health" || echo "000")
+            if [ "$STATUS" = "200" ]; then
+              echo "✅ API Health Check PASSED (HTTP 200) on http://${EC2_IP}/api/health"
+              exit 0
+            fi
+            echo "Attempt $i: API returned $STATUS, waiting 5s..."
+            sleep 5
+          done
+          
+          echo "❌ Health check timed out"
+          exit 1
