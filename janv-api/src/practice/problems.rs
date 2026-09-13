@@ -23,7 +23,7 @@ pub async fn create_problem(
     .bind(req.constraints)
     .bind(req.time_limit_ms)
     .bind(req.memory_limit_kb)
-    .bind(user.id)
+    .bind(&user.email)
     .bind(false)
     .fetch_one(&state.db)
     .await?;

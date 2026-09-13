@@ -17,9 +17,15 @@ use janv_api::db::AppState;
 
 /// Build an AppState for testing. Redis must be reachable.
 async fn make_state(pool: sqlx::PgPool) -> AppState {
+    let redis_client = redis::Client::open("redis://localhost:6379").expect("Redis must be running");
+    let redis_conn = redis_client
+        .get_multiplexed_async_connection()
+        .await
+        .expect("Redis must connect");
+
     AppState {
         db: pool,
-        redis: redis::Client::open("redis://localhost:6379").expect("Redis must be running"),
+        redis: redis_conn,
         config: Arc::new(janv_api::config::AppConfig {
             host: "127.0.0.1".to_string(),
             port: 0,
@@ -30,6 +36,11 @@ async fn make_state(pool: sqlx::PgPool) -> AppState {
             jwt_refresh_token_expires_secs: 604800,
             super_admin_email: "admin@fixture".to_string(),
             super_admin_password: "fixture".to_string(),
+            cors_origins: vec!["*".to_string()],
+            db_max_connections: 5,
+            judge0_url: "http://localhost:2358".to_string(),
+            judge0_api_key: None,
+            judge0_api_host: None,
         }),
         executor: Arc::new(
             janv_executor::CodeExecutor::new()

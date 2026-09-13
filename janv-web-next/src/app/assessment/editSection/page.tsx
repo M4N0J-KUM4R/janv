@@ -33,12 +33,12 @@ function EditSectionContent() {
       .then((sec) => {
         if (!ignore) {
           setSectionName(sec.title || '');
-          setSectionDuration(sec.sectionDuration ?? '');
-          setSectionType(sec.sectionType === '2' || sec.sectionType?.toLowerCase().includes('code') ? '2' : '1');
-          setDefaultMarks(sec.defaultMarks ?? 1);
-          setPenaltyMarks(sec.penaltyMarks ?? 0);
-          setDisplayQuestions(sec.displayQuestions ?? '');
-          setInstructions(sec.sectionInstructions || '');
+          setSectionDuration(sec.duration_mins ?? '');
+          setSectionType(sec.section_type === '2' || sec.section_type?.toLowerCase().includes('code') ? '2' : '1');
+          setDefaultMarks(sec.default_marks ?? 1);
+          setPenaltyMarks(sec.penalty_marks ?? 0);
+          setDisplayQuestions(sec.display_questions ?? '');
+          setInstructions(sec.instructions || '');
         }
       })
       .catch((err) => {
@@ -66,12 +66,12 @@ function EditSectionContent() {
 
       await assessments.updateSection(sectionId, {
         title: sectionName.trim(),
-        sectionDuration: Number(sectionDuration) || 30,
+        duration_mins: Number(sectionDuration) || 30,
         section_type: sectionType === '2' ? 'Coding' : 'Aptitude',
-        defaultMarks: Number(defaultMarks) || 1,
-        penaltyMarks: Number(penaltyMarks) || 0,
-        displayQuestions: sectionType === '2' ? undefined : (displayQuestions !== '' ? Number(displayQuestions) : undefined),
-        sectionInstructions: instructions.trim() || undefined,
+        default_marks: Number(defaultMarks) || 1,
+        penalty_marks: Number(penaltyMarks) || 0,
+        display_questions: sectionType === '2' ? undefined : (displayQuestions !== '' ? Number(displayQuestions) : undefined),
+        instructions: instructions.trim() || undefined,
       });
 
       setSuccess(true);

@@ -235,14 +235,13 @@ pub async fn verify_passcode(
         if let Some((assess_id, title)) = assessment {
             // Cache verification in Redis for 15 minutes
             let redis_key = format!("passcode_verified:{}:{}", assess_id, _user.email);
-            if let Ok(mut con) = state.redis.get_multiplexed_async_connection().await {
-                let _: Result<(), _> = redis::cmd("SETEX")
-                    .arg(&redis_key)
-                    .arg(900)
-                    .arg("1")
-                    .query_async(&mut con)
-                    .await;
-            }
+            let mut con = state.redis.clone();
+            let _: Result<(), _> = redis::cmd("SETEX")
+                .arg(&redis_key)
+                .arg(900)
+                .arg("1")
+                .query_async(&mut con)
+                .await;
 
             return Ok(Json(serde_json::json!({
                 "valid": true,
@@ -272,14 +271,13 @@ pub async fn verify_passcode(
 
         // Cache verification in Redis for 15 minutes
         let redis_key = format!("passcode_verified:{}:{}", pc.assessment_id, _user.email);
-        if let Ok(mut con) = state.redis.get_multiplexed_async_connection().await {
-            let _: Result<(), _> = redis::cmd("SETEX")
-                .arg(&redis_key)
-                .arg(900)
-                .arg("1")
-                .query_async(&mut con)
-                .await;
-        }
+        let mut con = state.redis.clone();
+        let _: Result<(), _> = redis::cmd("SETEX")
+            .arg(&redis_key)
+            .arg(900)
+            .arg("1")
+            .query_async(&mut con)
+            .await;
 
         return Ok(Json(serde_json::json!({
             "valid": true,

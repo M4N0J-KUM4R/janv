@@ -52,8 +52,6 @@ dotenvy = "0.15"
 # CSV import
 csv = "1"
 
-# Templates & UI
-askama = { version = "0.12" }
 
 [dev-dependencies]
 http = "1"

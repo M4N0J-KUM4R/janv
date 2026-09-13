@@ -16,7 +16,7 @@ pub fn router() -> Router<AppState> {
             get(handlers::list_users).post(handlers::create_user),
         )
         .route(
-            "/users/{id}",
+            "/users/{email}",
             get(handlers::get_user)
                 .put(handlers::update_user)
                 .delete(handlers::delete_user),

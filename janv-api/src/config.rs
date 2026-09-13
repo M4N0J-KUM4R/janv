@@ -12,6 +12,11 @@ pub struct AppConfig {
     pub jwt_refresh_token_expires_secs: u64,
     pub super_admin_email: String,
     pub super_admin_password: String,
+    pub cors_origins: Vec<String>,
+    pub db_max_connections: u32,
+    pub judge0_url: String,
+    pub judge0_api_key: Option<String>,
+    pub judge0_api_host: Option<String>,
 }
 
 impl AppConfig {
@@ -34,6 +39,17 @@ impl AppConfig {
                 .map_err(|_| anyhow!("SUPER_ADMIN_EMAIL not set"))?,
             super_admin_password: env::var("SUPER_ADMIN_PASSWORD")
                 .map_err(|_| anyhow!("SUPER_ADMIN_PASSWORD not set"))?,
+            cors_origins: env::var("CORS_ORIGINS")
+                .unwrap_or_else(|_| "*".to_string())
+                .split(',')
+                .map(|s| s.trim().to_string())
+                .collect(),
+            db_max_connections: env::var("DB_MAX_CONNECTIONS")
+                .unwrap_or_else(|_| "20".to_string())
+                .parse()?,
+            judge0_url: env::var("JUDGE0_URL").unwrap_or_else(|_| "http://localhost:2358".to_string()),
+            judge0_api_key: env::var("JUDGE0_API_KEY").ok().filter(|s| !s.trim().is_empty()),
+            judge0_api_host: env::var("JUDGE0_API_HOST").ok().filter(|s| !s.trim().is_empty()),
         })
     }
 }

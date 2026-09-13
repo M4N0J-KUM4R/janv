@@ -4,7 +4,9 @@ pub mod handlers;
 pub mod leaderboard;
 pub mod passcode;
 pub mod question;
+pub mod repository;
 pub mod scheduler;
+pub mod service;
 pub mod template;
 pub mod timer;
 

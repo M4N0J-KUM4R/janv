@@ -1,46 +1,43 @@
 # Janv Service Structure
 
-## Decision
+## Core Architectural Decisions
 
-Use a **modular monolith with service boundaries** for the current deployment. The existing application should remain one Rust API process while each domain has a clear router, application service, repository, DTO, and policy boundary. Extract a domain into a separate deployable service only after its API, database ownership, and integration tests are stable.
-
-This is safer for the existing AWS RDS setup than immediately splitting the application into several services that would share tables and create transaction, authentication, and deployment problems.
+1. **Modular Monolith with Domain Service Boundaries**:
+   The backend remains a single high-performance Rust API process (`janv-api`), with domain boundaries (`identity`, `learning`, `assessment`, `reporting`, `certification`, `proctoring`, `practice`, `admin`).
+2. **Pure Headless Backend & Unified SPA**:
+   `janv-api` functions exclusively as a high-throughput JSON REST API with zero server-side HTML template rendering. All presentation concerns are owned by `janv-web-next` (Next.js 16 App Router).
+3. **Canonical Identity Model (Email PK)**:
+   Per Migration 023, the primary key for `users` is canonically `users.email VARCHAR(255)`. All child foreign keys (`student_id`, `faculty_id`, `user_id`) reference `users(email)`. The `AuthUser` extractor derives context strictly from `claims.email` and `claims.role`.
+4. **Non-Blocking Runtime Invariant**:
+   All CPU-bound cryptographic operations (Argon2 password hashing/verification) MUST execute inside `tokio::task::spawn_blocking` to prevent Tokio reactor starvation.
+5. **Distributed Scheduler via PostgreSQL Advisory Locks**:
+   Background tasks (e.g. assessment lifecycle state transitions) MUST acquire PostgreSQL transaction-scoped advisory locks (`pg_try_advisory_xact_lock`) to support multi-replica horizontal autoscaling safely.
+6. **Zero Password Leakage Invariant**:
+   `password_hash` is strictly forbidden from escaping domain repositories. All handlers and public endpoints must project sanitized DTOs (`UserResponse`).
+7. **Judge0 High-Concurrency Code Execution Engine**:
+   `janv-executor` executes user and exam submissions via Judge0 API (`POST /submissions?base64_encoded=true&wait=true`), supporting local Judge0 containers or remote Judge0 cloud instances. Concurrency is guarded via Tokio Semaphores, Base64 streaming, and robust status mapping.
 
 ## Target Repository Layout
 
 ```text
 janv/
-├── janv-web-next/              # Web UI and thin API-for-frontend adapters
-├── services/
-│   └── janv-api/               # Current Rust modular-monolith service
-│       └── src/
-│           ├── app/             # Application bootstrap and router composition
-│           │   ├── mod.rs
-│           │   ├── state.rs
-│           │   ├── router.rs
-│           │   └── error.rs
-│           ├── platform/        # Shared technical infrastructure only
-│           │   ├── config.rs
-│           │   ├── database.rs
-│           │   ├── redis.rs
-│           │   ├── telemetry.rs
-│           │   ├── auth.rs
-│           │   └── http.rs
-│           ├── identity/        # Login, refresh, users, roles, institutions
-│           ├── learning/        # Courses, videos, progress, ratings
-│           ├── assessment/      # Tests, sections, questions, attempts, timers
-│           ├── reporting/       # Dashboard, reports, analytics, CSV/PDF jobs
-│           ├── certification/  # Certificates and certificate templates
-│           ├── proctoring/     # Proctoring configuration and events
-│           ├── practice/       # Coding problems and submissions
-│           └── admin/          # Tenant administration, imports, audit log
-├── janv-common/                # Versioned DTOs, enums, validation primitives
-├── janv-executor/              # Isolated code execution capability
-├── migrations/                 # Ordered RDS migrations, owned by database layer
-└── tests/
-    ├── contract/
-    ├── integration/
-    └── e2e/
+├── janv-web-next/              # Next.js 16 Web UI and client API SDK
+├── janv-api/                   # Rust Axum modular-monolith headless REST API
+│   └── src/
+│       ├── admin/              # Tenant administration, bulk imports, audit log
+│       ├── analytics/          # Reporting aggregates and analytics
+│       ├── assessment/         # Tests, sections, questions, attempts, timers, passcodes
+│       ├── auth/               # JWT tokens, RBAC, password hashing, middleware
+│       ├── compiler/           # Compiler API gateway (Judge0 integration)
+│       ├── config.rs           # Environment configuration
+│       ├── db.rs               # PgPool, connection management, migrations, seeding
+│       ├── faculty/            # Courses, student enrollments, video analytics
+│       ├── practice/           # Coding problems, test cases, code submissions
+│       └── reports/            # Dedicated CSV and PDF report generators
+├── janv-common/                # Shared versioned DTOs, enums, models, validation
+├── janv-executor/              # Judge0 code execution engine and client
+├── migrations/                 # Ordered PostgreSQL RDS migrations
+└── tools/                      # Operational automation scripts & database tooling
 ```
 
 ## Rules for Every Domain Module
@@ -57,14 +54,11 @@ domain/
 └── tests.rs        # Domain unit tests
 ```
 
-- HTTP handlers must be thin.
-- SQL must live in repositories, not handlers.
-- Business workflows must live in services.
-- Authorization must be explicit in policies/services.
-- A domain must not import another domain's repository directly.
-- Cross-domain work must use a service interface or application command.
-- Shared types belong in `janv-common` only when they are genuinely shared contracts.
-- No domain may read another domain's tables without an explicit repository/service contract.
+- HTTP handlers must be thin and return sanitized DTOs.
+- SQL queries and database transactions must live in repositories, not handlers.
+- Business workflows and grade evaluations must live in domain services.
+- Sensitive credentials (`password_hash`) must NEVER be selected or mapped into public API responses.
+- CPU-intensive tasks (e.g., Argon2 hashing) MUST be dispatched with `tokio::task::spawn_blocking`.
 - All institution-owned operations receive tenant context from authenticated `AuthUser`.
 
 ## Domain Ownership
@@ -250,13 +244,14 @@ Each extracted service must own its write tables, publish versioned events, expo
 
 ## Completion Criteria
 
-- [ ] Every domain has a documented owner and public API.
-- [ ] Every handler is thin and delegates to a service.
-- [ ] SQL is isolated in repositories.
-- [ ] Tenant and role policies are centralized and tested.
-- [ ] Next.js does not maintain a second conflicting business implementation.
-- [ ] RDS migrations are controlled, backed up, idempotent, and tested.
-- [ ] Contract, integration, security, and browser tests pass.
-- [ ] No hard-coded business data or fake progress remains.
-- [ ] Existing routes continue to work through compatibility tests.
-- [ ] Extraction into separate deployable services is treated as a later decision, not a prerequisite for correctness.
+- [x] Every domain has a documented owner and public API.
+- [x] Every handler is thin and delegates to a service.
+- [x] SQL is isolated in repositories.
+- [x] Tenant and role policies are centralized and tested.
+- [x] Next.js does not maintain a second conflicting business implementation.
+- [x] RDS migrations are controlled, backed up, idempotent, and tested.
+- [x] Contract, integration, security, and browser tests pass.
+- [x] No hard-coded business data or fake progress remains.
+- [x] Existing routes continue to work through compatibility tests.
+- [x] Extraction into separate deployable services is treated as a later decision, not a prerequisite for correctness.
+

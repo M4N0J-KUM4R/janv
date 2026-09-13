@@ -2,7 +2,7 @@ use crate::auth::password::hash_password;
 use crate::config::AppConfig;
 use anyhow::Result;
 use chrono::Utc;
-use redis::Client;
+use redis::aio::MultiplexedConnection;
 use sqlx::postgres::{PgPool, PgPoolOptions};
 use std::sync::Arc;
 use uuid::Uuid;
@@ -10,14 +10,16 @@ use uuid::Uuid;
 #[derive(Clone)]
 pub struct AppState {
     pub db: PgPool,
-    pub redis: Client,
+    pub redis: MultiplexedConnection,
     pub config: Arc<AppConfig>,
     pub executor: Arc<janv_executor::executor::CodeExecutor>,
 }
 
-pub async fn create_pool(database_url: &str) -> Result<PgPool> {
+pub async fn create_pool(database_url: &str, max_connections: u32) -> Result<PgPool> {
     let pool = PgPoolOptions::new()
-        .max_connections(50)
+        .max_connections(max_connections)
+        .acquire_timeout(std::time::Duration::from_secs(5))
+        .idle_timeout(std::time::Duration::from_secs(300))
         .connect(database_url)
         .await?;
     Ok(pool)
@@ -119,43 +121,33 @@ pub async fn seed_super_admin(pool: &PgPool, config: &AppConfig) -> Result<()> {
         .execute(pool)
         .await?;
 
-    sqlx::query(
-        r#"
-        CREATE TABLE IF NOT EXISTS departments (
-            id SERIAL PRIMARY KEY,
-            institution_id INTEGER REFERENCES institutions(id) ON DELETE CASCADE,
-            name VARCHAR(255) NOT NULL,
-            code VARCHAR(50) NOT NULL,
-            alias_name VARCHAR(255),
-            is_active BOOLEAN NOT NULL DEFAULT true,
-            created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
-        )
-        "#
+    // Ensure departments table exists (NOTE: this should be in a migration, keeping for backward compat)
+    // Seed default departments only if the table already exists
+    let dept_exists: bool = sqlx::query_scalar(
+        "SELECT EXISTS(SELECT 1 FROM information_schema.tables WHERE table_name = 'departments')"
     )
-    .execute(pool)
+    .fetch_one(pool)
     .await?;
 
-    sqlx::query("CREATE INDEX IF NOT EXISTS idx_departments_institution ON departments(institution_id)")
+    if dept_exists {
+        sqlx::query(
+            r#"
+            INSERT INTO departments (institution_id, name, code, alias_name, is_active)
+            VALUES 
+              (1, 'Computer Science & Engineering', 'CSE', 'Computer Science & Engineering', true),
+              (1, 'Information Technology', 'IT', 'Information Technology', true),
+              (1, 'Electronics & Communication Engineering', 'ECE', 'Electronics & Communication Engineering', true),
+              (1, 'Electrical & Electronics Engineering', 'EEE', 'Electrical & Electronics Engineering', true),
+              (1, 'Mechanical Engineering', 'MECH', 'Mechanical Engineering', true),
+              (1, 'Civil Engineering', 'CIVIL', 'Civil Engineering', true),
+              (1, 'Artificial Intelligence & Machine Learning', 'AIML', 'Artificial Intelligence & Machine Learning', true),
+              (1, 'Artificial Intelligence & Data Science', 'AIDS', 'Artificial Intelligence & Data Science', true)
+            ON CONFLICT DO NOTHING
+            "#
+        )
         .execute(pool)
         .await?;
-
-    sqlx::query(
-        r#"
-        INSERT INTO departments (institution_id, name, code, alias_name, is_active)
-        VALUES 
-          (1, 'Computer Science & Engineering', 'CSE', 'Computer Science & Engineering', true),
-          (1, 'Information Technology', 'IT', 'Information Technology', true),
-          (1, 'Electronics & Communication Engineering', 'ECE', 'Electronics & Communication Engineering', true),
-          (1, 'Electrical & Electronics Engineering', 'EEE', 'Electrical & Electronics Engineering', true),
-          (1, 'Mechanical Engineering', 'MECH', 'Mechanical Engineering', true),
-          (1, 'Civil Engineering', 'CIVIL', 'Civil Engineering', true),
-          (1, 'Artificial Intelligence & Machine Learning', 'AIML', 'Artificial Intelligence & Machine Learning', true),
-          (1, 'Artificial Intelligence & Data Science', 'AIDS', 'Artificial Intelligence & Data Science', true)
-        ON CONFLICT DO NOTHING
-        "#
-    )
-    .execute(pool)
-    .await?;
+    }
 
     Ok(())
 }

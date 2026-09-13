@@ -8,9 +8,8 @@ pub mod compiler;
 pub mod config;
 pub mod db;
 pub mod faculty;
-pub mod pages;
 pub mod practice;
-pub mod templates;
+pub mod reports;
 
 use crate::db::AppState;
 use axum::Router;
@@ -27,14 +26,27 @@ pub fn build_router(state: AppState) -> Router {
         )
         .route("/me", axum::routing::get(auth::handlers::me));
 
-    let cors = CorsLayer::new()
-        .allow_origin(Any)
-        .allow_methods(Any)
-        .allow_headers(Any);
+    let cors = {
+        let cors_layer = CorsLayer::new()
+            .allow_methods(Any)
+            .allow_headers(Any);
+        let origins = &state.config.cors_origins;
+        if origins.len() == 1 && origins[0] == "*" {
+            cors_layer.allow_origin(Any)
+        } else {
+            let parsed: Vec<axum::http::HeaderValue> = origins
+                .iter()
+                .filter_map(|o| o.parse().ok())
+                .collect();
+            cors_layer.allow_origin(parsed)
+        }
+    };
 
     Router::new()
+        // Health routes
         .route("/health", axum::routing::get(health_check))
         .route("/api/health", axum::routing::get(health_check))
+        // API JSON routes
         .nest("/api/auth", auth_routes)
         .nest("/api/admin", admin::router())
         .nest("/api/faculty", faculty::router())

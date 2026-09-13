@@ -12,6 +12,7 @@
     "claude:all": "bash tools/claude-loop.sh all",
     "claude:proxy": "bash tools/start-llm-proxy.sh",
     "claude:nvidia": "bash tools/claude-via-nvidia.sh",
+    "claude:lightning": "bash tools/claude-via-lightning.sh",
     "claude:worktree": "bash tools/claude-worktree.sh"
   }
 }

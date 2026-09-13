@@ -17,120 +17,43 @@ pub async fn list_assessments(
     let offset = ((page - 1) * per_page) as i64;
     let limit = per_page as i64;
 
-    let (assessments, total) = match (&query.course_id, &query.is_published) {
-        (Some(course_id), Some(published)) => {
-            let items = sqlx::query_as::<_, Assessment>(&format!(
-                "SELECT {ASSESSMENT_COLUMNS} FROM assessments WHERE course_id = $1 AND is_published = $2 ORDER BY created_at DESC LIMIT $3 OFFSET $4"
-            ))
-            .bind(course_id)
-            .bind(published)
-            .bind(limit)
-            .bind(offset)
-            .fetch_all(&state.db)
-            .await?;
+    let mut builder = sqlx::QueryBuilder::new("SELECT * FROM assessments WHERE 1=1");
+    let mut count_builder = sqlx::QueryBuilder::new("SELECT COUNT(*) FROM assessments WHERE 1=1");
 
-            let count: (i64,) = sqlx::query_as(
-                "SELECT COUNT(*) FROM assessments WHERE course_id = $1 AND is_published = $2",
-            )
-            .bind(course_id)
-            .bind(published)
-            .fetch_one(&state.db)
-            .await?;
+    if let Some(course_id) = query.course_id {
+        builder.push(" AND course_id = ").push_bind(course_id);
+        count_builder.push(" AND course_id = ").push_bind(course_id);
+    }
 
-            (items, count.0)
-        }
-        (Some(course_id), None) => {
-            let items = sqlx::query_as::<_, Assessment>(&format!(
-                "SELECT {ASSESSMENT_COLUMNS} FROM assessments WHERE course_id = $1 ORDER BY created_at DESC LIMIT $2 OFFSET $3"
-            ))
-            .bind(course_id)
-            .bind(limit)
-            .bind(offset)
-            .fetch_all(&state.db)
-            .await?;
-
-            let count: (i64,) = sqlx::query_as(
-                "SELECT COUNT(*) FROM assessments WHERE course_id = $1",
-            )
-            .bind(course_id)
-            .fetch_one(&state.db)
-            .await?;
-
-            (items, count.0)
-        }
-        (None, Some(published)) => {
-            let items = sqlx::query_as::<_, Assessment>(&format!(
-                "SELECT {ASSESSMENT_COLUMNS} FROM assessments WHERE is_published = $1 ORDER BY created_at DESC LIMIT $2 OFFSET $3"
-            ))
-            .bind(published)
-            .bind(limit)
-            .bind(offset)
-            .fetch_all(&state.db)
-            .await?;
-
-            let count: (i64,) = sqlx::query_as(
-                "SELECT COUNT(*) FROM assessments WHERE is_published = $1",
-            )
-            .bind(published)
-            .fetch_one(&state.db)
-            .await?;
-
-            (items, count.0)
-        }
-        (None, None) => match user.role {
+    if let Some(published) = query.is_published {
+        builder.push(" AND is_published = ").push_bind(published);
+        count_builder.push(" AND is_published = ").push_bind(published);
+    } else if query.course_id.is_none() {
+        match user.role {
             UserRole::Faculty => {
-                let items = sqlx::query_as::<_, Assessment>(&format!(
-                    "SELECT {ASSESSMENT_COLUMNS} FROM assessments WHERE faculty_id = $1 ORDER BY created_at DESC LIMIT $2 OFFSET $3"
-                ))
-                .bind(&user.email)
-                .bind(limit)
-                .bind(offset)
-                .fetch_all(&state.db)
-                .await?;
-
-                let count: (i64,) = sqlx::query_as(
-                    "SELECT COUNT(*) FROM assessments WHERE faculty_id = $1",
-                )
-                .bind(&user.email)
-                .fetch_one(&state.db)
-                .await?;
-
-                (items, count.0)
+                builder.push(" AND faculty_id = ").push_bind(&user.email);
+                count_builder
+                    .push(" AND faculty_id = ")
+                    .push_bind(&user.email);
             }
             UserRole::Student => {
-                let items = sqlx::query_as::<_, Assessment>(&format!(
-                    "SELECT {ASSESSMENT_COLUMNS} FROM assessments WHERE is_published = true ORDER BY created_at DESC LIMIT $1 OFFSET $2"
-                ))
-                .bind(limit)
-                .bind(offset)
-                .fetch_all(&state.db)
-                .await?;
-
-                let count: (i64,) = sqlx::query_as(
-                    "SELECT COUNT(*) FROM assessments WHERE is_published = true",
-                )
-                .fetch_one(&state.db)
-                .await?;
-
-                (items, count.0)
+                builder.push(" AND is_published = true");
+                count_builder.push(" AND is_published = true");
             }
-            UserRole::SuperAdmin => {
-                let items = sqlx::query_as::<_, Assessment>(&format!(
-                    "SELECT {ASSESSMENT_COLUMNS} FROM assessments ORDER BY created_at DESC LIMIT $1 OFFSET $2"
-                ))
-                .bind(limit)
-                .bind(offset)
-                .fetch_all(&state.db)
-                .await?;
+            UserRole::SuperAdmin => {}
+        }
+    }
 
-                let count: (i64,) = sqlx::query_as("SELECT COUNT(*) FROM assessments")
-                    .fetch_one(&state.db)
-                    .await?;
+    let count_row: (i64,) = count_builder.build_query_as().fetch_one(&state.db).await?;
+    let total = count_row.0;
 
-                (items, count.0)
-            }
-        },
-    };
+    builder
+        .push(" ORDER BY created_at DESC LIMIT ")
+        .push_bind(limit)
+        .push(" OFFSET ")
+        .push_bind(offset);
+
+    let assessments: Vec<Assessment> = builder.build_query_as().fetch_all(&state.db).await?;
 
     Ok(Json(serde_json::json!({
         "data": assessments,

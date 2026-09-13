@@ -6,11 +6,13 @@ edition.workspace = true
 [dependencies]
 janv-common = { path = "../janv-common" }
 
-# Docker API
-bollard = "0.18"
+# HTTP client for Judge0 API
+reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls"] }
+base64 = "0.22"
 
 # Async
 tokio.workspace = true
+futures = "0.3"
 
 # Queue
 redis = { version = "0.27", features = ["tokio-comp", "json"] }
@@ -30,7 +32,3 @@ tracing-subscriber.workspace = true
 # Error handling
 thiserror.workspace = true
 anyhow.workspace = true
-
-# File handling
-tar = "0.4"
-futures-util = "0.3"

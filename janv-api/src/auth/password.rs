@@ -23,6 +23,20 @@ pub fn verify_password(password: &str, hash: &str) -> Result<bool, AppError> {
     Ok(is_valid)
 }
 
+/// Asynchronously computes Argon2 password hash on a blocking worker thread.
+pub async fn hash_password_async(password: String) -> Result<String, AppError> {
+    tokio::task::spawn_blocking(move || hash_password(&password))
+        .await
+        .map_err(|e| AppError::InternalError(format!("Crypto task failed: {}", e)))?
+}
+
+/// Asynchronously verifies Argon2 password hash on a blocking worker thread.
+pub async fn verify_password_async(password: String, hash: String) -> Result<bool, AppError> {
+    tokio::task::spawn_blocking(move || verify_password(&password, &hash))
+        .await
+        .map_err(|e| AppError::InternalError(format!("Crypto task failed: {}", e)))?
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

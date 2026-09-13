@@ -20,10 +20,14 @@ proxy_dir = sys.argv[1]
 port = sys.argv[2]
 load_dotenv(os.path.join(proxy_dir, ".env"), override=True)
 
-# Accept either a raw NVIDIA key or the copied "Bearer ..." form.
+# Accept either a raw API key or the copied "Bearer ..." form.
 nvidia_key = os.environ.get("NVIDIA_API_KEY", "")
 if nvidia_key.startswith("Bearer "):
     os.environ["NVIDIA_API_KEY"] = nvidia_key.removeprefix("Bearer ")
+
+lightning_key = os.environ.get("LIGHTNING_API_KEY", "")
+if lightning_key.startswith("Bearer "):
+    os.environ["LIGHTNING_API_KEY"] = lightning_key.removeprefix("Bearer ")
 
 os.execvp(
     "litellm",

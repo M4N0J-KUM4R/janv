@@ -19,10 +19,25 @@ pub fn spawn(pool: PgPool) -> JoinHandle<()> {
     })
 }
 
+const ASSESSMENT_SCHEDULER_LOCK_ID: i64 = 0x504C4154464F524D; // "PLATFORM" in hex
+
 async fn tick(pool: &PgPool) -> Result<(u64, u64), sqlx::Error> {
     let mut tx = pool.begin().await?;
-    sqlx::query("SET LOCAL lock_timeout = '5s'").execute(&mut *tx).await?;
-    sqlx::query("SET LOCAL statement_timeout = '15s'").execute(&mut *tx).await?;
+
+    // Attempt to acquire distributed transaction-scoped advisory lock
+    let lock_acquired: Result<bool, _> = sqlx::query_scalar(
+        "SELECT pg_try_advisory_xact_lock($1)"
+    )
+    .bind(ASSESSMENT_SCHEDULER_LOCK_ID)
+    .fetch_one(&mut *tx)
+    .await;
+
+    if let Ok(false) = lock_acquired {
+        return Ok((0, 0));
+    }
+
+    sqlx::query("SET LOCAL lock_timeout = '5s'").execute(&mut *tx).await.ok();
+    sqlx::query("SET LOCAL statement_timeout = '15s'").execute(&mut *tx).await.ok();
 
     // Finish expired scheduled tests first, so downtime never publishes an expired test.
     // Drafts and cancelled tests retain their deliberate lifecycle state.

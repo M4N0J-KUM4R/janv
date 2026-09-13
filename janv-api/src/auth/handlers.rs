@@ -1,6 +1,6 @@
 use crate::auth::jwt::{create_access_token, create_refresh_token, verify_token};
 use crate::auth::middleware::AuthUser;
-use crate::auth::password::{hash_password, verify_password};
+use crate::auth::password::{hash_password_async, verify_password_async};
 use crate::db::AppState;
 use axum::{Json, extract::State};
 use chrono::Utc;
@@ -28,7 +28,7 @@ pub async fn login(
         return Err(AppError::Unauthorized("Account is disabled".to_string()));
     }
 
-    if !verify_password(&body.password, &user.password_hash)? {
+    if !verify_password_async(body.password, user.password_hash.clone()).await? {
         return Err(AppError::Unauthorized("Invalid credentials".to_string()));
     }
 
@@ -98,7 +98,7 @@ pub async fn register(
         return Err(AppError::Conflict("Email already registered".to_string()));
     }
 
-    let password_hash = hash_password(&body.password)?;
+    let password_hash = hash_password_async(body.password).await?;
     let now = Utc::now();
 
     let user = sqlx::query_as::<_, User>(

@@ -1,7 +1,7 @@
 use crate::{auth::middleware::AuthUser, db::AppState};
 use axum::{
     Json,
-    extract::{Path, State},
+    extract::{Path, Query, State},
     response::IntoResponse,
 };
 use chrono::Utc;
@@ -68,7 +68,8 @@ pub async fn start_attempt(
 
         // Check if user has a verified session flag in Redis (set when verify_passcode succeeds)
         let redis_key = format!("passcode_verified:{}:{}", id, user.email);
-        if let Ok(mut con) = state.redis.get_multiplexed_async_connection().await {
+        let mut con = state.redis.clone();
+        {
             let flag: Result<bool, _> = redis::cmd("EXISTS").arg(&redis_key).query_async(&mut con).await;
             if let Ok(true) = flag {
                 verified = true;
@@ -83,14 +84,13 @@ pub async fn start_attempt(
                 if clean_p == clean_expected {
                     verified = true;
                     // Cache the verification in Redis for 15 minutes
-                    if let Ok(mut con) = state.redis.get_multiplexed_async_connection().await {
-                        let _: Result<(), _> = redis::cmd("SETEX")
-                            .arg(&redis_key)
-                            .arg(900)
-                            .arg("1")
-                            .query_async(&mut con)
-                            .await;
-                    }
+                    let mut con = state.redis.clone();
+                    let _: Result<(), _> = redis::cmd("SETEX")
+                        .arg(&redis_key)
+                        .arg(900)
+                        .arg("1")
+                        .query_async(&mut con)
+                        .await;
                 } else {
                     return Err(AppError::BadRequest("Invalid assessment passcode".to_string()));
                 }
@@ -148,21 +148,11 @@ pub async fn start_attempt(
     let sanitized_questions: Vec<serde_json::Value> = questions
         .iter()
         .map(|q| {
-            let mut opts = q.options.clone();
-            // Remove "correct" field from each option if present
-            if let Some(serde_json::Value::Array(arr)) = &mut opts {
-                for opt in arr.iter_mut() {
-                    if let serde_json::Value::Object(map) = opt {
-                        map.remove("is_correct");
-                        map.remove("correct");
-                    }
-                }
-            }
             serde_json::json!({
                 "id": q.id,
                 "question_type": q.question_type,
                 "content": q.content,
-                "options": opts,
+                "options": crate::assessment::question::sanitize_options(&q.options),
                 "difficulty": q.difficulty,
                 "points": q.points,
             })
@@ -184,12 +174,14 @@ pub async fn submit_attempt(
     Path(id): Path<Uuid>,
     Json(req): Json<SubmitAttemptRequest>,
 ) -> Result<impl IntoResponse, AppError> {
-    // Fetch the attempt
+    let mut tx = state.db.begin().await?;
+
+    // Fetch the attempt with row lock to prevent duplicate concurrent submissions
     let attempt =
-        sqlx::query_as::<_, Attempt>("SELECT * FROM attempts WHERE id = $1 AND student_id = $2")
+        sqlx::query_as::<_, Attempt>("SELECT * FROM attempts WHERE id = $1 AND student_id = $2 FOR UPDATE")
             .bind(id)
             .bind(&user.email)
-            .fetch_optional(&state.db)
+            .fetch_optional(&mut *tx)
             .await?
             .ok_or(AppError::NotFound("Attempt not found".to_string()))?;
 
@@ -204,7 +196,7 @@ pub async fn submit_attempt(
         "SELECT {ASSESSMENT_COLUMNS} FROM assessments WHERE id = $1"
     ))
         .bind(attempt.assessment_id)
-        .fetch_one(&state.db)
+        .fetch_one(&mut *tx)
         .await?;
 
     let elapsed_secs = (Utc::now() - attempt.started_at).num_seconds();
@@ -226,7 +218,7 @@ pub async fn submit_attempt(
          ORDER BY aq.sort_order",
     )
     .bind(attempt.assessment_id)
-    .fetch_all(&state.db)
+    .fetch_all(&mut *tx)
     .await?;
 
     let answers = &req.answers;
@@ -270,7 +262,7 @@ pub async fn submit_attempt(
         0.0
     };
     let is_passed = percentage >= assessment.pass_percentage;
-    let time_taken_secs = (Utc::now() - attempt.started_at).num_seconds() as i32;
+    let time_taken_secs = (Utc::now() - attempt.started_at).num_seconds().max(0) as i32;
 
     let updated = sqlx::query_as::<_, Attempt>(
         "UPDATE attempts SET 
@@ -287,12 +279,10 @@ pub async fn submit_attempt(
     .bind(percentage)
     .bind(is_passed)
     .bind(id)
-    .fetch_one(&state.db)
+    .fetch_one(&mut *tx)
     .await?;
 
-    // Wrap leaderboard upsert + rank recomputation in one atomic transaction
-    let mut tx = state.db.begin().await?;
-
+    // Upsert into leaderboard
     sqlx::query(
         "INSERT INTO leaderboard_entries (id, assessment_id, student_id, rank, score, total_marks, percentage, time_taken_secs, completed_at)
          VALUES ($1, $2, $3, 0, $4, $5, $6, $7, NOW())
@@ -374,11 +364,21 @@ pub async fn get_attempt_result(
 pub async fn list_my_attempts(
     State(state): State<AppState>,
     user: AuthUser,
+    Query(pagination): Query<PaginationQuery>,
 ) -> Result<impl IntoResponse, AppError> {
+    let per_page = pagination.per_page.unwrap_or(50).min(500);
+    let limit = pagination.limit.unwrap_or(per_page) as i64;
+    let offset = pagination.offset.unwrap_or_else(|| {
+        let page = pagination.page.unwrap_or(1).max(1);
+        (page - 1) * per_page
+    }) as i64;
+
     let attempts = sqlx::query_as::<_, Attempt>(
-        "SELECT * FROM attempts WHERE student_id = $1 ORDER BY started_at DESC",
+        "SELECT * FROM attempts WHERE student_id = $1 ORDER BY started_at DESC LIMIT $2 OFFSET $3",
     )
     .bind(&user.email)
+    .bind(limit)
+    .bind(offset)
     .fetch_all(&state.db)
     .await?;
 

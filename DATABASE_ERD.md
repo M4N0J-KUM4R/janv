@@ -63,7 +63,7 @@ erDiagram
     CERTIFICATE_TEMPLATES ||--o{ CERTIFICATES : formats
 
     INSTITUTIONS {
-        uuid id PK
+        serial id PK
         varchar name
         varchar code UK
         text logo_url
@@ -72,17 +72,13 @@ erDiagram
     }
 
     USERS {
-        uuid id PK
-        varchar email UK
+        varchar email PK
         varchar password_hash
         varchar full_name
         user_role role
-        uuid institution_id FK
-        varchar department_legacy
-        varchar batch_legacy
-        varchar branch_legacy
-        varchar class_legacy
-        varchar roll_number
+        integer institution_id FK
+        integer batch
+        text branch
         boolean is_active
         timestamptz created_at
         timestamptz updated_at
@@ -90,7 +86,7 @@ erDiagram
 
     REFRESH_TOKENS {
         uuid id PK
-        uuid user_id FK
+        varchar user_id FK
         varchar token_hash
         timestamptz expires_at
         timestamptz created_at

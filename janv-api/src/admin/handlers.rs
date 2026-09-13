@@ -1,4 +1,4 @@
-use crate::{auth::middleware::AuthUser, db::AppState};
+use crate::{auth::middleware::AuthUser, auth::rbac, db::AppState};
 use axum::{
     Extension, Json,
     extract::{Path, Query, State},
@@ -12,6 +12,7 @@ pub async fn list_users(
     user: AuthUser,
     Query(query): Query<UserListQuery>,
 ) -> Result<impl IntoResponse, AppError> {
+    rbac::require_faculty_or_admin(&user)?;
     let limit = query.limit.or(query.per_page).unwrap_or(10) as i64;
     let page = query.page.unwrap_or(1).max(1);
     let offset = query.offset.map(|o| o as i64).unwrap_or_else(|| ((page - 1) as i64) * limit);
@@ -88,15 +89,27 @@ pub async fn list_users(
 pub async fn get_user(
     State(state): State<AppState>,
     user: AuthUser,
-    Path(id): Path<Uuid>,
+    Path(email): Path<String>,
 ) -> Result<impl IntoResponse, AppError> {
-    let user = sqlx::query_as::<_, User>("SELECT * FROM users WHERE id = $1")
-        .bind(id)
+    rbac::require_faculty_or_admin(&user)?;
+    let clean_email = email.trim().to_lowercase();
+
+    let target_user = sqlx::query_as::<_, User>("SELECT * FROM users WHERE email = $1")
+        .bind(&clean_email)
         .fetch_optional(&state.db)
         .await?
-        .ok_or(AppError::NotFound("User not found".to_string()))?;
+        .ok_or_else(|| AppError::NotFound("User not found".to_string()))?;
 
-    Ok(Json(user))
+    // Multi-tenant check: if faculty is requesting, ensure target belongs to same institution
+    if user.role != UserRole::SuperAdmin {
+        if let (Some(caller_inst), Some(target_inst)) = (user.institution_id, target_user.institution_id) {
+            if caller_inst != target_inst {
+                return Err(AppError::Forbidden("Cannot access users from another institution".to_string()));
+            }
+        }
+    }
+
+    Ok(Json(UserResponse::from(target_user)))
 }
 
 pub async fn create_user(
@@ -104,50 +117,89 @@ pub async fn create_user(
     user: AuthUser,
     Json(req): Json<CreateUserRequest>,
 ) -> Result<impl IntoResponse, AppError> {
-    let hashed_password = crate::auth::password::hash_password(&req.password)?;
+    rbac::require_admin(&user)?;
+    let hashed_password = crate::auth::password::hash_password_async(req.password).await?;
+    let now = chrono::Utc::now();
+    let clean_email = req.email.trim().to_lowercase();
+
+    let institution_id = user.institution_id;
 
     let user = sqlx::query_as::<_, User>(
-        "INSERT INTO users (id, email, password_hash, full_name, role, is_active, created_at, updated_at) 
-         VALUES ($1, $2, $3, $4, $5, $6, NOW(), NOW()) RETURNING *"
+        "INSERT INTO users (email, password_hash, full_name, role, is_active, institution_id, created_at, updated_at) 
+         VALUES ($1, $2, $3, $4, $5, $6, $7, $7) RETURNING *"
     )
-    .bind(Uuid::new_v4())
-    .bind(req.email)
+    .bind(&clean_email)
     .bind(hashed_password)
-    .bind(req.full_name)
+    .bind(&req.full_name)
     .bind(req.role)
     .bind(true)
+    .bind(institution_id)
+    .bind(now)
     .fetch_one(&state.db)
     .await?;
 
-    Ok(Json(user))
+    Ok(Json(UserResponse::from(user)))
 }
 
 pub async fn update_user(
     State(state): State<AppState>,
     user: AuthUser,
-    Path(id): Path<Uuid>,
+    Path(email): Path<String>,
     Json(req): Json<UpdateUserRequest>,
 ) -> Result<impl IntoResponse, AppError> {
-    let user = sqlx::query_as::<_, User>(
-        "UPDATE users SET full_name = $1, role = $2, updated_at = NOW() WHERE id = $3 RETURNING *",
+    rbac::require_admin(&user)?;
+    let clean_email = email.trim().to_lowercase();
+
+    let existing = sqlx::query_as::<_, User>("SELECT * FROM users WHERE email = $1")
+        .bind(&clean_email)
+        .fetch_optional(&state.db)
+        .await?
+        .ok_or_else(|| AppError::NotFound("User not found".to_string()))?;
+
+    if user.role != UserRole::SuperAdmin {
+        if let (Some(caller_inst), Some(target_inst)) = (user.institution_id, existing.institution_id) {
+            if caller_inst != target_inst {
+                return Err(AppError::Forbidden("Cannot update users from another institution".to_string()));
+            }
+        }
+    }
+
+    let updated = sqlx::query_as::<_, User>(
+        "UPDATE users SET full_name = COALESCE($1, full_name), role = COALESCE($2, role), updated_at = NOW() WHERE email = $3 RETURNING *",
     )
     .bind(req.full_name)
     .bind(req.role)
-    .bind(id)
-    .fetch_optional(&state.db)
-    .await?
-    .ok_or(AppError::NotFound("User not found".to_string()))?;
+    .bind(&clean_email)
+    .fetch_one(&state.db)
+    .await?;
 
-    Ok(Json(user))
+    Ok(Json(UserResponse::from(updated)))
 }
 
 pub async fn delete_user(
     State(state): State<AppState>,
     user: AuthUser,
-    Path(id): Path<Uuid>,
+    Path(email): Path<String>,
 ) -> Result<impl IntoResponse, AppError> {
-    sqlx::query("UPDATE users SET is_active = false WHERE id = $1")
-        .bind(id)
+    rbac::require_admin(&user)?;
+    let clean_email = email.trim().to_lowercase();
+
+    let existing = sqlx::query_as::<_, User>("SELECT * FROM users WHERE email = $1")
+        .bind(&clean_email)
+        .fetch_optional(&state.db)
+        .await?
+        .ok_or_else(|| AppError::NotFound("User not found".to_string()))?;
+
+    if user.role != UserRole::SuperAdmin {
+        if let (Some(caller_inst), Some(target_inst)) = (user.institution_id, existing.institution_id) {
+            if caller_inst != target_inst {
+                return Err(AppError::Forbidden("Cannot delete users from another institution".to_string()));
+            }
+        }
+    }
+
+    sqlx::query("UPDATE users SET is_active = false, updated_at = NOW() WHERE email = $1")
+        .bind(&clean_email)
         .execute(&state.db)
         .await?;
 

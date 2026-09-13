@@ -1,16 +1,53 @@
-# Anthropic-compatible local gateway for Claude Code -> NVIDIA NIM.
-# Keep the public model alias stable; LiteLLM routes it to Nemotron 3.5 Lightning.
+# Anthropic-compatible local gateway for Claude Code -> Lightning AI / DeepSeek.
 model_list:
   - model_name: claude-3-5-sonnet-20241022
+    litellm_params:
+      model: openai/lightning-ai/deepseek-v4-pro
+      api_base: https://lightning.ai/api/v1
+      api_key: os.environ/LIGHTNING_API_KEY
+      max_tokens: 16384
+      num_retries: 2
+  - model_name: claude-3-7-sonnet-20250219
+    litellm_params:
+      model: openai/lightning-ai/deepseek-v4-pro
+      api_base: https://lightning.ai/api/v1
+      api_key: os.environ/LIGHTNING_API_KEY
+      max_tokens: 16384
+      num_retries: 2
+  - model_name: claude-3-5-haiku-20241022
+    litellm_params:
+      model: openai/lightning-ai/deepseek-v4-pro
+      api_base: https://lightning.ai/api/v1
+      api_key: os.environ/LIGHTNING_API_KEY
+      max_tokens: 8192
+      num_retries: 2
+  - model_name: claude-3-opus-20240229
+    litellm_params:
+      model: openai/lightning-ai/deepseek-v4-pro
+      api_base: https://lightning.ai/api/v1
+      api_key: os.environ/LIGHTNING_API_KEY
+      max_tokens: 16384
+      num_retries: 2
+  - model_name: lightning-ai/deepseek-v4-pro
+    litellm_params:
+      model: openai/lightning-ai/deepseek-v4-pro
+      api_base: https://lightning.ai/api/v1
+      api_key: os.environ/LIGHTNING_API_KEY
+      max_tokens: 16384
+      num_retries: 2
+  - model_name: deepseek-v4-pro
+    litellm_params:
+      model: openai/lightning-ai/deepseek-v4-pro
+      api_base: https://lightning.ai/api/v1
+      api_key: os.environ/LIGHTNING_API_KEY
+      max_tokens: 16384
+      num_retries: 2
+  - model_name: nemotron-3.5-lightning
     litellm_params:
       model: nvidia_nim/nvidia/nemotron-3.5-lightning-30b-a3b
       api_key: os.environ/NVIDIA_API_KEY
       max_tokens: 16384
       num_retries: 0
-      extra_body:
-        chat_template_kwargs:
-          enable_thinking: true
-        reasoning_budget: 16384
 
 general_settings:
   master_key: os.environ/LITELLM_MASTER_KEY

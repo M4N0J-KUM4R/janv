@@ -383,17 +383,11 @@ export interface AssessmentSectionResponse {
   title: string;
   description?: string;
   instructions?: string;
-  sectionInstructions?: string;
   section_type?: string;
-  sectionType?: string;
   duration_mins?: number;
-  sectionDuration?: number;
   default_marks?: number;
-  defaultMarks?: number;
   penalty_marks?: number;
-  penaltyMarks?: number;
   display_questions?: number;
-  displayQuestions?: number;
 }
 
 

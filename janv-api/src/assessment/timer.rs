@@ -16,7 +16,7 @@ pub async fn check_timer(
     let attempt =
         sqlx::query_as::<_, Attempt>("SELECT * FROM attempts WHERE id = $1 AND student_id = $2")
             .bind(id)
-            .bind(user.id)
+            .bind(&user.email)
             .fetch_optional(&state.db)
             .await?
             .ok_or(AppError::NotFound("Attempt not found".to_string()))?;

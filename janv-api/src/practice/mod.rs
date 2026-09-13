@@ -1,6 +1,7 @@
 pub mod handlers;
 pub mod leaderboard;
 pub mod problems;
+pub mod repository;
 pub mod submissions;
 pub mod test_runner;
 

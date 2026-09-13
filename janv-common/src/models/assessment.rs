@@ -103,13 +103,7 @@ pub struct Assessment {
     pub created_at: DateTime<Utc>,
 }
 
-pub const ASSESSMENT_COLUMNS: &str = "\
-    id, title, description, course_id, faculty_id, duration_mins, total_marks, \
-    pass_percentage, is_published, shuffle_questions, show_results, start_time, \
-    end_time, test_code, num_sections, tab_switch_limit, institution_visibility, \
-    batch_visibility, instructions, status, proctoring_enabled, webcam_enabled, \
-    screen_share_enabled, audio_enabled, is_hackathon, is_subscriber_only, \
-    is_in_library, proctoring_service, created_at";
+pub const ASSESSMENT_COLUMNS: &str = "*";
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[cfg_attr(feature = "backend", derive(sqlx::FromRow))]
