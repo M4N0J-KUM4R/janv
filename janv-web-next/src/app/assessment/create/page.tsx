@@ -4,9 +4,11 @@ import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import Breadcrumb from '@/components/layout/Breadcrumb';
 import RichTextEditor from '@/components/common/RichTextEditor';
+import { useAuth } from '@/lib/auth';
 
 export default function CreateTestPage() {
   const router = useRouter();
+  const { user } = useAuth();
   const [departments, setDepartments] = useState<{ id: number; name: string; code: string; aliasName: string }[]>([]);
   const [batches, setBatches] = useState<(number | string)[]>([]);
   const [testName, setTestName] = useState('');
@@ -55,9 +57,13 @@ export default function CreateTestPage() {
     }
   }, []);
 
-  // Fetch real departments of the faculty's institution and user batches from database
+  // Fetch real departments/branches of the logged-in faculty's institution and user batches from database
   useEffect(() => {
-    fetch('/api/v2/departments')
+    const instId = user?.institution_id ? String(user.institution_id) : '';
+    const deptUrl = instId ? `/api/v2/departments?institution_id=${instId}` : '/api/v2/departments';
+    const batchUrl = instId ? `/api/v2/batches?institution_id=${instId}` : '/api/v2/batches';
+
+    fetch(deptUrl)
       .then((res) => res.json())
       .then((data) => {
         if (Array.isArray(data?.departments) && data.departments.length > 0) {
@@ -66,7 +72,7 @@ export default function CreateTestPage() {
       })
       .catch(() => {});
 
-    fetch('/api/v2/batches')
+    fetch(batchUrl)
       .then((res) => res.json())
       .then((data) => {
         if (Array.isArray(data?.batches) && data.batches.length > 0) {
@@ -74,7 +80,8 @@ export default function CreateTestPage() {
         }
       })
       .catch(() => {});
-  }, []);
+  }, [user?.institution_id]);
+
 
   // Fetch live current test code from API if not already restored
   useEffect(() => {
