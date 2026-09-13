@@ -18,9 +18,28 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
-  # ── 1. Quality & Test Gate ────────────────────────────────────
-  test-and-lint:
-    name: 🧪 Lint & Test (Rust + Next.js)
+  # ── 1. Backend Compilation & Static Checks ─────────────────────
+  backend-check:
+    name: 🦀 Backend Checks (Cargo Check)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Rust Toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy, rustfmt
+
+      - name: Rust Cache
+        uses: Swatinem/rust-cache@v2
+
+      - name: Run Workspace Compilation Check
+        run: cargo check --workspace
+
+  # ── 2. Backend Automated Test Suite ───────────────────────────
+  backend-test:
+    name: 🧪 Backend Unit & DB Tests
     runs-on: ubuntu-latest
     services:
       postgres:
@@ -44,17 +63,20 @@ jobs:
 
       - name: Set up Rust Toolchain
         uses: dtolnay/rust-toolchain@stable
-        with:
-          components: clippy, rustfmt
 
       - name: Rust Cache
         uses: Swatinem/rust-cache@v2
 
-      - name: Run Backend Workspace Checks
-        run: cargo check --workspace
-
       - name: Run Backend Tests
         run: cargo test --workspace
+
+  # ── 3. Frontend Lint & Code Quality ───────────────────────────
+  frontend-lint:
+    name: 🔍 Frontend Linting (ESLint)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
       - name: Set up Node.js 20
         uses: actions/setup-node@v4
@@ -67,14 +89,37 @@ jobs:
         working-directory: ./janv-web-next
         run: npm ci
 
-      - name: Run Frontend Lint
+      - name: Run ESLint
         working-directory: ./janv-web-next
         run: npm run lint
 
-  # ── 2. AWS Continuous Deployment ──────────────────────────────
+  # ── 4. Frontend Production Build Verification ─────────────────
+  frontend-build:
+    name: 📦 Frontend Build Verification
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: janv-web-next/package-lock.json
+
+      - name: Install Frontend Dependencies
+        working-directory: ./janv-web-next
+        run: npm ci
+
+      - name: Build Next.js Production Bundle
+        working-directory: ./janv-web-next
+        run: npm run build
+
+  # ── 5. AWS Continuous Deployment ──────────────────────────────
   deploy:
     name: 🚀 Deploy to AWS (EC2 + RDS)
-    needs: test-and-lint
+    needs: [backend-check, backend-test, frontend-lint, frontend-build]
     if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/staging' || github.ref == 'refs/heads/dev')
     runs-on: ubuntu-latest
     steps:
@@ -88,7 +133,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION }}
 
-      - name: Verify AWS Caller Identity via AWS CLI
+      - name: Verify AWS Caller Identity
         run: |
           echo "Verifying AWS credentials..."
           aws sts get-caller-identity
@@ -139,7 +184,14 @@ jobs:
             docker compose -f docker-compose.prod.yml up -d --build
           '"
 
-      - name: Run Live Health Checks
+  # ── 6. Post-Deployment Live Smoke & Health Checks ─────────────
+  smoke-test:
+    name: 🩺 Post-Deployment Smoke & Health Verification
+    needs: [deploy]
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/staging' || github.ref == 'refs/heads/dev')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Live Health Checks on AWS
         run: |
           EC2_IP="${{ secrets.EC2_HOST || '65.2.45.73' }}"
           echo "Waiting for services to warm up..."
