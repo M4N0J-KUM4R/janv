@@ -9,6 +9,9 @@
 //!
 //! All data is local-only test fixtures — no real user data.
 
+#![allow(dead_code, unused_imports)]
+
 pub mod fixtures;
 
 pub use fixtures::{TwoInstitutionFixtures, seed_two_institutions};
+

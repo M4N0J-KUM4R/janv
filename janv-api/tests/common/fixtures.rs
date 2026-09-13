@@ -6,6 +6,10 @@
 //!
 //! The password for all test users is `"TestPassword123!"`.
 
+#![allow(dead_code)]
+#![allow(unused_imports)]
+#![allow(unused_variables)]
+
 use argon2::{
     Argon2,
     password_hash::{PasswordHasher, SaltString},
