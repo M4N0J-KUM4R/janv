@@ -153,6 +153,19 @@ jobs:
           ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ubuntu@"$EC2_IP" bash -c "'
             set -e
             echo \"🚀 Deploying branch: $BRANCH_NAME to EC2 via git pull...\"
+
+            # Stop and remove any legacy containers across directories to free port 80
+            if [ -d \"/home/ubuntu/app\" ] && [ -f \"/home/ubuntu/app/docker-compose.prod.yml\" ]; then
+              (cd /home/ubuntu/app && docker compose -f docker-compose.prod.yml down --remove-orphans 2>/dev/null || true)
+            fi
+            if [ -d \"/home/ubuntu/janv\" ] && [ -f \"/home/ubuntu/janv/docker-compose.prod.yml\" ]; then
+              (cd /home/ubuntu/janv && docker compose -f docker-compose.prod.yml down --remove-orphans 2>/dev/null || true)
+            fi
+
+            # Force release port 80 if held by orphaned containers or host services
+            docker ps -q --filter \"publish=80\" | xargs -r docker rm -f 2>/dev/null || true
+            sudo systemctl stop nginx 2>/dev/null || true
+            sudo systemctl disable nginx 2>/dev/null || true
             
             TARGET_DIR=\"/home/ubuntu/janv\"
             if [ ! -d \"\$TARGET_DIR/.git\" ]; then
@@ -169,9 +182,13 @@ jobs:
             git checkout -B \"$BRANCH_NAME\" \"origin/$BRANCH_NAME\" || git pull https://github.com/M4N0J-KUM4R/janv.git \"$BRANCH_NAME\"
             git reset --hard \"origin/$BRANCH_NAME\" || true
 
+            # Ensure .env exists in TARGET_DIR with valid database credentials
+            if [ ! -f \"\$TARGET_DIR/.env\" ] && [ -f \"/home/ubuntu/app/.env\" ]; then
+              cp /home/ubuntu/app/.env \"\$TARGET_DIR/.env\"
+            fi
+
             echo \"🔄 Rebuilding & restarting Docker containers...\"
-            docker compose -f docker-compose.prod.yml down --remove-orphans || true
-            docker compose -f docker-compose.prod.yml up -d --build
+            docker compose -f docker-compose.prod.yml up -d --build --remove-orphans
           '"
 
   # ── 6. Post-Deployment Live Smoke & Health Checks ─────────────
