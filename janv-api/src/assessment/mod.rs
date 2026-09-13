@@ -38,12 +38,21 @@ pub fn router() -> Router<AppState> {
         )
         .route("/banks/{bank_id}/questions", post(question::add_question))
         .route(
+            "/questions",
+            get(question::list_questions).post(question::create_custom_question),
+        )
+        .route("/questions/batch", post(question::create_batch_questions))
+        .route(
             "/questions/{id}",
             put(question::update_question).delete(question::delete_question),
         )
         .route(
             "/{assessment_id}/questions",
-            post(question::add_questions_to_assessment),
+            get(question::get_assessment_questions).post(question::add_questions_to_assessment),
+        )
+        .route(
+            "/{assessment_id}/questions/{question_id}",
+            delete(question::remove_question_from_assessment),
         )
         // Attempts & test-taking
         .route("/{id}/start", post(attempt::start_attempt))

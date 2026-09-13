@@ -76,6 +76,17 @@ pub struct CreateQuestionRequest {
     pub difficulty: Difficulty,
     pub tags: Option<Vec<String>>,
     pub points: i32,
+    #[serde(default)]
+    pub assessment_id: Option<Uuid>,
+    #[serde(default)]
+    pub section_id: Option<Uuid>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct BatchCreateQuestionsRequest {
+    pub questions: Vec<CreateQuestionRequest>,
+    pub assessment_id: Option<Uuid>,
+    pub section_id: Option<Uuid>,
 }
 
 #[derive(Debug, Deserialize, Validate)]
@@ -116,6 +127,17 @@ pub struct AttemptResponse {
 #[derive(Debug, Serialize, Deserialize)]
 pub struct AddQuestionsRequest {
     pub question_ids: Vec<Uuid>,
+    pub section_id: Option<Uuid>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize, Default)]
+pub struct QuestionListQuery {
+    pub search: Option<String>,
+    pub difficulty: Option<Difficulty>,
+    pub question_type: Option<QuestionType>,
+    pub bank_id: Option<Uuid>,
+    pub page: Option<u32>,
+    pub limit: Option<u32>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
