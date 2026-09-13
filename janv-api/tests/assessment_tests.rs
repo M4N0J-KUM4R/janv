@@ -111,6 +111,8 @@ fn test_create_question_validation() {
         difficulty: Difficulty::Easy,
         tags: Some(vec!["math".to_string()]),
         points: 5,
+        assessment_id: None,
+        section_id: None,
     };
     assert!(valid_q.validate().is_ok());
 
